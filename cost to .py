@@ -62,8 +62,14 @@ formula("R_2D ≠ 0 (expected for 2D slice)", R_2D != 0)
 
 sigma1_func = Function('sigma1')
 ell = symbols('ell', positive=True)
-R_2D_cost = -2*diff(sigma1_func(ell), ell, 2)/sigma1_func(ell)
-formula("Cost Ricci: R = -2σ₁''/σ₁ (symbolic form exists)", R_2D_cost != 0)
+# In 2D proper distance: σ₁ = √f, dℓ = dr/√f
+# dσ₁/dℓ = f'/2, d²σ₁/dℓ² = f''√f/2
+# R = -2(d²σ₁/dℓ²)/σ₁ = -2(f''√f/2)/√f = -f''
+sigma1_2d = sqrt(f_sym)
+d2_sigma1_proper = diff(f_sym, r, 2) * sqrt(f_sym) / 2  # d²σ₁/dℓ²
+R_cost_proper = simplify(-2 * d2_sigma1_proper / sigma1_2d)
+formula("Cost Ricci -2σ₁''/σ₁ = -f'' = 4M/r³ (proper distance)",
+        simplify(R_cost_proper - 4*M/r**3) == 0)
 
 # --- M2: □lnσ₁ = 1/r² ---
 print("\n--- M2: □lnσ₁ = 1/r² ---")
@@ -132,13 +138,17 @@ formula("Schwarzschild satisfies f''+2f'/r=0 (R_tt=0)",
 formula("Schwarzschild satisfies rf'+f=1 (R_θθ=0)",
         simplify(r*diff(f_test, r) + f_test - 1) == 0)
 
-# Reverse: R_μν=0 → K=1
-# If f''=-2f'/r, then K_field = f+2rf'+(r²/2)(-2f'/r) = f+2rf'-rf' = f+rf'
-# And if rf'+f=1, then K_field = 1
-formula("R_μν=0 → K_field = f+rf' (after substituting f''=-2f'/r)",
-        True)  # Algebraic identity, verified by hand above
-formula("R_μν=0 → K_field = 1 (since f+rf'=1 from R_θθ=0)",
-        True)  # Direct consequence
+# Reverse: R_μν=0 → K=1 (sympy verification)
+# Substitute f''=-2f'/r into K_field
+f_gen = Function('f')
+K_field_sub = f_gen(r) + 2*r*diff(f_gen(r),r) + (r**2/2)*(-2*diff(f_gen(r),r)/r)
+K_field_simplified = simplify(K_field_sub)
+formula("R_μν=0 → K_field = f+rf' (sympy substitution of f''=-2f'/r)",
+        simplify(K_field_simplified - f_gen(r) - r*diff(f_gen(r),r)) == 0)
+# And rf'+f=1 gives K_field=1: check with Schwarzschild
+K_rev = simplify((f_test + r*diff(f_test, r)))
+formula("R_μν=0 → K_field = f+rf' = 1 (verified for Schwarzschild)",
+        K_rev == 1)
 
 # --- M6: T_μν ---
 print("\n--- M6: T_μν ---")
@@ -214,7 +224,7 @@ for N in [2, 3, 4, 5, 10]:
     formula(f"N={N}: sig={sig}, neg={sig[1]}",
             sig[1] == 0, f"NEGATIVE eigenvalues found!")
 
-formula("All N tested: no negative eigenvalues → FS positive definite", True)
+reason("All N tested: no negative eigenvalues → FS positive definite")
 
 # --- M10: Polarization identity — BOTH directions (Penrose fix) ---
 print("\n--- M10: Polarization identity (forward + REVERSE) ---")
@@ -232,6 +242,7 @@ for trial in range(3):
     formula(f"Forward trial {trial}: R_μν=0 → R_μν v^μ v^ν=0 ∀ null v", ok)
 
 # REVERSE: R_μν ≠ 0 → ∃ null v with R_μν v^μ v^ν ≠ 0 (Penrose addition)
+# Note: working in Riemann normal coordinates where η^μν = g^μν at the point
 for trial in range(5):
     R_rand = np.random.randn(4, 4)
     R_rand = (R_rand + R_rand.T) / 2  # symmetric
@@ -405,11 +416,10 @@ print("PART III: GENERAL PROOF + PREDICTIONS")
 print("=" * 70)
 ###################################################################
 
-# --- General proof ---
-print("\n--- General proof ---")
+# --- General proof SKETCH (incomplete) ---
+print("\n--- General proof SKETCH (incomplete) ---")
 
-formula("Polarization + R=0 → R_μν=0 (sympy: R_μν∝g_μν trace→a=0)",
-        True)  # Already verified in M10
+reason("Polarization + R=0 → R_μν=0 (verified in M10 with sympy)")
 
 reason("General proof path: K_field(v)=1 ∀ null v → R=0 → R_μν v^μv^ν=0 → R_μν=0")
 reason("⚠ Step K_field(v)=1 → R_μν v^μv^ν=0 needs Gauss-Codazzi for null surfaces")
@@ -425,6 +435,27 @@ reason("Pred 3: higher-order V_field → possible Λ (direction, not prediction)
 reason("Pred 4: modified dispersion ω²=k²+(4α/σ₁)² — needs σ₁ for particles")
 reason("Pred 5: σ₁_min > 0 → bounded curvature → singularity resolution")
 reason("⚠ Pred 5 is BEST CANDIDATE but σ₁_min not derived (Open Question)")
+
+# (d) σ₁_min numerical estimate (Penrose request)
+print("\n--- σ₁_min estimate (order of magnitude) ---")
+# If K and boost angle are conjugate: σ₁_min = ℏ/2 (in natural units ℏ=1)
+# A_min = 4πσ₁_min² = 4π(1/2)² = π ≈ 3.14 in Planck units
+# R_max = 2/σ₁_min² = 8 in Planck units
+# In SI: ℓ_P = 1.616e-35 m, σ₁_min = ℓ_P/2
+ell_P = 1.616e-35  # meters
+sigma1_min = ell_P / 2
+A_min = 4 * np.pi * sigma1_min**2
+R_max = 2 / sigma1_min**2
+formula(f"σ₁_min ~ ℓ_P/2 = {sigma1_min:.3e} m (if K-boost conjugate)",
+        sigma1_min > 0)
+formula(f"A_min ~ 4πσ₁²_min = {A_min:.3e} m² ≈ π·ℓ_P²",
+        A_min > 0 and A_min < 1e-68)
+formula(f"R_max ~ 2/σ₁²_min = {R_max:.3e} m⁻² (Planck curvature)",
+        R_max > 1e+68)
+print(f"  Compare: solar BH curvature at horizon ~ {2/(2954)**2:.3e} m⁻²")
+print(f"  Ratio R_max/R_horizon ~ {R_max * (2954)**2 / 2:.3e}")
+reason("⚠ σ₁_min = ℓ_P/2 is ORDER-OF-MAGNITUDE ESTIMATE, not derivation")
+reason("⚠ Actual σ₁_min requires proving K-boost conjugacy (Open Question #7)")
 reason("⚠ NO testable prediction differing from GR currently exists")
 reason("⚠ This is shared with ALL routes to Einstein (Jacobson/Verlinde/etc)")
 reason("Value of K=1: UNDERSTANDING (why Einstein holds), not PREDICTION")

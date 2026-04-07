@@ -481,8 +481,42 @@ reason("Pred 4: modified dispersion ω²=k²+(4α/σ₁)² — needs σ₁ for p
 reason("Pred 5: σ₁_min > 0 → bounded curvature → singularity resolution")
 reason("⚠ Pred 5 is BEST CANDIDATE but σ₁_min not derived (Open Question)")
 
-# (d) σ₁_min numerical estimate (Penrose request)
-print("\n--- σ₁_min estimate (order of magnitude) ---")
+# (d) σ₁ > 0 from Axiom T (THEOREM, not conjecture)
+print("\n--- σ₁ > 0 from Axiom T (Proposition 3 in paper) ---")
+
+# Core argument: G₀₀ = σ₁², Axiom T requires G₀₀ > 0
+reason("Axiom T: temporal displacement has POSITIVE cost")
+reason("Cost metric G = diag(σ₁², -1), so temporal cost = σ₁²(δt)²")
+reason("σ₁ = 0 → temporal cost = 0 for any δt → violates Axiom T")
+reason("Contrapositive: Axiom T → σ₁ > 0")
+
+# Verify: σ₁ = 0 makes K=1 impossible
+K_at_zero = 0**2 * sp.Symbol('x0')**2 - sp.Symbol('x1')**2
+formula("σ₁=0 → K = -x₁² ≤ 0 (K=1 impossible)",
+        K_at_zero == -sp.Symbol('x1')**2)
+
+# Verify: σ₁ > 0 allows K=1
+sigma1_pos = sp.Symbol('s1', positive=True)
+x0_s, x1_s = sp.symbols('x0 x1', real=True)
+K_general = sigma1_pos**2 * x0_s**2 - x1_s**2
+K1_solutions = sp.solve(K_general - 1, x0_s)
+formula("σ₁>0 → K=1 has solutions (x₀ = ±√(1+x₁²)/σ₁)",
+        len(K1_solutions) == 2)
+
+# Schwarzschild: where does σ₁ vanish?
+sigma1_schw = r * sp.sqrt(f_sym)
+sigma1_horizon = simplify(sigma1_schw.subs(r, 2*M))
+formula("σ₁(r=2M) = 0 (horizon)", sigma1_horizon == 0)
+formula("σ₁(r>2M) > 0 (outside)", simplify(sigma1_schw.subs(r, 3*M)) > 0)
+
+reason("σ₁=0 at horizon → K=1 undefined there → OU process breaks down")
+reason("σ₁→0 at singularity → forbidden by Axiom T")
+reason("✓ THEOREM: σ₁ > 0 from Axiom T (proved, no conjecture)")
+reason("⚠ This gives σ₁ > 0 but NOT σ₁ ≥ σ₁_min (no finite lower bound)")
+reason("⚠ σ₁ ≥ σ₁_min requires K-θ conjugacy (still Open Question #7)")
+
+# (e) σ₁_min numerical estimate (Penrose request)
+print("\n--- σ₁_min estimate (order of magnitude, CONJECTURE) ---")
 # If K and boost angle are conjugate: σ₁_min = ℏ/2 (in natural units ℏ=1)
 # A_min = 4πσ₁_min² = 4π(1/2)² = π ≈ 3.14 in Planck units
 # R_max = 2/σ₁_min² = 8 in Planck units

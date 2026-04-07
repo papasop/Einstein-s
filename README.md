@@ -127,7 +127,7 @@ This would give: δ∫R√(-g)d⁴x = 0 → Einstein's equations (vacuum)
 
 ## 3. The Roadmap: Four Steps
 
-### Step 1: Cost on a manifold (promote G to g_μν)
+### Step 1: Cost on a manifold (promote G to g_μν) — DONE (Test 1)
 
 Task: let cost depend on position
   Current: G = const (one Rindler horizon)
@@ -138,16 +138,10 @@ Concrete:
   The cost d² = δx^T G(r) δx now depends on where you are
   K(x; r) = δx^T G(r) δx
 
-What this gives:
-  A family of 2×2 metrics parametrized by position
-  → effectively a metric on a 2D spacetime
-  → Christoffel symbols from ∂G/∂r
-  → Riemann tensor from ∂²G/∂r²
-
-Verification test:
-  For Schwarzschild: σ₁(r) = r√(1-2M/r)
-  Does the cost-derived curvature match R = 0 (vacuum)?
-  → One calculation. Can be done immediately.
+Result (Test 1, 2026-04-07):
+  ✓ R_2D = -2σ₁''/σ₁ = 4M/r³ (correct 2D Schwarzschild curvature)
+  ✗ R_2D ≠ 0 (2D slice is not flat — expected, not a failure)
+  ✗ K=1 does NOT give R_4D = 0 (needs angular sector σ₂)
 
 ### Step 2: Curvature from cost derivatives
 
@@ -276,13 +270,13 @@ Field-level analogue:
 
 ### What could go wrong
 
-1. Cost-derived curvature may be trivially equivalent to standard GR
-   → Just renaming, no new content
-   → Then the direct route adds nothing over Jacobson route
+1. RESOLVED (Test 1): Cost-derived curvature is NOT trivially equivalent
+   → It gives correct 2D curvature but NOT 4D vacuum condition
+   → The gap is real and structural (need σ₂)
 
-2. K=1 at field level may not give Einstein's equations
-   → May give a different field equation
-   → Could be interesting (modified gravity) or wrong
+2. K=1 at field level does NOT give R=0 automatically (Test 1 confirmed)
+   → Need angular sector participation
+   → May require fundamentally new construction for 4D cost
 
 3. Matter definition from cost deviation may be circular
    → "T_μν = G_μν/8π" is just the definition
@@ -311,20 +305,22 @@ Field-level analogue:
 
 ---
 
-## 7. Immediate Next Steps
+## 7. Immediate Next Steps (updated post-Test 1)
 
-### Step 1 (today): Schwarzschild curvature test
-  Compute curvature from position-dependent cost
-  Verify R=0 for vacuum Schwarzschild
+### Step 1 (DONE): Schwarzschild curvature test
+  ✓ Cost metric gives correct R_2D = 4M/r³
+  ✓ R_4D = 0 needs angular cancellation (σ₂)
 
-### Step 2 (this week): linearized theory
+### Step 2 (next): Reinterpret □lnσ₁ = 1/r² as cost condition
+  Symplectic gravity: R = -2□lnσ₁ + 2/r² = 0
+  The "2/r²" comes from σ₂ = r (angular sector)
+  Question: is this a "field-level K=1" for both σ₁ and σ₂?
+  → If σ₁ has "radial cost" and σ₂ has "angular cost"
+  → Then R=0 = "total cost balanced" = field-level self-consistency
+
+### Step 3 (if Step 2 works): linearized theory
   Perturbation h_μν around flat space
   Cost of perturbation → linearized Einstein?
-
-### Step 3 (if Step 2 succeeds): field-level K
-  Define K[g] = ∫R√(-g)d⁴x / ∫√(-g)d⁴x (averaged curvature)
-  Study K=1 as field equation
-  Compare with Einstein-Hilbert variation
 
 ### Step 4 (if Step 3 succeeds): write paper
   "Einstein's Equations from Information-Time Cost"
@@ -333,17 +329,82 @@ Field-level analogue:
 
 ---
 
-## 8. The Central Question
+## 8. Test 1 Results (2026-04-07)
+
+### What was tested
+  Schwarzschild σ₁(r) = r√(1-2M/r)
+  Cost metric G(r) = diag(-σ₁(r)², 1)
+  Computed: Christoffel → Riemann → Ricci → R
+
+### Results
+
+  CONFIRMED: cost derivatives give curvature
+    R_2D = -2σ₁''/σ₁ = -f'' = 4M/r³
+    Cost metric reproduces standard 2D Schwarzschild curvature exactly.
+
+  DENIED: K=1 does NOT automatically give R=0
+    R_2D = 4M/r³ ≠ 0 for Schwarzschild
+    4D R=0 requires cancellation with angular sector:
+      R_4D = R_2D(σ₁) + R_angular(σ₂) = 0
+      σ₂ = r does not emerge from 2D cost
+    The one-step jump K=1 → R=0 is false.
+
+  CONFIRMED: R is a "field-level K" (analogy, not equivalence)
+    K = xᵀGx — metric acts on coordinates
+    R = -2σ₁''/σ₁ — metric acts on its own derivatives
+    Both are "metric measuring itself", but R=0 needs σ₂.
+
+### Implications for the roadmap
+
+  Step 1 (cost → curvature): DONE. Works as expected.
+  Step 2 (curvature = Riemann): DONE. Standard differential geometry.
+  Step 3 (K=1 → R=0): BLOCKED. Requires 4D cost giving both σ₁ and σ₂.
+  Step 4 (matter from cost): NOT REACHED.
+
+  Bottleneck identified:
+    NOT "can cost give curvature?" — yes, confirmed.
+    IS "can 4D cost simultaneously produce σ₁ and σ₂?"
+    Equivalently: can □lnσ₁ = 1/r² be read as a 4D cost self-consistency?
+
+### Next directions (post-Test 1)
+
+  Option A: Construct explicit 4D cost function on R⁴
+    d(x; δx) → 4×4 Hessian → σ₁ and σ₂ both emerge
+    Difficulty: high, no precedent
+
+  Option B: Reinterpret □lnσ₁ = 1/r² as cost self-consistency
+    Symplectic gravity gives R = -2□lnσ₁ + 2/r²
+    R=0 ⟺ □lnσ₁ = 1/r²
+    The 2/r² term = angular sector contribution
+    Question: is 1/r² the "cost" of the angular sector?
+    This may connect to σ₂ = r without constructing full 4D cost.
+
+  Option C: Pause exploration, submit current papers
+    Test 1 does not affect any existing paper.
+    Direct derivation is a long-term direction.
+
+---
+
+## 9. The Central Question (updated post-Test 1)
 
 At the point level:
   K = x^T G x — the metric measuring the cost of a displacement
 
 At the field level:
-  R = g^μν R_μν — the metric measuring its own curvature
+  R = -2σ₁''/σ₁ — the metric measuring its own curvature variation
 
 Are these the same operation at different scales?
 
-If yes: Einstein's equations are the field-theoretic version of K=1.
-If no: the analogy is formal, and Jacobson remains the only bridge.
+Test 1 answer: PARTIALLY.
+  - Both are "metric measuring itself" — confirmed.
+  - But K=1 → R=0 requires the angular sector (σ₂) — not automatic.
+  - The 2D cost gives R_2D correctly, but R_4D = 0 needs σ₁ AND σ₂.
 
-One calculation will tell.
+Revised central question:
+  Can a 4D cost function simultaneously produce σ₁ (radial) and σ₂ (angular),
+  such that the 4D self-consistency condition is R=0?
+
+  Or equivalently:
+  Is □lnσ₁ = 1/r² a cost self-consistency condition in 4D?
+
+One calculation (Option B above) will tell.

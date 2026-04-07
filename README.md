@@ -274,9 +274,10 @@ Field-level analogue:
    → It gives correct 2D curvature but NOT 4D vacuum condition
    → The gap is real and structural (need σ₂)
 
-2. K=1 at field level does NOT give R=0 automatically (Test 1 confirmed)
-   → Need angular sector participation
-   → May require fundamentally new construction for 4D cost
+2. PARTIALLY RESOLVED (Step 2): K=1 at field level CAN be read as R=0
+   → C_radial = C_angular is a valid "field-level K=1"
+   → But this is interpretation of GR, not derivation from cost
+   → The reading is correct; the derivation gap remains
 
 3. Matter definition from cost deviation may be circular
    → "T_μν = G_μν/8π" is just the definition
@@ -288,20 +289,20 @@ Field-level analogue:
 
 ### What could go right
 
-1. R = field-level K is not just analogy but derivable
-   → Cost functional's Hessian → DeWitt supermetric
-   → Second variation → Riemann tensor
-   → This would be genuinely new
+1. CONFIRMED (Step 2): R = field-level K is not just analogy
+   → C_radial = C_angular is exact for Schwarzschild
+   → The "cost balance" reading is mathematically precise
+   → Publishable as interpretation (Discussion section)
 
 2. Matter emerges naturally as cost deviation
-   → T_μν has information-theoretic meaning
-   → "Matter = metric's self-inconsistency"
-   → Connects to Wheeler's "matter from geometry"
+   → T_μν ∝ (C_radial - C_angular) = "cost imbalance"
+   → Parallels K≠1 → V > 0 → restoring force at point level
+   → Consistent but not yet derived
 
 3. Cosmological constant appears as the "1" in K=1
    → Λ = the field-level normalisation constant
    → Would give Λ a geometric origin
-   → Major open problem in physics
+   → Major open problem in physics (NOT YET TESTED)
 
 ---
 
@@ -311,18 +312,25 @@ Field-level analogue:
   ✓ Cost metric gives correct R_2D = 4M/r³
   ✓ R_4D = 0 needs angular cancellation (σ₂)
 
-### Step 2 (next): Reinterpret □lnσ₁ = 1/r² as cost condition
-  Symplectic gravity: R = -2□lnσ₁ + 2/r² = 0
-  The "2/r²" comes from σ₂ = r (angular sector)
-  Question: is this a "field-level K=1" for both σ₁ and σ₂?
-  → If σ₁ has "radial cost" and σ₂ has "angular cost"
-  → Then R=0 = "total cost balanced" = field-level self-consistency
+### Step 2 (DONE): Reinterpret □lnσ₁ = 1/r² as cost condition
+  ✓ Sympy analytically confirms: □lnσ₁ = 1/r² for Schwarzschild
+  ✓ R = -2□lnσ₁ + 2/r² = 0 verified independently
+  ✓ Vacuum condition = "radial cost = angular cost"
+  ✓ C_radial = □lnσ₁, C_angular = 1/σ₂², vacuum ⟺ C₁ = C₂
+  ✓ Extends K=1 (point balance) to R=0 (field balance)
+  ✗ But this is INTERPRETATION, not DERIVATION from cost
+  ✗ R = -2□lnσ₁ + 2/r² comes from standard GR, not from cost
 
-### Step 3 (if Step 2 works): linearized theory
+### Step 3 (next): derive □lnσ₁ = 1/σ₂² from cost variational principle
+  Need: a functional on cost space whose stationarity gives R=0
+  Without using standard GR as input
+  This is the true "direct derivation" step
+
+### Step 4 (if Step 3 works): linearized theory
   Perturbation h_μν around flat space
   Cost of perturbation → linearized Einstein?
 
-### Step 4 (if Step 3 succeeds): write paper
+### Step 5 (if Step 4 succeeds): write paper
   "Einstein's Equations from Information-Time Cost"
   → Direct derivation, no Jacobson
   → Submit to PRL (if successful, this is PRL-level)
@@ -385,26 +393,90 @@ Field-level analogue:
 
 ---
 
-## 9. The Central Question (updated post-Test 1)
+## 9. Step 2 Results (2026-04-07)
 
-At the point level:
-  K = x^T G x — the metric measuring the cost of a displacement
+### What was tested
+  Can □lnσ₁ = 1/r² be read as "field-level cost balance"?
+  Define C_radial = □lnσ₁ and C_angular = 1/σ₂² = 1/r²
+  Verify C_radial = C_angular for Schwarzschild.
 
-At the field level:
-  R = -2σ₁''/σ₁ — the metric measuring its own curvature variation
+### Analytical results (sympy)
 
-Are these the same operation at different scales?
+  r²f·(lnσ₁)' = r - M
+  d/dr[r²f·(lnσ₁)'] = 1
+  □lnσ₁ = 1/r²
 
-Test 1 answer: PARTIALLY.
-  - Both are "metric measuring itself" — confirmed.
-  - But K=1 → R=0 requires the angular sector (σ₂) — not automatic.
-  - The 2D cost gives R_2D correctly, but R_4D = 0 needs σ₁ AND σ₂.
+  ✓ □lnσ₁ = 1/r² = 1/σ₂²  EXACT (not approximate)
+  ✓ R = -2□lnσ₁ + 2/r² = 0  EXACT
+  ✓ C_radial = C_angular confirmed
 
-Revised central question:
-  Can a 4D cost function simultaneously produce σ₁ (radial) and σ₂ (angular),
-  such that the 4D self-consistency condition is R=0?
+### Key finding: K=1 extends from point to field
 
-  Or equivalently:
-  Is □lnσ₁ = 1/r² a cost self-consistency condition in 4D?
+  Point level:
+    K = σ₁²x₀² - x₁² = 1
+    "Temporal cost = spatial cost" (balance at a point)
+    K ≠ 1 → restoring force
 
-One calculation (Option B above) will tell.
+  Field level:
+    □lnσ₁ = 1/σ₂²
+    "Radial variation cost = angular curvature cost" (balance across spacetime)
+    R ≠ 0 → T_μν (matter = cost imbalance)
+
+  The structure is identical:
+    Point: two costs balance → self-consistent metric
+    Field: two costs balance → self-consistent spacetime (vacuum)
+
+### Matter as cost imbalance
+
+  Vacuum:  C_radial = C_angular  →  R = 0
+  Matter:  C_radial ≠ C_angular  →  R ≠ 0  →  T_μν ∝ imbalance
+
+  Physical meaning:
+    T_μν = "the metric's failure to achieve field-level cost balance"
+    Just as K-1 = "the metric's failure to achieve point-level cost balance"
+
+### Complete hierarchy (updated)
+
+  Level 0: cost function d(x; δx) + R+E+T
+  Level 1: Sig(G) = (1,1) → Lorentzian (Realizability)
+  Level 2: K = 1 → point cost balance → Clausius (K=1 math)
+  Level 3: C₁ = C₂ → field cost balance → R = 0 → Einstein (this step)
+  Level 4: ψ exists ⟺ Lorentzian → collapse mechanism (K=1 quantum)
+
+### Honest assessment
+
+  ✓ Interpretation is mathematically verified
+  ✓ Analogy K=1 ↔ R=0 is precise and non-trivial
+  ✓ Matter = cost imbalance is a natural extension
+  
+  ✗ This is INTERPRETATION of existing GR, not DERIVATION from cost
+  ✗ R = -2□lnσ₁ + 2/r² comes from standard Riemannian geometry
+  ✗ We have not shown that cost REQUIRES □lnσ₁ = 1/σ₂²
+  ✗ The "cost reading" adds meaning but not new equations
+
+  Gap remaining:
+    Current: cost → G → [standard GR] → R → "read as cost balance"
+    Target:  cost → R directly (without standard GR as intermediary)
+    
+  To close the gap: need a variational principle on cost space
+  whose Euler-Lagrange equation IS □lnσ₁ = 1/σ₂²,
+  derived from cost alone without importing Riemannian geometry.
+
+---
+
+## 10. The Central Question (updated post-Step 2)
+
+Post-Test 1 question:
+  "Can □lnσ₁ = 1/r² be read as cost self-consistency?"
+  Answer: YES. C_radial = C_angular. Verified.
+
+New question:
+  "Can □lnσ₁ = 1/σ₂² be DERIVED from a cost variational principle,
+   without importing standard GR?"
+
+  If yes → direct derivation achieved → Einstein-level result
+  If no → the interpretation is correct but the derivation
+          still requires the Jacobson bridge
+
+  The interpretation itself is publishable (Discussion section).
+  The derivation, if achievable, is a separate paper.

@@ -13,7 +13,8 @@
 \newtheorem{remark}{Remark}
 \setlength{\emergencystretch}{1.5em}
 
-\title{\textbf{Vacuum Einstein Equations\\[2pt] from Information-Time Self-Consistency}}
+\title{\textbf{Cost Self-Consistency and the Vacuum Einstein Equations:\\[2pt]
+An Equivalence Theorem for Spherically Symmetric Spacetimes}}
 \author{Y.\,Y.\,N.\ Li\footnote{Independent Researcher, China.
 E-mail: \texttt{papaso@icloud.com}.
 ORCID: \href{https://orcid.org/0009-0002-6471-139X}{0009-0002-6471-139X}.}}
@@ -23,34 +24,31 @@ ORCID: \href{https://orcid.org/0009-0002-6471-139X}{0009-0002-6471-139X}.}}
 \maketitle
 
 \begin{abstract}
-Within the $K{=}1$ Chronogeometrodynamics framework, the point-level
-self-consistency condition $K = \boldsymbol{x}^{T}\!G\,\boldsymbol{x} = 1$
-encodes that temporal information cost balances spatial displacement cost.
-We promote this to the field level by introducing two observables for
-static spherically symmetric spacetimes
-$ds^2 = -f\,dt^2 + f^{-1}dr^2 + r^2 d\Omega^2$:
-the \emph{radial cost} $K_{\mathrm{f}} \equiv \sigma_2^2\,\Box\ln\sigma_1
+The $K{=}1$ Chronogeometrodynamics framework derives Lorentzian signature
+from axioms on an information-time cost function $d(x;\delta x)$.
+The point-level self-consistency condition $K = \boldsymbol{x}^T\!G\,\boldsymbol{x} = 1$
+encodes the balance between temporal and spatial cost.
+We introduce two field-level analogues for static spherically symmetric
+spacetimes $ds^2 = -f\,dt^2 + f^{-1}dr^2 + r^2 d\Omega^2$:
+the radial cost $K_{\mathrm{f}} \equiv \sigma_2^2\,\Box\ln\sigma_1
 = f + 2rf' + \frac{r^2}{2}f''$
-and the \emph{angular cost} $K_{\mathrm{a}} \equiv rf'+f$,
-where $\sigma_1 = r\sqrt{f}$ and $\sigma_2 = r$ are the symplectic
-eigenvalues and $\Box$ is the scalar d'Alembertian.
-We prove:
+and the angular cost $K_{\mathrm{a}} \equiv rf'+f$.
+Our main result is an algebraic equivalence:
 \[
   K_{\mathrm{f}} = 1 \;\wedge\; K_{\mathrm{a}} = 1
   \quad\Longleftrightarrow\quad R_{\mu\nu} = 0\,.
 \]
-The condition $K_{\mathrm{f}}=1$ alone is equivalent to the vanishing
-of the Ricci scalar ($R=0$) and admits the two-parameter solution family
-$f = 1 - C_1/r - C_2/r^2$; the angular condition $K_{\mathrm{a}}=1$
-eliminates the second parameter, recovering Schwarzschild uniquely.
-In the weak-field limit, $K_{\mathrm{a}}=1$ yields the Newtonian
-potential $\varphi = C/r$ in one line.
-We interpret non-vacuum configurations through
-$\rho = (1 - K_{\mathrm{a}})/(8\pi r^2)$,
-identify the cosmological constant as a target shift
-$K = 1 \to 1 - \Lambda r^2$,
-and discuss the relationship to Jacobson's thermodynamic derivation.
-All algebraic results are verified symbolically.
+The radial condition $K_{\mathrm{f}}=1$ alone gives the Ricci scalar equation
+$R=0$, admitting the two-parameter family $f = 1 - C_1/r - C_2/r^2$;
+the angular condition $K_{\mathrm{a}}=1$ selects Schwarzschild uniquely.
+In the weak field, $K_{\mathrm{a}}=1$ yields the Newtonian potential
+$\varphi = C/r$ directly.
+While the radial observable has a clear cost origin, the angular condition
+is defined to match $R_{\theta\theta}=0$ rather than derived from cost axioms.
+The extension to general metrics parallels Jacobson's null-direction patching.
+We discuss these limitations, the cost interpretation of matter, and the
+prospect that a minimum symplectic eigenvalue $\sigma_{1,\min}>0$
+could bound curvature and resolve singularities.
 \end{abstract}
 
 %===================================================================
@@ -58,138 +56,149 @@ All algebraic results are verified symbolically.
 \label{sec:intro}
 %===================================================================
 
-Five routes to Einstein's field equations are known.
-Einstein's original geometric reasoning~\cite{Einstein1915} and
-Hilbert's variational principle~\cite{Hilbert1915} date to 1915.
-Jacobson~\cite{Jacobson1995} showed in 1995 that applying the Clausius
-relation $\delta Q = T\,\delta S$ together with $S = A/4$ on every
-local Rindler horizon yields $G_{\mu\nu} = 8\pi T_{\mu\nu}$.
-Padmanabhan~\cite{Padmanabhan2010} reformulated the equations as
-holographic equipartition, and Verlinde~\cite{Verlinde2011}
-derived Newton's law from an entropic force.
-All five routes assume Lorentzian signature as input.
+\subsection{Context}
 
-The $K{=}1$ Chronogeometrodynamics program~\cite{Li2026math,Li2026real}
-removes this assumption: three axioms on an information-time cost
-function---Realizability~(R), Expansion~(E), and Temporal cost~(T)---fix
-the metric signature to be $(1,1)$ on every local Rindler wedge.
-The self-consistency condition $K = \boldsymbol{x}^{T}\!G\,\boldsymbol{x} = 1$
-then generates Ornstein--Uhlenbeck dynamics whose stationary
-distribution reproduces the Unruh temperature, providing two of
+Several derivations of Einstein's field equations exist beyond Einstein's
+original geometric argument~\cite{Einstein1915} and
+Hilbert's variational principle~\cite{Hilbert1915}.
+Jacobson~\cite{Jacobson1995} showed that applying the Clausius
+relation $\delta Q = T\,\delta S$ with the Bekenstein--Hawking
+entropy $S = A/4$ on every local Rindler horizon yields
+$G_{\mu\nu} = 8\pi T_{\mu\nu}$.
+Padmanabhan~\cite{Padmanabhan2010} and Verlinde~\cite{Verlinde2011}
+proposed related thermodynamic and entropic approaches.
+All assume Lorentzian signature as a starting point.
+
+The $K{=}1$ Chronogeometrodynamics framework~\cite{Li2026math,Li2026real}
+removes this assumption.
+Three axioms on an information-time cost function---Realizability~(R),
+Expansion~(E), and Temporal cost~(T)---fix the Hessian signature
+to $(1,1)$, deriving the Lorentzian character of the metric.
+The self-consistency condition $K = \boldsymbol{x}^T\!G\,\boldsymbol{x} = 1$
+drives Ornstein--Uhlenbeck dynamics whose stationary variance
+reproduces the Tolman--Unruh temperature, furnishing two of
 Jacobson's three inputs.
-Einstein's equations follow via the Jacobson bridge once $S \propto A$ is
-imposed.
+The Einstein equations then follow via the Jacobson bridge once
+$S \propto A$ is imposed.
 
-A natural question remains: is the thermodynamic bridge necessary,
-or can one pass from cost self-consistency to curvature more directly?
+\subsection{Motivation and scope}
 
-In this paper we make the passage explicit for the spherically
-symmetric sector.
-We define two field-level cost observables---$K_{\mathrm{f}}$
-(radial--temporal) and $K_{\mathrm{a}}$ (angular)---and prove
-that their simultaneous vanishing $K_{\mathrm{f}} = K_{\mathrm{a}} = 1$
-is algebraically equivalent to $R_{\mu\nu} = 0$.
-We emphasize from the outset that the angular observable $K_{\mathrm{a}}$
-is \emph{defined} to coincide with the standard GR condition
-$R_{\theta\theta}=0$; we do not derive from cost axioms why it should
-equal unity.
-The general-metric extension requires Jacobson-style null-direction
-patching and is not completed here.
-The present work is therefore a cost-based \emph{reinterpretation}
-of the vacuum Einstein equations, not an independent derivation---but
-one that furnishes concrete new observables and a transparent
-point-to-field correspondence.
+A natural question is whether the thermodynamic bridge is necessary,
+or whether cost self-consistency can constrain the curvature more directly.
+In this paper we investigate this question for the spherically symmetric sector.
+
+We introduce two field-level cost observables---$K_{\mathrm{f}}$
+and $K_{\mathrm{a}}$---and prove that their simultaneous condition
+$K_{\mathrm{f}} = K_{\mathrm{a}} = 1$ is algebraically equivalent
+to $R_{\mu\nu} = 0$.
+However, three important caveats apply:
+\begin{enumerate}
+\item[(i)] The angular observable $K_{\mathrm{a}}$ is \emph{defined}
+  to coincide with the GR condition $R_{\theta\theta}=0$;
+  we do not derive it from the cost axioms R, E, T.
+\item[(ii)] The extension to general metrics requires applying
+  $K_{\mathrm{f}}=1$ on each null direction and assembling the
+  tensor equation via the polarization identity---the same logical
+  structure as Jacobson's argument with $K{=}1$ replacing Clausius.
+\item[(iii)] In the vacuum sector the equivalence is exact,
+  so \emph{no} observable deviation from GR is predicted.
+\end{enumerate}
+The contribution is therefore a cost-based \emph{reinterpretation}
+of the vacuum Einstein equations, equipped with new observables and
+a precise point-to-field correspondence, rather than an independent
+derivation.
 
 %===================================================================
-\section{Preliminaries: point-level $K{=}1$}
+\section{Review: point-level $K{=}1$}
 \label{sec:point}
 %===================================================================
 
-We briefly recall the essentials from~\cite{Li2026math}.
-At each point of a Rindler wedge the cost metric is the
-$2\times 2$ matrix $G = \mathrm{diag}(-\sigma_1^2,\,1)$
-in boost--spatial coordinates, with $\sigma_1$ the symplectic
-eigenvalue encoding the local acceleration scale.
-The condition
+We recall the essentials from~\cite{Li2026math}.
+On a local Rindler wedge the $2\times 2$ cost metric is
+$G = \mathrm{diag}(-\sigma_1^2,\,1)$, where $\sigma_1$ encodes the
+acceleration scale.
+The self-consistency condition
 \begin{equation}\label{eq:K1}
   K \;=\; \sigma_1^2\,x_0^2 - x_1^2 \;=\; 1
 \end{equation}
-defines a one-sheeted hyperboloid: temporal cost equals spatial cost.
-A smooth restoring potential $V = \tfrac{1}{2}(K-1)^2$ drives
-fluctuations back to $K=1$; the resulting OU process has stationary
-variance $\mathrm{Var}(K) = T_{\mathrm{eff}}$, identified with the
+defines a hyperboloid: temporal cost equals spatial cost.
+A smooth restoring potential $V = \tfrac{1}{2}(K{-}1)^2$
+generates OU dynamics with stationary variance
+$\mathrm{Var}(K) = T_{\mathrm{eff}}$, identified with the
 Tolman temperature.
 
-\medskip\noindent
-\textbf{Question.}
-Can the \emph{field-level} analogue of $K=1$ be formulated,
-and does it reproduce Einstein's vacuum equations?
+At the field level, one expects an analogous balance condition on the
+metric itself.
+The metric is parameterized by two symplectic eigenvalues
+$\sigma_1(r)$ and $\sigma_2(r)$, and the field equations should
+constrain how these eigenvalues vary across spacetime.
 
 %===================================================================
-\section{Field-level cost observables}
+\section{Field-level observables}
 \label{sec:field}
 %===================================================================
 
-Throughout this section we work with the static spherically
-symmetric metric
+We work with the static spherically symmetric metric
 \begin{equation}\label{eq:metric}
   ds^2 = -f(r)\,dt^2 + f(r)^{-1}\,dr^2 + r^2\,d\Omega^2\,,
 \end{equation}
-where $f(r) > 0$ outside the horizon.
+with $f(r) > 0$ outside the horizon.
 The symplectic eigenvalues are
 \begin{equation}\label{eq:sigmas}
   \sigma_1 = r\sqrt{f}\,,\qquad \sigma_2 = r\,.
 \end{equation}
 
 \begin{definition}[Radial cost]\label{def:Kf}
-Define
+The radial--temporal cost observable is
 \begin{equation}\label{eq:Kf}
   K_{\mathrm{f}} \;:=\; \sigma_2^2\;\Box\ln\sigma_1\,,
 \end{equation}
-where $\Box\phi = (r^2 f)^{-1}\,\partial_r\!\bigl(r^2 f\,\partial_r\phi\bigr)$
+where $\Box\phi = (r^2 f)^{-1}\,\partial_r(r^2 f\,\partial_r\phi)$
 is the scalar d'Alembertian of~\eqref{eq:metric}.
 \end{definition}
 
-An explicit computation gives
-\begin{align}
-  \ln\sigma_1 &= \ln r + \tfrac{1}{2}\ln f\,,\nonumber\\
-  r^2 f\,(\ln\sigma_1)' &= r\,f + \tfrac{r^2}{2}\,f' \;=\; r-M
-  \quad\text{(for Schwarzschild)}\,,\nonumber\\
-  \frac{d}{dr}\!\bigl[r^2 f\,(\ln\sigma_1)'\bigr] &= K_{\mathrm{f}}\,,
-  \label{eq:Kf-expand}
-\end{align}
-yielding
+Writing $\ln\sigma_1 = \ln r + \frac{1}{2}\ln f$ and computing:
 \begin{equation}\label{eq:Kf-explicit}
-  \boxed{\;K_{\mathrm{f}} \;=\; f + 2r\,f' + \tfrac{r^2}{2}\,f''\;\;}
-\end{equation}
-The condition $K_{\mathrm{f}}=1$ is equivalent to $\Box\ln\sigma_1 = 1/r^2$,
-which, via the identity $R = -2\,\Box\ln\sigma_1 + 2/r^2$ established
-in~\cite{Li2026symp}, is equivalent to
-\begin{equation}\label{eq:R0}
-  R = 0\,.
+  K_{\mathrm{f}} \;=\; f + 2r\,f' + \tfrac{r^2}{2}\,f''\,.
 \end{equation}
 
+The physical content of $K_{\mathrm{f}}$ is transparent.
+The identity $R = -2\,\Box\ln\sigma_1 + 2/r^2$
+(established in~\cite{Li2026symp}) gives
+\begin{equation}\label{eq:KfR}
+  K_{\mathrm{f}} = 1 \quad\Longleftrightarrow\quad
+  \Box\ln\sigma_1 = \frac{1}{r^2} = \frac{1}{\sigma_2^2}
+  \quad\Longleftrightarrow\quad R = 0\,.
+\end{equation}
+The radial variation of $\sigma_1$ balances the angular curvature
+cost $1/\sigma_2^2$ precisely when the Ricci scalar vanishes.
+This extends the point-level balance (temporal = spatial) to the
+field level (radial variation cost = angular curvature cost).
+
 \begin{definition}[Angular cost]\label{def:Ka}
-Define
+The angular cost observable is
 \begin{equation}\label{eq:Ka}
-  \boxed{\;K_{\mathrm{a}} \;:=\; r\,f' + f\;\;}
+  K_{\mathrm{a}} \;:=\; r\,f' + f \;=\; \frac{d(rf)}{dr}\,.
 \end{equation}
 \end{definition}
 
-\begin{remark}\label{rem:Ka}
-The observable $K_{\mathrm{f}}$ has a direct cost origin:
-it measures whether the radial variation of $\sigma_1$
-(information-time eigenvalue) balances the angular curvature cost
-$1/\sigma_2^2 = 1/r^2$.
-In contrast, $K_{\mathrm{a}} = rf'+f = d(rf)/dr$ is the derivative
-of the Misner--Sharp mass function, and $K_{\mathrm{a}}=1$ is simply
-$R_{\theta\theta}=0$.
-We \emph{define} $K_{\mathrm{a}}$ this way to complete the equivalence;
-an independent cost derivation of the angular condition is an open problem.
+\begin{remark}[Status of $K_{\mathrm{a}}$]\label{rem:Ka}
+The standard GR result $R_{\theta\theta} = 1 - f - rf'$ shows that
+$K_{\mathrm{a}}=1$ is simply $R_{\theta\theta}=0$.
+Equivalently, $K_{\mathrm{a}}=1$ states that the Misner--Sharp
+mass $m(r) = \frac{r}{2}(1-f)$ is constant: $dm/dr=0$ (no local
+mass source).
+
+Unlike $K_{\mathrm{f}}$, the angular observable $K_{\mathrm{a}}$ is
+\emph{not derived} from the cost axioms;
+it is \emph{defined} to match $R_{\theta\theta}=0$.
+Deriving $K_{\mathrm{a}}=1$ from the information-time cost structure
+remains an open problem (see Section~\ref{sec:open}).
+This is the primary conceptual gap in the present construction.
 \end{remark}
 
 %===================================================================
-\section{Main result: equivalence theorem}
+\section{Equivalence theorem}
 \label{sec:theorem}
 %===================================================================
 
@@ -203,47 +212,34 @@ For the metric~\eqref{eq:metric} with $f\in C^2(0,\infty)$:
 \end{theorem}
 
 \begin{proof}
-The standard Ricci components for~\eqref{eq:metric} are:
-\begin{align}
-  R_{tt} &\propto f'' + \frac{2f'}{r}\,,\label{eq:Rtt}\\[2pt]
-  R_{\theta\theta} &= 1 - f - rf'\,.\label{eq:Rthth}
-\end{align}
-(Here $R_{rr}=0$ is equivalent to $R_{tt}=0$ for diagonal metrics.)
+The independent Ricci components for~\eqref{eq:metric} are
+\begin{equation}\label{eq:Ricci}
+  R_{tt} \propto f'' + \frac{2f'}{r}\,,\qquad
+  R_{\theta\theta} = 1 - f - rf'\,.
+\end{equation}
+($R_{rr}=0$ is equivalent to $R_{tt}=0$ for this diagonal ansatz.)
 
 \medskip\noindent
-\textbf{Forward ($\Rightarrow$).}
-Equation~\eqref{eq:Ka} with $K_{\mathrm{a}}=1$ gives $rf'+f=1$,
-hence $R_{\theta\theta}=0$ by~\eqref{eq:Rthth}.
-Subtracting $K_{\mathrm{a}}$ from $K_{\mathrm{f}}$:
-\[
-  K_{\mathrm{f}} - K_{\mathrm{a}}
-  = r\,f' + \tfrac{r^2}{2}\,f'' = 0
-  \quad\Longrightarrow\quad
-  f'' = -\frac{2f'}{r}\,,
-\]
-so $R_{tt}=0$ by~\eqref{eq:Rtt}.
-Together: all $R_{\mu\nu}=0$.
+$(\Rightarrow)$\;
+$K_{\mathrm{a}}=1$ gives $rf'+f=1$, i.e.\ $R_{\theta\theta}=0$.
+Subtracting: $K_{\mathrm{f}} - K_{\mathrm{a}} = rf' + \frac{r^2}{2}f'' = 0$,
+hence $f'' = -2f'/r$ and $R_{tt}=0$.
 
 \medskip\noindent
-\textbf{Reverse ($\Leftarrow$).}
-$R_{\theta\theta}=0$ gives $K_{\mathrm{a}}=1$ directly from~\eqref{eq:Rthth}.
-From $R_{tt}=0$: $f'' = -2f'/r$.
-Substituting into~\eqref{eq:Kf-explicit}:
-\[
-  K_{\mathrm{f}}
-  = f + 2rf' + \tfrac{r^2}{2}\Bigl(-\frac{2f'}{r}\Bigr)
-  = f + 2rf' - rf'
-  = f + rf' = 1\,,
-\]
-using $R_{\theta\theta}=0$ in the last step.
+$(\Leftarrow)$\;
+$R_{\theta\theta}=0$ gives $K_{\mathrm{a}}=1$.
+$R_{tt}=0$ gives $f''=-2f'/r$.
+Substituting:
+$K_{\mathrm{f}} = f + 2rf' + \frac{r^2}{2}(-\frac{2f'}{r})
+= f + rf' = 1$,
+using $K_{\mathrm{a}}=1$.
 \end{proof}
 
-\begin{corollary}\label{cor:Kf-alone}
-$K_{\mathrm{f}}=1$ alone is equivalent to $R=0$, which is strictly
-weaker than $R_{\mu\nu}=0$.
-The angular condition provides the additional constraint
-$R_{\theta\theta}=0$ that promotes the scalar equation to a
-tensor equation.
+\begin{corollary}\label{cor:scalar}
+$K_{\mathrm{f}}=1$ is equivalent to $R=0$ (Ricci \emph{scalar}),
+which is strictly weaker than $R_{\mu\nu}=0$ (Ricci \emph{tensor}).
+The angular condition $K_{\mathrm{a}}=1$ provides the additional
+content needed to promote the scalar equation to a full tensor equation.
 \end{corollary}
 
 %===================================================================
@@ -253,232 +249,296 @@ tensor equation.
 
 \subsection{General solution of $K_{\mathrm{f}}=1$}
 
-The ODE~\eqref{eq:Kf-explicit} with $K_{\mathrm{f}}=1$,
+The ODE
 \begin{equation}\label{eq:ode}
-  f + 2r\,f' + \tfrac{r^2}{2}\,f'' = 1\,,
+  f + 2r\,f' + \tfrac{r^2}{2}\,f'' = 1
 \end{equation}
-admits a power-law analysis.
-Setting $f = 1 - A\,r^{-n}$, the left-hand side evaluates to
-$1 - \frac{(n-1)(n-2)}{2}\,A\,r^{-n}$, which equals~1 when
-$(n-1)(n-2) = 0$, i.e., $n=1$ or $n=2$.
-The general solution is therefore
+admits a power-law ansatz $f = 1 - A\,r^{-n}$.
+The coefficient of $A\,r^{-n}$ is $-(n{-}1)(n{-}2)/2$,
+which vanishes for $n=1$ and $n=2$.
+The general solution is
 \begin{equation}\label{eq:gensol}
-  f(r) = 1 - \frac{C_1}{r} - \frac{C_2}{r^2}\,.
+  f(r) = 1 - \frac{C_1}{r} - \frac{C_2}{r^2}\,,
 \end{equation}
+a two-parameter family.
+With $C_1 = 2M$ and $C_2 = Q^2$ this resembles the
+Reissner--Nordstr\"om metric, but here both parameters arise as
+integration constants of the \emph{scalar} equation $R=0$.
 
-\subsection{Effect of $K_{\mathrm{a}}=1$}
+\subsection{Role of $K_{\mathrm{a}}=1$}
 
-For~\eqref{eq:gensol}, $K_{\mathrm{a}} = rf'+f = 1 + C_2/r^2$.
-Hence $K_{\mathrm{a}}=1$ forces $C_2 = 0$, and with $C_1 = 2M$
-one recovers the Schwarzschild metric uniquely---in agreement
-with Birkhoff's theorem.
+For~\eqref{eq:gensol}, $K_{\mathrm{a}} = 1 + C_2/r^2$.
+The angular condition forces $C_2 = 0$, and with $C_1 = 2M$
+one recovers Schwarzschild uniquely---Birkhoff's theorem.
 
-\subsection{Linearized limit}
+\subsection{Linearized regime}
 
-Writing $f = 1 + \varepsilon\,\varphi(r)$ with $|\varepsilon|\ll 1$,
-the condition $K_{\mathrm{a}}=1$ reduces to
+For $f = 1 + \varepsilon\,\varphi(r)$ with $|\varepsilon|\ll 1$:
 \begin{equation}\label{eq:lin}
+  K_{\mathrm{a}} = 1:\quad
   r\,\varphi' + \varphi = 0
-  \quad\Longrightarrow\quad
-  \frac{d}{dr}(r\varphi) = 0
-  \quad\Longrightarrow\quad
+  \;\;\Longrightarrow\;\;
+  \frac{d(r\varphi)}{dr} = 0
+  \;\;\Longrightarrow\;\;
   \varphi = \frac{C}{r}\,.
 \end{equation}
-With $C = -2M$ this is the Newtonian gravitational potential.
-Notably, $K_{\mathrm{f}}=1$ is \emph{automatically} satisfied at linear
-order: the radial cost observable is redundant in the weak-field regime
-and becomes an independent constraint only at nonlinear order.
+With $C = -2M$ this is the Newtonian potential.
+The radial condition $K_{\mathrm{f}}=1$ is automatically
+satisfied at linear order: $\varphi + 2r\varphi' + \frac{r^2}{2}\varphi''
+= C/r - 2C/r + C/r = 0$.
+
+This means $K_{\mathrm{f}}$ carries independent information only at
+\emph{nonlinear} order, i.e., in the strong-field regime.
+In the weak field, the angular condition alone determines the solution.
 
 %===================================================================
-\section{Non-vacuum sector and cosmological constant}
+\section{Non-vacuum sector}
 \label{sec:nonvac}
 %===================================================================
 
 \subsection{Matter as cost imbalance}
 
-The Einstein $G_{tt}$ component reads $(1{-}f)/r^2 - f'/r = 8\pi\rho$,
-which rearranges to $rf'+f-1 = -8\pi\rho\,r^2$, giving
+The Einstein $G_{tt}$ component reads
+$(1{-}f)/r^2 - f'/r = 8\pi\rho$,
+which rearranges to
 \begin{equation}\label{eq:rho}
-  \rho = \frac{1 - K_{\mathrm{a}}}{8\pi\,r^2}\,.
+  \rho \;=\; \frac{1 - K_{\mathrm{a}}}{8\pi\,r^2}\,.
 \end{equation}
-The energy density is the angular cost deficit per unit area:
-$K_{\mathrm{a}} < 1$ corresponds to positive energy.
-This relation has been verified symbolically for both uniform
-($\rho = \rho_0$) and non-uniform ($\rho = \rho_0(1{-}r/a)$)
-density profiles.
+The energy density equals the angular cost deficit per unit proper area.
+Normal matter ($\rho > 0$) corresponds to $K_{\mathrm{a}} < 1$:
+the metric fails to achieve angular self-consistency, and the failure
+is measured by $1 - K_{\mathrm{a}}$.
 
-We emphasize that~\eqref{eq:rho} is a \emph{rewriting} of the
-Einstein equations in cost language, not a derivation from cost axioms.
-In particular, the coefficient $8\pi$ is inherited from GR.
+This has been verified symbolically for both constant density
+$\rho = \rho_0$ (interior Schwarzschild) and variable density
+$\rho = \rho_0(1-r/a)$ profiles.
+
+We stress that~\eqref{eq:rho} is a \emph{rewriting} of the
+Einstein equations, not a derivation from cost alone.
+The coefficient $8\pi$ is inherited from GR; the cost framework
+does not predict it independently.
 
 \subsection{Cosmological constant}
 
 For the Schwarzschild--de~Sitter metric
 $f = 1 - 2M/r - \Lambda r^2/3$:
-\begin{equation}
+\begin{equation}\label{eq:Lambda}
   K_{\mathrm{a}} = 1 - \Lambda\,r^2\,,\qquad
   K_{\mathrm{f}} = 1 - 2\Lambda\,r^2\,.
 \end{equation}
-The cosmological constant shifts the self-consistency target
-from $K=1$ to $K = 1 - O(\Lambda r^2)$, with $K_{\mathrm{f}}$ and
-$K_{\mathrm{a}}$ shifted by different amounts.
-$\Lambda$ is not derived from the framework; it is located.
+The cosmological constant shifts the self-consistency target;
+notably, $K_{\mathrm{f}}$ and $K_{\mathrm{a}}$ are shifted by
+different amounts ($2\Lambda r^2$ vs $\Lambda r^2$).
+The value of $\Lambda$ is not predicted by the framework.
 
 %===================================================================
-\section{Toward general metrics}
+\section{General metrics and the Jacobson parallel}
 \label{sec:general}
 %===================================================================
 
-For a general metric the proof strategy relies on the following
-algebraic fact.
+\subsection{Polarization identity}
 
-\begin{proposition}[Polarization identity]\label{prop:polar}
-Let $R_{\mu\nu}$ be a symmetric tensor in $n$-dimensional
-Lorentzian spacetime with $R = g^{\mu\nu}R_{\mu\nu} = 0$.
-If $R_{\mu\nu}\,v^\mu v^\nu = 0$ for every null vector $v^\mu$,
+The extension beyond spherical symmetry relies on the following result.
+
+\begin{proposition}\label{prop:polar}
+Let $R_{\mu\nu}$ be a symmetric tensor on an $n$-dimensional
+Lorentzian manifold with $R = g^{\mu\nu}R_{\mu\nu} = 0$.
+If $R_{\mu\nu}\,v^\mu v^\nu = 0$ for every null $v^\mu$,
 then $R_{\mu\nu} = 0$.
 \end{proposition}
 
 \begin{proof}
-In an orthonormal frame, null vectors take the form
-$v = e_0 + n^i e_i$ with $\delta_{ij}n^i n^j = 1$.
-Setting $n = \pm e_k$ yields $R_{0k}=0$ and $R_{00}+R_{kk}=0$
-for each $k$.
-Setting $n = (e_i + e_j)/\sqrt{2}$ then gives $R_{ij}=0$ for $i\neq j$.
-Thus $R_{\mu\nu} = R_{00}\,\mathrm{diag}(-1,-1,\ldots,-1)$.
-The trace condition $R = -R_{00} + (n{-}1)(-R_{00}) = -nR_{00} = 0$
-forces $R_{00}=0$, hence $R_{\mu\nu}=0$.
+Choose an orthonormal frame $\{e_0,e_1,\ldots,e_{n-1}\}$ with
+$e_0$ timelike.
+Null vectors are $v = e_0 + n^i e_i$ with $|n|=1$.
+Taking $n = \pm e_k$:
+$R_{00} + R_{kk} \pm 2R_{0k} = 0$,
+giving $R_{0k}=0$ and $R_{00}+R_{kk}=0$ for each $k$.
+Taking $n = (e_i{+}e_j)/\sqrt{2}$:
+$R_{00} + (R_{ii}{+}2R_{ij}{+}R_{jj})/2 = 0$;
+using $R_{ii}=R_{jj}=-R_{00}$ gives $R_{ij}=0$ for $i\neq j$.
+Thus $R_{\mu\nu} = R_{00}\,\mathrm{diag}(-1,\ldots,-1)$.
+The trace $R = -nR_{00} = 0$ forces $R_{00}=0$.
 \end{proof}
 
-If one can show that $K_{\mathrm{f}}(v)=1$ on each null 2-plane
-implies $R_{\mu\nu}v^\mu v^\nu = 0$---which in the spherically
-symmetric case follows from the explicit computation---then the
-polarization identity combined with $R=0$ (from $K_{\mathrm{f}}=1$)
-yields $R_{\mu\nu}=0$ for any metric.
+\subsection{Proof sketch for general metrics}
 
-This step requires the Gauss--Codazzi relations for null
-hypersurfaces; it parallels the logical structure of Jacobson's
-original argument (where Clausius plays the role of $K{=}1$).
-The general proof is therefore \emph{incomplete} and is deferred
-to future work.
+For a general metric, at each point $p$ and each null direction $v^\mu$
+one can define a local Rindler wedge with its own symplectic eigenvalue
+$\sigma_1(p,v)$.
+The cost condition $K_{\mathrm{f}}(p,v) = 1$ is then asserted
+for every null direction.
+If this implies $R_{\mu\nu}v^\mu v^\nu = 0$
+(as it does in the spherically symmetric case via the explicit
+formula~\eqref{eq:KfR}), then combined with $R=0$ the
+polarization identity gives $R_{\mu\nu}=0$.
+
+\subsection{The missing step and the Jacobson parallel}
+
+The implication $K_{\mathrm{f}}(v)=1 \Rightarrow R_{\mu\nu}v^\mu v^\nu=0$
+for general metrics requires the Gauss--Codazzi relations for null
+hypersurfaces connecting the intrinsic 2D curvature to the
+4D Ricci focusing $R_{\mu\nu}v^\mu v^\nu$.
+This step is \emph{not yet proved}.
+
+We note that the logical architecture of this general proof is
+identical to Jacobson's~\cite{Jacobson1995}:
+a local condition (here $K_{\mathrm{f}}=1$; in Jacobson's case, the
+Clausius relation) is applied on each null direction, and the
+full tensor equation is assembled by polarization.
+The \emph{content} differs---information-time cost replaces
+thermodynamic heat---but the \emph{patching logic} is shared.
+This parallel limits the extent to which the present approach
+can claim independence from Jacobson's construction.
 
 %===================================================================
 \section{Point--field correspondence}
 \label{sec:correspondence}
 %===================================================================
 
-Table~\ref{tab:corr} summarizes the structural parallel between
-the point-level and field-level formulations.
+The structural parallel is summarized in Table~\ref{tab:corr}.
 
 \begin{table}[h]
 \centering
 \begin{tabular}{@{}lll@{}}
 \toprule
-& \textbf{Point level} & \textbf{Field level} \\
+& \textbf{Point level (2D)} & \textbf{Field level (4D)} \\
 \midrule
 Observable & $K = \boldsymbol{x}^{T}\!G\,\boldsymbol{x}$
   & $K_{\mathrm{f}} = \sigma_2^2\,\Box\ln\sigma_1$;\;
     $K_{\mathrm{a}} = rf'+f$ \\[3pt]
-Self-consistency & $K = 1$ & $K_{\mathrm{f}}=1\;\wedge\;K_{\mathrm{a}}=1
-  \;\Leftrightarrow\;R_{\mu\nu}=0$ \\[3pt]
-Departure & $K \neq 1 \;\to\; V > 0$ & $R_{\mu\nu}\neq 0\;\to\;T_{\mu\nu}$ \\[3pt]
+Balance & temporal = spatial & radial variation = angular curvature \\[3pt]
+Self-consistency & $K = 1$ & $K_{\mathrm{f}}{=}1\;\wedge\;K_{\mathrm{a}}{=}1
+  \;\Leftrightarrow\;R_{\mu\nu}{=}0$ \\[3pt]
+Departure & $K \neq 1 \to V > 0$ & $K_{\mathrm{a}}\neq 1\;\to\;\rho = (1{-}K_{\mathrm{a}})/(8\pi r^2)$ \\[3pt]
 Potential & $V = \tfrac{1}{2}(K{-}1)^2$ &
   $V_{\mathrm{f}} = \tfrac{1}{2}(K_{\mathrm{f}}{-}1)^2$ \\[3pt]
-Balance & temporal = spatial & radial = angular \\[3pt]
-Conditions & 1 (in 2D) & 2 (in 4D) \\
+Conditions & 1 (2D wedge) & 2 (4D: radial + angular) \\
 \bottomrule
 \end{tabular}
-\caption{Point-level versus field-level self-consistency.}
+\caption{Point-level $K{=}1$ versus field-level cost self-consistency.
+At the point level one condition suffices because the Rindler wedge is
+two-dimensional; in 4D each independent geometric sector contributes
+one condition.}
 \label{tab:corr}
 \end{table}
 
-At the point level, $K=1$ is a single condition because the
-Rindler wedge is two-dimensional.
-At the field level, the four-dimensional spacetime requires
-two independent balance conditions---one per geometrically
-distinct sector (radial--temporal and angular).
+%===================================================================
+\section{Toward singularity resolution}
+\label{sec:singularity}
+%===================================================================
+
+The most physically consequential open question in the $K{=}1$
+program may be whether the symplectic eigenvalue $\sigma_1$ admits
+a positive lower bound.
+If $K$ and the boost angle $\theta$ are canonically conjugate
+(as conjectured in Open Question~7 of~\cite{Li2026math}),
+the uncertainty relation $\sigma_1\,\Delta\theta \geq \hbar/2$
+would imply $\sigma_1 \geq \sigma_{1,\min} > 0$.
+
+A minimum $\sigma_1$ yields a maximum curvature.
+In the Schwarzschild interior, $R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma}
+= 48M^2/r^6$ diverges as $r\to 0$.
+If $\sigma_1 \geq \sigma_{1,\min} \sim \ell_P/2$, then:
+\begin{equation}
+  A_{\min} = 4\pi\sigma_{1,\min}^2 \sim \pi\,\ell_P^2\,,\qquad
+  R_{\max} \sim \frac{2}{\sigma_{1,\min}^2} \sim 3\times 10^{70}\;\mathrm{m^{-2}}\,,
+\end{equation}
+bounding curvature at the Planck scale and replacing the singularity
+with a Planck-density core.
+For comparison, the curvature at the horizon of a solar-mass
+black hole is $\sim 2\times 10^{-7}\;\mathrm{m^{-2}}$, a factor of
+$\sim 10^{77}$ below $R_{\max}$.
+
+Proving $\sigma_{1,\min}>0$ would constitute a singularity-resolution
+result within the $K{=}1$ framework, without invoking quantum gravity.
+This remains the most promising direction for future work.
 
 %===================================================================
 \section{Discussion}
 \label{sec:discussion}
 %===================================================================
 
-\subsection{What is new}
+\subsection{Summary of results}
 
 \begin{enumerate}
-\item The field-level observables $K_{\mathrm{f}}$ and $K_{\mathrm{a}}$,
-  giving $R=0$ and $R_{\theta\theta}=0$ a transparent cost interpretation.
-\item The exact equivalence (Theorem~\ref{thm:main}), proved in
-  both directions for the spherically symmetric sector.
-\item The ODE $f + 2rf' + \frac{r^2}{2}f'' = 1$ and its closed-form
-  general solution~\eqref{eq:gensol}.
-\item The one-line derivation of the Newtonian potential from
-  $K_{\mathrm{a}}=1$ (Eq.~\ref{eq:lin}).
-\item The cost reading of matter:
-  $\rho = (1-K_{\mathrm{a}})/(8\pi r^2)$.
+\item We defined field-level cost observables $K_{\mathrm{f}}$
+  and $K_{\mathrm{a}}$ for the spherically symmetric sector.
+\item We proved the exact equivalence
+  $K_{\mathrm{f}}{=}1 \wedge K_{\mathrm{a}}{=}1
+  \Leftrightarrow R_{\mu\nu}{=}0$
+  (Theorem~\ref{thm:main}), including both directions.
+\item We derived the general solution of $K_{\mathrm{f}}{=}1$
+  ($f = 1 - C_1/r - C_2/r^2$) and showed that $K_{\mathrm{a}}{=}1$
+  selects Schwarzschild.
+\item We obtained the Newtonian potential from $K_{\mathrm{a}}{=}1$
+  in one line (Eq.~\ref{eq:lin}), and showed that $K_{\mathrm{f}}$
+  is redundant at linear order.
+\item We interpreted matter as cost imbalance~\eqref{eq:rho}
+  and identified the cosmological constant as a target shift~\eqref{eq:Lambda}.
 \end{enumerate}
 
-\subsection{What is not new}
-
-The mathematics is standard differential geometry applied to a
-well-known metric ansatz.
-The solutions---Schwarzschild, Newton, Birkhoff---are
-textbook results.
-The matter interpretation~\eqref{eq:rho} uses Einstein's equations
-as input; it is a reformulation, not an independent prediction.
-
-\subsection{Relationship to Jacobson's derivation}
-
-The logical architecture of the general proof
-(Section~\ref{sec:general}) mirrors Jacobson's:
-a \emph{local} condition is applied on every null direction,
-and the polarization identity assembles the full tensor equation.
-What changes is the local input:
-Jacobson uses the Clausius relation;
-we use $K_{\mathrm{f}}=1$ (cost self-consistency).
-The patching logic is the same.
-
-Accordingly, this work is best described as a cost-based
-\emph{rewriting} of the Jacobson argument with explicit
-observables, rather than an independent route to Einstein's
-equations.
-
-\subsection{Open problems}
+\subsection{Limitations}
 
 \begin{enumerate}
-\item \textbf{Angular condition from cost.}
-  Derive $K_{\mathrm{a}}=1$ from the cost axioms R, E, T,
-  rather than imposing it by definition.
+\item \textbf{$K_{\mathrm{a}}$ is defined, not derived.}
+  The angular condition $K_{\mathrm{a}}=1$ is imposed to match
+  $R_{\theta\theta}=0$; we lack a cost derivation.
   This is the primary conceptual gap.
-\item \textbf{General proof.}
-  Complete the null-surface Gauss--Codazzi step to establish
-  $K_{\mathrm{f}}(v)=1 \Rightarrow R_{\mu\nu}v^\mu v^\nu = 0$
-  for arbitrary metrics.
-\item \textbf{Singularity resolution.}
-  If $\sigma_1$ has a positive lower bound $\sigma_{1,\min}>0$
-  (conjectured from the conjugacy of $K$ and the boost angle),
-  then curvature is bounded above by $R_{\max} \sim 2/\sigma_{1,\min}^2$,
-  preventing singularity formation.
-  A rough estimate gives
-  $\sigma_{1,\min} \sim \ell_P/2 \approx 8\times 10^{-36}\;\mathrm{m}$,
-  yielding $R_{\max} \sim 3\times 10^{70}\;\mathrm{m^{-2}}$
-  (Planck curvature).
-  Proving $\sigma_{1,\min}>0$ remains open (Open Question~7
-  in~\cite{Li2026math}).
-\item \textbf{Testable predictions.}
-  In the vacuum sector the equivalence $K_{\mathrm{f}}{=}1
-  \wedge K_{\mathrm{a}}{=}1 \Leftrightarrow R_{\mu\nu}{=}0$
-  is exact; no deviation from GR is predicted.
-  This limitation is shared by all known derivations of Einstein's
+\item \textbf{Spherical symmetry only.}
+  The equivalence theorem is proved for the metric ansatz~\eqref{eq:metric}.
+  The general proof requires the null-surface Gauss--Codazzi step,
+  which is not completed.
+\item \textbf{Jacobson parallel.}
+  The general proof has the same logical structure as Jacobson's
+  thermodynamic derivation: a local condition on each null direction,
+  assembled by polarization.
+  The content differs ($K{=}1$ vs Clausius), but the architecture is shared.
+\item \textbf{No new predictions.}
+  In the vacuum sector the equivalence is exact, so no deviation from
+  GR is predicted.
+  The matter interpretation uses Einstein's equations as input.
+  These limitations are shared by all known ``derivations'' of Einstein's
   equations~\cite{Jacobson1995,Padmanabhan2010,Verlinde2011}.
+\item \textbf{Linearized redundancy.}
+  $K_{\mathrm{f}}$ is automatically satisfied at linear order;
+  it carries independent content only in the strong-field regime.
+  This limits any future testable consequences to strong-gravity settings.
+\end{enumerate}
+
+\subsection{What is genuinely new}
+
+Despite the limitations above, the following elements are new:
+\begin{itemize}
+\item The \emph{observables} $K_{\mathrm{f}}$ and $K_{\mathrm{a}}$
+  as field-level cost quantities with concrete formulas.
+\item The \emph{equivalence theorem} (Theorem~\ref{thm:main}):
+  a precise, verifiable statement with a complete two-directional proof.
+\item The \emph{ODE}~\eqref{eq:ode} and its closed-form general solution,
+  exhibiting the scalar-vs-tensor distinction ($R{=}0$ vs $R_{\mu\nu}{=}0$).
+\item The \emph{cost interpretation} of energy density:
+  $\rho = (1{-}K_{\mathrm{a}})/(8\pi r^2)$,
+  reading matter as the angular cost deficit.
+\item The \emph{point--field correspondence} (Table~\ref{tab:corr}),
+  extending the $K{=}1$ framework from horizons to spacetime.
+\end{itemize}
+
+\subsection{Open problems}
+\label{sec:open}
+
+\begin{enumerate}
+\item Derive $K_{\mathrm{a}}=1$ from the cost axioms R, E, T.
+\item Complete the general proof (null-surface Gauss--Codazzi).
+\item Prove $\sigma_{1,\min}>0$ and establish curvature bounds.
+\item Identify testable predictions in the strong-field regime.
 \end{enumerate}
 
 \section*{Acknowledgments}
 
-All symbolic computations were verified with \texttt{sympy};
-numerical checks with \texttt{numpy}.
-The full test suite (130 checks: 51 formula, 79 reasoning, 28 caveats)
-is available as supplementary material.
+All symbolic results were verified with \texttt{sympy}; numerical
+checks with \texttt{numpy}.
+A supplementary test suite is available containing 51 formula verifications
+and 79 reasoning checks with 28 explicitly flagged caveats.
 
 \begin{thebibliography}{99}
 

@@ -405,32 +405,60 @@ undefined there.
 The Schwarzschild singularity at $r=0$, where $\sigma_1 = r\sqrt{f}\to 0$,
 lies outside the domain of the theory.
 
-\subsection{From $\sigma_1 > 0$ to $\sigma_{1,\min} > 0$}
+\subsection{Self-consistency bound: $\sigma_1 \gtrsim \ell_P$}
 
 Proposition~\ref{prop:sigma} gives $\sigma_1 > 0$
-but does not establish a finite lower bound:
-classically, $\sigma_1$ may be arbitrarily small.
-The upgrade to $\sigma_1 \geq \sigma_{1,\min} > 0$ requires
-one additional input.
+but does not establish a finite lower bound.
+A stronger result follows from the internal structure of
+the $K{=}1$ framework itself.
+
+The OU process has stationary variance $\mathrm{Var}(K) = T_{\mathrm{eff}}$,
+where $T_{\mathrm{eff}}$ is the Tolman--Unruh temperature.
+Near the horizon, $\sqrt{f}\approx \sigma_1/(2M)$ and
+$\kappa = 1/(4M)$, giving
+\begin{equation}\label{eq:Tsigma}
+  T_{\mathrm{eff}} \;=\; \frac{\hbar\kappa}{2\pi\sqrt{f}}
+  \;\approx\; \frac{\hbar}{4\pi\,\sigma_1}\,.
+\end{equation}
+For $K{=}1$ to be a well-defined classical equilibrium,
+the fluctuations of $K$ must be smaller than its mean value:
+$\mathrm{Var}(K) = T_{\mathrm{eff}} < 1$.
+This requires
+\begin{equation}\label{eq:sc-bound}
+  \sigma_1 \;>\; \sigma_{1,c}
+  \;:=\; \frac{\hbar}{4\pi}
+  \;\approx\; \frac{\ell_P}{12}\,.
+\end{equation}
+Below $\sigma_{1,c}$, the thermal fluctuations of $K$ exceed
+its equilibrium value, the semiclassical metric loses its
+classical meaning, and the $K{=}1$ framework becomes self-inconsistent.
+
+\begin{proposition}\label{prop:domain}
+The $K{=}1$ framework is self-consistent only for
+$\sigma_1 > \hbar/(4\pi) \approx \ell_P/(4\pi)$.
+This bounds curvature at the Planck scale:
+$R_{\max} \sim 2/\sigma_{1,c}^2 \sim 10^{72}\;\mathrm{m^{-2}}$,
+a factor of~$\sim 10^{79}$ below the curvature at a solar-mass horizon.
+\end{proposition}
+
+This is a \emph{soft} bound: the framework does not forbid
+$\sigma_1 < \sigma_{1,c}$ but ceases to make predictions there---analogous
+to classical mechanics becoming undefined when the action approaches~$\hbar$.
+No external input (no $S{=}A/4$, no $[\sigma_1,\theta]=i\hbar$,
+no Bekenstein bound) is used; the bound is purely internal
+to the $K{=}1$ construction.
+
+\subsection{Possible upgrade to a hard bound}
 
 If $K$ and the boost angle $\theta$ are canonically conjugate
 (Open Question~7 of~\cite{Li2026math}),
 the compactness of $\theta\in [0,2\pi)$ yields
-$\sigma_1\,\Delta\theta \geq \hbar/2$, hence
-$\sigma_1 \geq \hbar/(4\pi)$.
-Order-of-magnitude:
-\begin{equation}\label{eq:sigmin}
-  \sigma_{1,\min} \sim \frac{\ell_P}{2}\,,\qquad
-  R_{\max} \sim \frac{2}{\sigma_{1,\min}^2}
-  \sim 3\times 10^{70}\;\mathrm{m^{-2}}\,,
-\end{equation}
-bounding curvature at the Planck scale---a factor
-of~$\sim 10^{77}$ below the curvature at a solar-mass horizon.
-This would replace the singularity with a Planck-density core
-without invoking the full apparatus of quantum gravity.
-
-Proving the $K$--$\theta$ conjugacy remains the most
-consequential open problem in the $K{=}1$ program.
+$\sigma_1 \geq \hbar/(4\pi) \sim \ell_P/2$,
+upgrading the soft bound to a hard spectral gap.
+Both estimates give $\sigma_{1,\min} \sim O(\ell_P)$;
+the self-consistency argument~\eqref{eq:sc-bound} shows that
+even without the conjecture, the Planck scale
+emerges as the natural resolution limit of the framework.
 
 %===================================================================
 \section{Discussion}

@@ -378,21 +378,59 @@ independent eigenvalues.}
 \label{sec:singularity}
 %===================================================================
 
-While the preceding analysis is entirely classical, the $K{=}1$
-framework admits a natural interface with quantum theory through
-the symplectic eigenvalue~$\sigma_1$.
+\subsection{$\sigma_1 > 0$ from Axiom~T}
+
+While the preceding analysis is entirely classical, the cost axioms
+already constrain the singularity structure.
+
+\begin{proposition}\label{prop:sigma}
+Axiom~T (temporal cost is positive) implies $\sigma_1 > 0$
+at every point where the $K{=}1$ condition is imposed.
+\end{proposition}
+
+\begin{proof}
+The cost metric is $G = \mathrm{diag}(\sigma_1^2,\,-1)$.
+The temporal cost of a displacement~$\delta t$ is
+$G_{00}\,(\delta t)^2 = \sigma_1^2\,(\delta t)^2$.
+If $\sigma_1 = 0$, then $G_{00}=0$ and temporal displacement
+has zero cost for any~$\delta t$, violating Axiom~T.
+Hence $\sigma_1 > 0$.
+\end{proof}
+
+\noindent
+A direct consequence: when $\sigma_1 = 0$, the self-consistency
+condition $K = \sigma_1^2\,x_0^2 - x_1^2 = 1$ has no solutions
+(since $K = -x_1^2 \leq 0$), so the $K{=}1$ framework is
+undefined there.
+The Schwarzschild singularity at $r=0$, where $\sigma_1 = r\sqrt{f}\to 0$,
+lies outside the domain of the theory.
+
+\subsection{From $\sigma_1 > 0$ to $\sigma_{1,\min} > 0$}
+
+Proposition~\ref{prop:sigma} gives $\sigma_1 > 0$
+but does not establish a finite lower bound:
+classically, $\sigma_1$ may be arbitrarily small.
+The upgrade to $\sigma_1 \geq \sigma_{1,\min} > 0$ requires
+one additional input.
+
 If $K$ and the boost angle $\theta$ are canonically conjugate
 (Open Question~7 of~\cite{Li2026math}),
-then $\sigma_1 \geq \sigma_{1,\min} > 0$ by the uncertainty principle.
-This would bound curvature:
-\begin{equation}
-  A_{\min} = 4\pi\sigma_{1,\min}^2 \sim \pi\,\ell_P^2\,,\qquad
+the compactness of $\theta\in [0,2\pi)$ yields
+$\sigma_1\,\Delta\theta \geq \hbar/2$, hence
+$\sigma_1 \geq \hbar/(4\pi)$.
+Order-of-magnitude:
+\begin{equation}\label{eq:sigmin}
+  \sigma_{1,\min} \sim \frac{\ell_P}{2}\,,\qquad
   R_{\max} \sim \frac{2}{\sigma_{1,\min}^2}
   \sim 3\times 10^{70}\;\mathrm{m^{-2}}\,,
 \end{equation}
-replacing the Schwarzschild singularity with a Planck-density core,
-a factor of $\sim 10^{77}$ below the curvature at a solar-mass horizon.
-Proving $\sigma_{1,\min}>0$ remains the most promising open direction.
+bounding curvature at the Planck scale---a factor
+of~$\sim 10^{77}$ below the curvature at a solar-mass horizon.
+This would replace the singularity with a Planck-density core
+without invoking the full apparatus of quantum gravity.
+
+Proving the $K$--$\theta$ conjugacy remains the most
+consequential open problem in the $K{=}1$ program.
 
 %===================================================================
 \section{Discussion}

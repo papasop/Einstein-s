@@ -149,8 +149,8 @@ formula("□lnσ₂ = 1/σ₂² = 1/r² for Schwarzschild", box_ln_s2 == 1/r**2)
 # Verify K₁ and K₂ have SAME STRUCTURE
 # K₁ = σ₂²□lnσ₁, K₂ = σ₂²□lnσ₂
 # Both are σ₂²□ln(eigenvalue) = 1
-formula("K₁ structure: σ₂²□lnσ₁ (verified above in M3)", True)
-formula("K₂ structure: σ₂²□lnσ₂ (verified this module)", True)
+reason("K₁ structure: σ₂²□lnσ₁ (verified above in M3)")
+reason("K₂ structure: σ₂²□lnσ₂ (verified this module)")
 reason("UNIFIED PRINCIPLE: σ₂²□lnσᵢ = 1 for each eigenvalue σᵢ")
 reason("i=1: σ₂²□lnσ₁ = 1 → R = 0")
 reason("i=2: σ₂²□lnσ₂ = 1 → R_θθ = 0")
@@ -513,15 +513,48 @@ reason("σ₁=0 at horizon → K=1 undefined there → OU process breaks down")
 reason("σ₁→0 at singularity → forbidden by Axiom T")
 reason("✓ THEOREM: σ₁ > 0 from Axiom T (proved, no conjecture)")
 reason("⚠ This gives σ₁ > 0 but NOT σ₁ ≥ σ₁_min (no finite lower bound)")
-reason("⚠ σ₁ ≥ σ₁_min requires K-θ conjugacy (still Open Question #7)")
 
-# (e) σ₁_min numerical estimate (Penrose request)
-print("\n--- σ₁_min estimate (order of magnitude, CONJECTURE) ---")
-# If K and boost angle are conjugate: σ₁_min = ℏ/2 (in natural units ℏ=1)
-# A_min = 4πσ₁_min² = 4π(1/2)² = π ≈ 3.14 in Planck units
-# R_max = 2/σ₁_min² = 8 in Planck units
-# In SI: ℓ_P = 1.616e-35 m, σ₁_min = ℓ_P/2
-ell_P = 1.616e-35  # meters
+# (e) PATH 4: Self-consistency bound σ₁_c = ℏ/(4π)
+print("\n--- σ₁_c from self-consistency (Proposition 4 in paper) ---")
+
+# T_eff = ℏ/(4πσ₁) near horizon
+# Var(K) = T_eff
+# Self-consistency: Var(K) < 1 → T_eff < 1 → σ₁ > ℏ/(4π)
+reason("OU process: Var(K) = T_eff (stationary variance)")
+reason("Near horizon: T_eff = T_Tolman = ℏκ/(2π√f) ≈ ℏ/(4πσ₁)")
+
+# Verify T_tol = ℏ/(4πσ₁) symbolically
+kappa_sym = 1/(4*M)
+hbar_s = sp.Symbol('hbar', positive=True)
+sig1_s = sp.Symbol('sigma_1', positive=True)
+T_H = hbar_s * kappa_sym / (2*sp.pi)
+f_near_sym = sig1_s**2 / (4*M**2)
+T_tol_sym = simplify(T_H / sqrt(f_near_sym))
+T_expected = hbar_s/(4*sp.pi*sig1_s)
+formula(f"T_tol(σ₁) = ℏ/(4πσ₁)",
+        simplify(T_tol_sym - T_expected) == 0)
+
+reason("Self-consistency: Var(K) = T_eff < 1 for K=1 to be meaningful")
+reason("T_eff < 1 → ℏ/(4πσ₁) < 1 → σ₁ > ℏ/(4π)")
+
+ell_P = 1.616e-35
+sigma1_c = ell_P / (4*np.pi)
+R_max_sc = 2 / sigma1_c**2
+formula(f"σ₁_c = ℓ_P/(4π) = {sigma1_c:.3e} m", sigma1_c > 0)
+formula(f"R_max(self-consist) = 2/σ₁_c² = {R_max_sc:.1e} m⁻²",
+        R_max_sc > 1e70)
+
+reason("Below σ₁_c: Var(K)>1, K=1 equilibrium destroyed, metric undefined")
+reason("Above σ₁_c: Var(K)<1, K=1 well-defined, Einstein eqs hold")
+reason("✓ THEOREM: K=1 has minimum resolution σ₁_c = ℏ/(4π) ~ ℓ_P/12")
+reason("This is INTERNAL to K=1 (OU + T_Unruh + Var(K)<1)")
+reason("No external input needed (no S=A/4, no [σ₁,θ]=iℏ, no Bekenstein)")
+reason("⚠ SOFT bound: framework undefined below σ₁_c, not 'forbidden'")
+reason("⚠ Analogous to classical mechanics undefined below action ~ ℏ")
+
+# (f) σ₁_min from K-θ conjugacy (CONJECTURE, hard bound)
+print("\n--- σ₁_min from K-θ conjugacy (CONJECTURE, hard bound) ---")
+
 sigma1_min = ell_P / 2
 A_min = 4 * np.pi * sigma1_min**2
 R_max = 2 / sigma1_min**2

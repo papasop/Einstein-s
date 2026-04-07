@@ -321,19 +321,22 @@ Field-level analogue:
   ✗ But this is INTERPRETATION, not DERIVATION from cost
   ✗ R = -2□lnσ₁ + 2/r² comes from standard GR, not from cost
 
-### Step 3 (next): derive □lnσ₁ = 1/σ₂² from cost variational principle
-  Need: a functional on cost space whose stationarity gives R=0
-  Without using standard GR as input
-  This is the true "direct derivation" step
+### Step 3 (DONE): variational principle from field cost
+  ✓ K_field = σ₂²□lnσ₁ defines field-level self-consistency
+  ✓ K_field = 1 ⟺ R = 0 (exact equivalence, verified by sympy)
+  ✓ ODE: f + 2rf' + (r²/2)f'' = 1
+  ✓ General solution: f = 1 - C₁/r - C₂/r² (two-parameter family)
+  ✓ Schwarzschild (C₂=0) and flat (C₁=C₂=0) both satisfy K_field=1
+  ⚠ K_field=1 gives R=0 (scalar), not R_μν=0 (tensor)
+  ⚠ Gap closed by Jacobson patching (R=0 on all horizons → R_μν=0)
 
-### Step 4 (if Step 3 works): linearized theory
+### Step 4 (next): linearized theory
   Perturbation h_μν around flat space
   Cost of perturbation → linearized Einstein?
 
-### Step 5 (if Step 4 succeeds): write paper
-  "Einstein's Equations from Information-Time Cost"
-  → Direct derivation, no Jacobson
-  → Submit to PRL (if successful, this is PRL-level)
+### Step 5 (next): write paper if Steps 3-4 form a coherent story
+  "Field-Level Self-Consistency: K=1 as R=0"
+  → Found. Phys. or merge into symplectic gravity Discussion
 
 ---
 
@@ -464,19 +467,124 @@ Field-level analogue:
 
 ---
 
-## 10. The Central Question (updated post-Step 2)
+## 10. Step 3 Results (2026-04-07)
 
-Post-Test 1 question:
-  "Can □lnσ₁ = 1/r² be read as cost self-consistency?"
-  Answer: YES. C_radial = C_angular. Verified.
+### What was tested
+  Define K_field = σ₂²·□lnσ₁ and V_field = (1/2)(K_field - 1)²
+  Set K_field = 1 and solve the resulting ODE for f(r)
+  Compare solution space with GR vacuum (R_μν = 0)
 
-New question:
-  "Can □lnσ₁ = 1/σ₂² be DERIVED from a cost variational principle,
-   without importing standard GR?"
+### Analytical results (sympy)
 
-  If yes → direct derivation achieved → Einstein-level result
-  If no → the interpretation is correct but the derivation
-          still requires the Jacobson bridge
+  K_field = r²□lnσ₁ = f + 2rf' + (r²/2)f''
+  
+  Schwarzschild f = 1-2M/r: K_field = 1  ✓ (exact)
+  Flat space f = 1:          K_field = 1  ✓ (exact)
 
-  The interpretation itself is publishable (Discussion section).
-  The derivation, if achievable, is a separate paper.
+### ODE and general solution
+
+  K_field = 1 gives: f + 2rf' + (r²/2)f'' = 1
+  
+  Try f = 1 - A/r^n:
+    Coefficient of A/r^n: -(n-1)(n-2)/2
+    Vanishes for n=1 and n=2
+  
+  General solution: f(r) = 1 - C₁/r - C₂/r²
+    C₁ = 2M, C₂ = 0   → Schwarzschild
+    C₁ = 2M, C₂ = Q²  → Reissner-Nordström type
+    C₁ = C₂ = 0        → Minkowski
+
+### Key finding: K_field = 1 ⟺ R = 0 (exact, but scalar only)
+
+  K_field = 1 is equivalent to R = 0 (Ricci SCALAR = 0)
+  NOT equivalent to R_μν = 0 (Ricci TENSOR = 0)
+
+  K_field = 1 allows f = 1 - C₁/r - C₂/r² (2 parameters)
+  R_μν = 0 requires f = 1 - 2M/r only (1 parameter, Birkhoff)
+  
+  Gap: K_field is scalar (1 equation) vs R_μν is tensor (10 equations)
+
+### Gap closed by Jacobson patching
+
+  K_field = 1 on EVERY local Rindler horizon (all null directions)
+  → R_μν v^μ v^ν = 0 for all null v^μ
+  → R_μν = 0 (full vacuum Einstein equations)
+  
+  The scalar condition becomes tensorial through patching.
+  This is exactly the Jacobson mechanism.
+
+### Point-field correspondence (now complete)
+
+  POINT:                          FIELD:
+  K = xᵀGx                       K_field = σ₂²□lnσ₁
+  K = 1 (self-consistent)         K_field = 1 ⟺ R = 0
+  K ≠ 1 → V > 0 → restoring      R ≠ 0 → T_μν (matter)
+  K-1 = departure                 R = departure from vacuum
+  V = (1/2)(K-1)²                 V_field = (1/2)(K_field-1)²
+
+  Point: temporal cost = spatial cost → metric self-consistent
+  Field: radial cost = angular cost → spacetime self-consistent
+
+### Matter as cost imbalance
+
+  Vacuum: K_field = 1    →  C_radial = C_angular  →  R = 0
+  Matter: K_field ≠ 1    →  C_radial ≠ C_angular  →  R ≠ 0
+  
+  T_μν ∝ (K_field - 1) = "field-level cost imbalance"
+  
+  Matter IS the metric's failure to achieve field-level self-consistency.
+  Just as K-1 IS the metric's failure to achieve point-level self-consistency.
+
+### Honest assessment
+
+  ✓ K_field has concrete form: σ₂²□lnσ₁
+  ✓ K_field = 1 gives explicit ODE with closed-form general solution
+  ✓ Point-field correspondence is precise and verified
+  ✓ Schwarzschild, flat space, RN-type all satisfy K_field = 1
+  
+  ⚠ K_field = 1 gives R = 0, not R_μν = 0 (need Jacobson patching)
+  ⚠ V_field = (1/2)(K_field-1)² is assumed (promoted from point level)
+  ⚠ □ in K_field uses standard GR d'Alembertian (not derived from cost)
+  ⚠ Still "reading GR through cost glasses" — but now with concrete ODE
+
+  What's new vs Step 2:
+    Step 2 gave an interpretation (C_radial = C_angular)
+    Step 3 gave an equation (f + 2rf' + r²f''/2 = 1)
+    and its solution (f = 1 - C₁/r - C₂/r²)
+    → Moved from interpretation to concrete mathematics
+
+---
+
+## 11. The Central Question (updated post-Step 3)
+
+Post-Step 2 question:
+  "Can □lnσ₁ = 1/σ₂² be DERIVED from a cost variational principle?"
+  Answer: PARTIALLY. V_field = (1/2)(K_field-1)² gives K_field=1 ⟺ R=0.
+  But V_field itself is an assumption (promoted from point level).
+
+Post-Step 3 status:
+
+  ACHIEVED:
+    cost → G → σ₁, σ₂ → K_field = σ₂²□lnσ₁ → K_field = 1 → R = 0
+    + Jacobson patching → R_μν = 0 → vacuum Einstein
+    
+  NOT ACHIEVED:
+    Deriving V_field from cost alone (it's promoted from K=1, not derived)
+    Bypassing Jacobson patching (still need it for R=0 → R_μν=0)
+    Deriving □ from cost (□ uses standard differential geometry)
+
+  Remaining questions:
+    1. Can V_field be derived rather than assumed?
+       → Possibly via Lovelock theorem: if cost requires 2nd-order field equations,
+         then R is the unique scalar → V_field ∝ R² is the unique cost.
+    2. Can Jacobson patching be replaced by a 4D cost principle?
+       → Would need tensor K_μν, not scalar K_field.
+    3. Is the linearized theory consistent?
+       → Step 4 (not yet done).
+
+  Assessment: the "direct derivation" is ~70% complete.
+    cost → G: done (K=1 math)
+    G → K_field: done (this exploration)
+    K_field = 1 → R = 0: done (this exploration)
+    R = 0 → R_μν = 0: done (via Jacobson, not independently)
+    V_field from first principles: not done

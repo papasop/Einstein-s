@@ -41,11 +41,11 @@
 \textit{Two routes to Einstein.}
 \begin{itemize}
 \item[\textbf{A.}] \emph{Thermodynamic bridge} (\S\S2--7): $K{=}1\xrightarrow{\mathrm{lin.}}\mathrm{OU}\to\mathrm{Clausius}$; combined with $S\propto A$ and the Jacobson argument~\cite{Jacobson}, this yields $G_{\mu\nu}=8\pi T_{\mu\nu}$ for general metrics.
-\item[\textbf{B.}] \emph{Direct algebraic route} (\S\ref{sec:field}): the eigenvalue self-consistency condition $\sigma_2^2\Box\ln\sigma_i=1$ is algebraically equivalent to $R_{\mu\nu}=0$ for spherically symmetric metrics, with \emph{no thermodynamic input}; the modified condition $K_i^{\mathrm{BL}}:=\Sigma\Box\ln\sigma_i=1$ extends this to the sub-extremal Kerr-Boyer--Lindquist family ($a\in[0,M)$) (Corollary~\ref{cor:BL}).
+\item[\textbf{B.}] \emph{Direct algebraic route} (\S\ref{sec:field}): the eigenvalue self-consistency condition $\sigma_2^2\Box\ln\sigma_i=1$ is algebraically equivalent to $R_{\mu\nu}=0$ for spherically symmetric metrics, with \emph{no thermodynamic input}; the modified condition $K_i^{\mathrm{BL}}:=\Sigma\,\Box\ln\sigma_i=1$ extends this to the sub-extremal Kerr-Boyer--Lindquist family ($a\in[0,M)$) (Corollary~\ref{cor:BL}).
 \end{itemize}
 Route~A is general but requires $S\propto A$; Route~B is thermodynamically independent and now covers Schwarzschild and the full Kerr family, with general metrics remaining open (Gauss--Codazzi). The singularity structure (\S\ref{sec:singularity}) and scope (\S\ref{sec:discussion}) are discussed at the end.
 
-\textit{Main results:} (i)~$d_{c}>0\Leftrightarrow\mathrm{Sig}(G)=(1,1)$ (Theorem~4); (ii)~uniqueness of the evolution law (Theorem~5); (iii)~$\kappa_{K}=4d_{c}$ at critical damping (Theorem~6); (iv)~Clausius relation via stochastic dynamics within Class~A (Proposition~7); (v)~$\sigma_2^2\Box\ln\sigma_i=1\Leftrightarrow R_{\mu\nu}=0$ for spherical symmetry (Theorem~\ref{thm:field}), extended to Boyer--Lindquist family via $K_i^{\mathrm{BL}}:=\Sigma\Box\ln\sigma_i=1$ (Corollary~\ref{cor:BL}); (vi)~$\sigma_1>0$ from Axiom~T (Proposition~\ref{prop:sigma1}); (vii)~intrinsic resolution scale $\sigma_1\gtrsim\ell_P$ (Proposition~\ref{prop:domain}).
+\textit{Main results:} (i)~$d_{c}>0\Leftrightarrow\mathrm{Sig}(G)=(1,1)$ (Theorem~4); (ii)~uniqueness of the evolution law (Theorem~5); (iii)~$\kappa_{K}=4d_{c}$ at critical damping (Theorem~6); (iv)~Clausius relation via stochastic dynamics within Class~A (Proposition~7); (v)~$\sigma_2^2\Box\ln\sigma_i=1\Leftrightarrow R_{\mu\nu}=0$ for spherical symmetry (Theorem~\ref{thm:field}), extended to Boyer--Lindquist family via $K_i^{\mathrm{BL}}:=\Sigma\,\Box\ln\sigma_i=1$ (Corollary~\ref{cor:BL}); (vi)~$\sigma_1>0$ from Axiom~T (Proposition~\ref{prop:sigma1}); (vii)~intrinsic resolution scale $\sigma_1\gtrsim\ell_P$ (Proposition~\ref{prop:domain}).
 
 \medskip\noindent\textbf{Notation.} $\mathrm{spec}(A)$: spectrum of $A$. $\mathrm{Sig}(G)=(p,q)$: inertia ($p$ positive, $q$ negative eigenvalues). $J=\bigl(\begin{smallmatrix}0&1\\-1&0\end{smallmatrix}\bigr)$: canonical symplectic matrix. $\|\cdot\|$: Euclidean norm on~$\mathbb{R}^{2}$. $\nabla$: Euclidean gradient on~$\mathbb{R}^{2}$.
 
@@ -355,14 +355,14 @@ $\Delta:=r^2-2Mr+a^2$ (same parameter $a$ in both $\Sigma$ and $\Delta$),
 $g_{rr}=\Sigma/\Delta$, $g_{\theta\theta}=\Sigma$, and the remaining
 components $g_{tt}$, $g_{t\phi}$, $g_{\phi\phi}$ in standard
 Kerr-Boyer--Lindquist form; with $M>0$ and $0\le a<M$ (sub-extremal), let $\Box$ denote the
-d'Alembertian acting on $(t,\phi)$-independent scalar fields,
+d'Alembertian acting on $(t,\phi)$-independent scalar fields:
 \begin{equation}
   \Box\phi := \frac{1}{\Sigma}\!\left[\partial_r(\Delta\,\partial_r\phi)
-  +\frac{1}{\sin\theta}\partial_\theta(\sin\theta\,\partial_\theta\phi)\right],
+  +\frac{1}{\sin\theta}\partial_\theta(\sin\theta\,\partial_\theta\phi)\right].
 \end{equation}
-Define the Boyer--Lindquist eigenvalue conditions
+Define the Boyer--Lindquist eigenvalue functionals
 \begin{equation}\label{eq:BLcond}
-  K_i^{\mathrm{BL}}:=\Sigma\,\Box\ln\sigma_i = 1,\qquad i=1,2
+  K_i^{\mathrm{BL}}:=\Sigma\,\Box\ln\sigma_i,\qquad i=1,2
 \end{equation}
 (replacing $\sigma_2^2$ by the volume factor $\Sigma$ relative to
 Theorem~\ref{thm:field}), with $\sigma_1:=\sqrt{\Delta}$ and
@@ -379,11 +379,12 @@ $\Box=\Box_r$), reducing to Theorem~\ref{thm:field} with $\sigma_2=r$.
 \begin{proof}
 \textbf{Step~1 ($K_1^{\mathrm{BL}}=\Delta''/2$).}
 $\partial_r\ln\sqrt{\Delta}=\Delta'/(2\Delta)$, so
-$\Delta\cdot\partial_r\ln\sqrt{\Delta}=\Delta'/2$ and
-$\partial_r(\Delta'/2)=\Delta''/2$.
-Since $\ln\sqrt{\Delta}$ is $\theta$-independent, the angular term
-vanishes and the $\Sigma$ factors cancel:
-$\Sigma\,\Box\ln\sqrt{\Delta}=\Sigma\cdot(1/\Sigma)\cdot\partial_r(\Delta'/2)=\Delta''/2$;
+$\Delta\cdot\partial_r\ln\sqrt{\Delta}=\Delta'/2$.
+Since $\ln\sqrt{\Delta}$ is $\theta$-independent the angular term vanishes,
+and applying the definition of $\Box$:
+$\Sigma\,\Box\ln\sqrt{\Delta}
+ =\partial_r\!\bigl(\Delta\,\partial_r\ln\sqrt{\Delta}\bigr)
+ =\partial_r(\Delta'/2)=\Delta''/2$;
 hence $K_1^{\mathrm{BL}}=1\Leftrightarrow\Delta''=2$.
 
 \textbf{Step~2 ($K_2^{\mathrm{BL}}=1$).}
@@ -394,8 +395,14 @@ Since $\Delta$, $r_\pm$, and $\kappa$ are all $\theta$-independent,
 $\psi$ depends only on $r$; thus the angular term in $\Box\psi$ vanishes.
 Then $\partial_r(\Delta\psi')=0$, giving $\Box\psi=0$.
 By Step~1, $\Sigma\,\Box\ln\sigma_1=\Delta''/2=1$ for the Kerr family.
-Hence $\Sigma\,\Box\ln\sigma_2=\underbrace{\Sigma\,\Box\ln\sigma_1}_{=1\text{ (Step~1)}}+\underbrace{\Sigma\,\Box\psi}_{=0}=1$,
-so $K_2^{\mathrm{BL}}=1$ whenever $K_1^{\mathrm{BL}}=1$.
+Hence
+\begin{equation*}
+  \Sigma\,\Box\ln\sigma_2
+  = \Sigma\,\Box\ln\sigma_1 + \Sigma\,\Box\psi
+  = 1 + 0 = 1,
+\end{equation*}
+where the first term equals $1$ by Step~1 and the second vanishes
+since $\Box\psi=0$; so $K_2^{\mathrm{BL}}=1$ whenever $K_1^{\mathrm{BL}}=1$.
 
 \textbf{Step~3 ($\Delta''=2\Leftrightarrow R_{\mu\nu}=0$, Kerr family).}
 For the Kerr-Boyer--Lindquist metric with $\Sigma=r^2+a^2\cos^2\theta$ and

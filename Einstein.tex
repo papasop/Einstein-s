@@ -27,7 +27,7 @@
 
 \textit{Thermodynamic content.} In the stationary regime near $K=1$, the Clausius relation uniquely fixes the noise amplitude as a function of the Tolman temperature (Proposition~7). Geometrically, the $K=1$ manifold carries two classes of fluctuation: thermodynamic (Class~A, normal to $K=1$) and kinematic (Class~B, tangential, along Lorentz boost orbits). The sole external identification is $T_{\mathrm{eff}}=T_{\mathrm{tol}}$; Route~B requires none.
 
-\textit{Gravitational content.} For static, spherically symmetric metrics with symplectic eigenvalues $\sigma_1:=r\sqrt{f}$ and $\sigma_2:=r$, the motivated field-level analogue $\sigma_2^2\,\Box\ln\sigma_i=1$ ($i=1,2$) is algebraically equivalent to $R_{\mu\nu}=0$ (Theorem~\ref{thm:field}). The result extends to the full Boyer--Lindquist family (Kerr with arbitrary spin $a$) via a modified condition $\Sigma\,\Box\ln\sigma_i=1$ and adapted eigenvalues (Corollary~\ref{cor:BL}); the equivalence $K_1^{\mathrm{BL}}=K_2^{\mathrm{BL}}=1\Leftrightarrow R_{\mu\nu}=0$ holds for all $(r,\theta)$, including off the equatorial plane. Axiom~T (positive temporal cost) forces $\sigma_1>0$ (Proposition~\ref{prop:sigma1}), excluding curvature singularities (where $\sigma_1$ degenerates) from the theory's domain; the Ornstein-Uhlenbeck variance bound $\mathrm{Var}(K)<1$ yields an intrinsic resolution scale $\sigma_1\gtrsim\ell_P$ (Proposition~\ref{prop:domain}).
+\textit{Gravitational content.} For static, spherically symmetric metrics with symplectic eigenvalues $\sigma_1:=r\sqrt{f}$ and $\sigma_2:=r$, the motivated field-level analogue $\sigma_2^2\,\Box\ln\sigma_i=1$ ($i=1,2$) is algebraically equivalent to $R_{\mu\nu}=0$ (Theorem~\ref{thm:field}). The result extends to the full Boyer--Lindquist family (sub-extremal Kerr, $a\in[0,M)$) via a modified condition $\Sigma\,\Box\ln\sigma_i=1$ and adapted eigenvalues (Corollary~\ref{cor:BL}); the equivalence $K_1^{\mathrm{BL}}=K_2^{\mathrm{BL}}=1\Leftrightarrow R_{\mu\nu}=0$ holds for all $(r,\theta)$, including off the equatorial plane. Axiom~T (positive temporal cost) forces $\sigma_1>0$ (Proposition~\ref{prop:sigma1}), excluding curvature singularities (where $\sigma_1$ degenerates) from the theory's domain; the Ornstein-Uhlenbeck variance bound $\mathrm{Var}(K)<1$ yields an intrinsic resolution scale $\sigma_1\gtrsim\ell_P$ (Proposition~\ref{prop:domain}).
 \end{abstract}
 
 \section{Introduction: time as consequence}
@@ -41,7 +41,7 @@
 \textit{Two routes to Einstein.}
 \begin{itemize}
 \item[\textbf{A.}] \emph{Thermodynamic bridge} (\S\S2--7): $K{=}1\xrightarrow{\mathrm{lin.}}\mathrm{OU}\to\mathrm{Clausius}$; combined with $S\propto A$ and the Jacobson argument~\cite{Jacobson}, this yields $G_{\mu\nu}=8\pi T_{\mu\nu}$ for general metrics.
-\item[\textbf{B.}] \emph{Direct algebraic route} (\S\ref{sec:field}): the eigenvalue self-consistency condition $\sigma_2^2\Box\ln\sigma_i=1$ is algebraically equivalent to $R_{\mu\nu}=0$ for spherically symmetric metrics, with \emph{no thermodynamic input}; the modified condition $K_i^{\mathrm{BL}}:=\Sigma\Box\ln\sigma_i=1$ extends this to the full Boyer--Lindquist (Kerr) family (Corollary~\ref{cor:BL}).
+\item[\textbf{B.}] \emph{Direct algebraic route} (\S\ref{sec:field}): the eigenvalue self-consistency condition $\sigma_2^2\Box\ln\sigma_i=1$ is algebraically equivalent to $R_{\mu\nu}=0$ for spherically symmetric metrics, with \emph{no thermodynamic input}; the modified condition $K_i^{\mathrm{BL}}:=\Sigma\Box\ln\sigma_i=1$ extends this to the sub-extremal Kerr-Boyer--Lindquist family ($a\in[0,M)$) (Corollary~\ref{cor:BL}).
 \end{itemize}
 Route~A is general but requires $S\propto A$; Route~B is thermodynamically independent and now covers Schwarzschild and the full Kerr family, with general metrics remaining open (Gauss--Codazzi). The singularity structure (\S\ref{sec:singularity}) and scope (\S\ref{sec:discussion}) are discussed at the end.
 
@@ -368,12 +368,12 @@ Define the Boyer--Lindquist eigenvalue conditions
 Theorem~\ref{thm:field}), with $\sigma_1:=\sqrt{\Delta}$ and
 $\sigma_2:=\sqrt{\Delta}\,\bigl((r-r_-)/(r-r_+)\bigr)^{M/(2\kappa)}$,
 where $\kappa:=\sqrt{M^2-a^2}>0$ and $r_\pm:=M\pm\kappa$.
-For these specific eigenvalues:
+For these specific eigenvalues, in the exterior region $r>r_+$:
 \begin{equation}\label{eq:BLequiv}
   K_1^{\mathrm{BL}}=K_2^{\mathrm{BL}}=1\quad\Longleftrightarrow\quad R_{\mu\nu}=0.
 \end{equation}
-At $a=0$, $K_i^{\mathrm{BL}}\to K_i$ and this reduces to
-Theorem~\ref{thm:field} ($\sigma_2\to r$, $\Sigma\to r^2=\sigma_2^2$).
+At $a=0$, $K_i^{\mathrm{BL}}=K_i$ (since $\Sigma=r^2=\sigma_2^2$ and
+$\Box=\Box_r$), reducing to Theorem~\ref{thm:field} with $\sigma_2=r$.
 \end{corollary}
 
 \begin{proof}
@@ -397,7 +397,7 @@ Hence $\Sigma\,\Box\ln\sigma_2=\Sigma\,\Box\ln\sigma_1+\Sigma\,\Box\psi=1+0=1$,
 so $K_2^{\mathrm{BL}}=1$ whenever $K_1^{\mathrm{BL}}=1$.
 
 \textbf{Step~3 ($\Delta''=2\Leftrightarrow R_{\mu\nu}=0$, Kerr family).}
-For the Kerr-BL metric with $\Sigma=r^2+a^2\cos^2\theta$ and
+For the Kerr-Boyer--Lindquist metric with $\Sigma=r^2+a^2\cos^2\theta$ and
 $\Delta=r^2-2Mr+a^2$ (same $a$), \cite[Ch.~6]{Chandrasekhar} gives
 $R_{\theta\theta}=-1+\Delta''/2$ and shows that all independent Ricci
 components vanish if and only if $\Delta''=2$, i.e.\ if and only if
@@ -408,7 +408,7 @@ Hence $R_{\mu\nu}=0\Leftrightarrow\Delta''=2$ within this family.
 Combining Steps~1--3:
 $(\Rightarrow)$: $K_1^{\mathrm{BL}}=1\Rightarrow\Delta''=2\Rightarrow R_{\mu\nu}=0$
 (Steps~1,3); $K_2^{\mathrm{BL}}=1$ follows from Step~2.
-$(\Leftarrow)$: $R_{\mu\nu}=0\Rightarrow\Delta''=2$ (Step~3)
+$(\Leftarrow)$ \emph{(non-trivial direction)}: $R_{\mu\nu}=0\Rightarrow\Delta''=2$ (Step~3)
 $\Rightarrow K_1^{\mathrm{BL}}=1$ (Step~1) $\Rightarrow K_2^{\mathrm{BL}}=1$
 (Step~2, since $\Box\psi=0$ holds unconditionally for any $\Delta$
 with $\Delta\psi'=-M$ constant).\qed
@@ -458,8 +458,8 @@ Route~A (Proposition~\ref{prop:clausius} $+$ Jacobson) applies to all
 metrics but requires $S\propto A$.
 Route~B (Theorem~\ref{thm:field}) requires no thermodynamic input ---
 no Clausius relation, no $S=A/4$, no horizon entropy ---
-and is now established for the full Boyer--Lindquist family
-(Corollary~\ref{cor:BL}).
+and is now established for the sub-extremal Kerr-Boyer--Lindquist family
+($a\in[0,M)$, Corollary~\ref{cor:BL}).
 The general extension to arbitrary metrics requires null-surface
 Gauss--Codazzi and shares Jacobson's null-direction patching
 architecture; in the spherically symmetric and Boyer--Lindquist

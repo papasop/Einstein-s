@@ -349,10 +349,14 @@ Any future observational test distinguishing the eigenvalue principle from stand
 \end{corollary}
 
 \begin{corollary}[Boyer--Lindquist extension]\label{cor:BL}
-For the Boyer--Lindquist family
-$ds^2 = -f\,dt^2 + f^{-1}\Delta/r^2\,dr^2 + \Sigma\,d\theta^2 + \cdots$
-with $\Sigma:=r^2+a^2\cos^2\theta$ and $\Delta(r)$ arbitrary,
-define the modified self-consistency condition
+For the Boyer--Lindquist family with $\Sigma:=r^2+a^2\cos^2\theta$,
+$g_{rr}=\Sigma/\Delta$, $g_{\theta\theta}=\Sigma$, and $\Delta(r)$
+arbitrary, let $\Box$ denote the full $(r,\theta)$ d'Alembertian
+\begin{equation}
+  \Box\phi := \frac{1}{\Sigma}\!\left[\partial_r(\Delta\,\partial_r\phi)
+  +\frac{1}{\sin\theta}\partial_\theta(\sin\theta\,\partial_\theta\phi)\right].
+\end{equation}
+Define the modified self-consistency condition
 \begin{equation}\label{eq:BLcond}
   \Sigma\,\Box\ln\sigma_i = 1,\qquad i=1,2,
 \end{equation}
@@ -376,8 +380,8 @@ $\Sigma\,\Box\ln\sqrt{\Delta}=\Delta''/2$;
 hence $K_1=1\Leftrightarrow\Delta''=2$.
 
 \textbf{Step~2 ($K_2=1$).}
-Set $\psi:=\ln(\sigma_2/\sigma_1)=\int(-M/\Delta)\,dr$,
-so $\Delta\psi'=-M$ (constant).
+Set $\psi:=\ln(\sigma_2/\sigma_1)=\int(M/\Delta)\,dr$,
+so $\Delta\psi'=M$ (constant).
 Then $\partial_r(\Delta\psi')=0$ and $\psi$ is $\theta$-independent,
 giving $\Box\psi=0$.
 Hence $\Sigma\,\Box\ln\sigma_2=\Sigma\,\Box\ln\sigma_1+\Sigma\,\Box\psi=1+0=1$,

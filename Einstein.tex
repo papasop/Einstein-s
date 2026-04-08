@@ -27,7 +27,7 @@
 
 \textit{Thermodynamic content.} In the stationary regime near $K=1$, the Clausius relation uniquely fixes the noise amplitude as a function of the Tolman temperature (Proposition~7). Geometrically, the $K=1$ manifold carries two classes of fluctuation: thermodynamic (Class~A, normal to $K=1$) and kinematic (Class~B, tangential, along Lorentz boost orbits). The sole external identification is $T_{\mathrm{eff}}=T_{\mathrm{tol}}$; Route~B requires none.
 
-\textit{Gravitational content.} For static, spherically symmetric metrics with symplectic eigenvalues $\sigma_1:=r\sqrt{f}$ and $\sigma_2:=r$, the motivated field-level analogue $\sigma_2^2\,\Box\ln\sigma_i=1$ ($i=1,2$) is algebraically equivalent to $R_{\mu\nu}=0$ (Theorem~\ref{thm:field}). The result extends to the full Boyer--Lindquist family (Kerr, arbitrary $a$): with modified condition $\Sigma\,\Box\ln\sigma_i=1$ and $\sigma_2:=\sqrt{\Delta}\,((r-r_-)/(r-r_+))^{M/(2\kappa)}$, the equivalence $K_1=K_2=1\Leftrightarrow R_{\mu\nu}=0$ holds for all $(r,\theta)$ including off the equatorial plane (Corollary~\ref{cor:BL}). Axiom~T (positive temporal cost) forces $\sigma_1>0$ (Proposition~\ref{prop:sigma1}), excluding curvature singularities (where $\sigma_1$ degenerates) from the theory's domain; the Ornstein-Uhlenbeck variance bound $\mathrm{Var}(K)<1$ yields an intrinsic resolution scale $\sigma_1\gtrsim\ell_P$ (Proposition~\ref{prop:domain}).
+\textit{Gravitational content.} For static, spherically symmetric metrics with symplectic eigenvalues $\sigma_1:=r\sqrt{f}$ and $\sigma_2:=r$, the motivated field-level analogue $\sigma_2^2\,\Box\ln\sigma_i=1$ ($i=1,2$) is algebraically equivalent to $R_{\mu\nu}=0$ (Theorem~\ref{thm:field}). The result extends to the full Boyer--Lindquist family (Kerr with arbitrary spin $a$) via a modified condition $\Sigma\,\Box\ln\sigma_i=1$ and adapted eigenvalues (Corollary~\ref{cor:BL}); the equivalence $K_i^{\mathrm{BL}}=1\Leftrightarrow R_{\mu\nu}=0$ holds for all $(r,\theta)$, including off the equatorial plane. Axiom~T (positive temporal cost) forces $\sigma_1>0$ (Proposition~\ref{prop:sigma1}), excluding curvature singularities (where $\sigma_1$ degenerates) from the theory's domain; the Ornstein-Uhlenbeck variance bound $\mathrm{Var}(K)<1$ yields an intrinsic resolution scale $\sigma_1\gtrsim\ell_P$ (Proposition~\ref{prop:domain}).
 \end{abstract}
 
 \section{Introduction: time as consequence}
@@ -349,48 +349,56 @@ Any future observational test distinguishing the eigenvalue principle from stand
 \end{corollary}
 
 \begin{corollary}[Boyer--Lindquist extension]\label{cor:BL}
-For the Boyer--Lindquist family with $\Sigma:=r^2+a^2\cos^2\theta$,
-$g_{rr}=\Sigma/\Delta$, $g_{\theta\theta}=\Sigma$, and $\Delta(r)$
-arbitrary, let $\Box$ denote the full $(r,\theta)$ d'Alembertian
+For the Boyer--Lindquist family~\cite[Ch.~6]{Chandrasekhar} with
+$\Sigma:=r^2+a^2\cos^2\theta$, $g_{rr}=\Sigma/\Delta$,
+$g_{\theta\theta}=\Sigma$, and $\Delta(r)$ arbitrary (the remaining
+metric components $g_{tt}$, $g_{t\phi}$, $g_{\phi\phi}$ take their
+standard Kerr-BL form), let $\Box$ denote the full $(r,\theta)$
+d'Alembertian
 \begin{equation}
   \Box\phi := \frac{1}{\Sigma}\!\left[\partial_r(\Delta\,\partial_r\phi)
   +\frac{1}{\sin\theta}\partial_\theta(\sin\theta\,\partial_\theta\phi)\right].
 \end{equation}
-Define the modified self-consistency condition
+Define the Boyer--Lindquist eigenvalue conditions
 \begin{equation}\label{eq:BLcond}
-  \Sigma\,\Box\ln\sigma_i = 1,\qquad i=1,2,
+  K_i^{\mathrm{BL}}:=\Sigma\,\Box\ln\sigma_i = 1,\qquad i=1,2
 \end{equation}
-with $\sigma_1:=\sqrt{\Delta}$ and
+(replacing $\sigma_2^2$ by the volume factor $\Sigma$ relative to
+Theorem~\ref{thm:field}), with $\sigma_1:=\sqrt{\Delta}$ and
 $\sigma_2:=\sqrt{\Delta}\,\bigl((r-r_-)/(r-r_+)\bigr)^{M/(2\kappa)}$,
 where $\kappa:=\sqrt{M^2-a^2}$ and $r_\pm:=M\pm\kappa$.
 Then:
 \begin{equation}\label{eq:BLequiv}
-  K_1=K_2=1\quad\Longleftrightarrow\quad R_{\mu\nu}=0.
+  K_1^{\mathrm{BL}}=K_2^{\mathrm{BL}}=1\quad\Longleftrightarrow\quad R_{\mu\nu}=0.
 \end{equation}
-At $a=0$ this reduces to Theorem~\ref{thm:field} ($\sigma_2\to r$).
+At $a=0$, $K_i^{\mathrm{BL}}\to K_i$ and this reduces to
+Theorem~\ref{thm:field} ($\sigma_2\to r$, $\Sigma\to r^2=\sigma_2^2$).
 \end{corollary}
 
 \begin{proof}
-\textbf{Step~1 ($K_1=\Delta''/2$).}
+\textbf{Step~1 ($K_1^{\mathrm{BL}}=\Delta''/2$).}
 $\partial_r\ln\sqrt{\Delta}=\Delta'/(2\Delta)$, so
 $\Delta\cdot\partial_r\ln\sqrt{\Delta}=\Delta'/2$ and
 $\partial_r(\Delta'/2)=\Delta''/2$.
-Since $\ln\sqrt{\Delta}$ is $\theta$-independent,
-$\Sigma\,\Box\ln\sqrt{\Delta}=\Delta''/2$;
-hence $K_1=1\Leftrightarrow\Delta''=2$.
+Since $\ln\sqrt{\Delta}$ is $\theta$-independent, the angular term
+vanishes and the $\Sigma$ factors cancel:
+$\Sigma\,\Box\ln\sqrt{\Delta}=\Sigma\cdot(1/\Sigma)\cdot\partial_r(\Delta'/2)=\Delta''/2$;
+hence $K_1^{\mathrm{BL}}=1\Leftrightarrow\Delta''=2$.
 
-\textbf{Step~2 ($K_2=1$).}
-Set $\psi:=\ln(\sigma_2/\sigma_1)=\int(-M/\Delta)\,dr$,
+\textbf{Step~2 ($K_2^{\mathrm{BL}}=1$).}
+Set $\psi:=\ln(\sigma_2/\sigma_1)=\int(-M/\Delta)\,dr$
+(integration constant fixed by $\psi\to 0$ as $r\to\infty$),
 so $\Delta\psi'=-M$ (constant).
 Then $\partial_r(\Delta\psi')=0$ and $\psi$ is $\theta$-independent,
 giving $\Box\psi=0$.
 Hence $\Sigma\,\Box\ln\sigma_2=\Sigma\,\Box\ln\sigma_1+\Sigma\,\Box\psi=1+0=1$,
-so $K_2=1$ whenever $K_1=1$.
+so $K_2^{\mathrm{BL}}=1$ whenever $K_1^{\mathrm{BL}}=1$.
 
 \textbf{Step~3 ($\Delta''=2\Leftrightarrow R_{\mu\nu}=0$).}
-For the Boyer--Lindquist ansatz with general $\Delta(r)$,
-direct computation gives $R_{\theta\theta}=-1+\Delta''/2$~\cite{Chandrasekhar};
-all other Ricci components are proportional to $(\Delta''-2)$.
+For the full Boyer--Lindquist metric~\cite[Ch.~6]{Chandrasekhar}
+with general $\Delta(r)$,
+direct computation gives $R_{\theta\theta}=-1+\Delta''/2$;
+all other independent Ricci components are proportional to $(\Delta''-2)$.
 Hence $R_{\mu\nu}=0\Leftrightarrow\Delta''=2$.\qed
 \end{proof}
 
@@ -398,11 +406,11 @@ Hence $R_{\mu\nu}=0\Leftrightarrow\Delta''=2$.\qed
 (i)~Corollary~\ref{cor:BL} applies to the Boyer--Lindquist family
 (fixed $\Sigma$, arbitrary $\Delta$); it does not extend to general
 axisymmetric metrics without further analysis.
-(ii)~The modified condition $\Sigma\,\Box\ln\sigma_i=1$ replaces
-$\sigma_2^2$ by the volume factor $\Sigma$; this is a motivated
-analogue --- as in Theorem~\ref{thm:field} --- not a derivation from
-the framework's axioms.
-(iii)~$\sigma_2$ now depends on the global parameters $r_\pm$
+(ii)~The condition $K_i^{\mathrm{BL}}:=\Sigma\,\Box\ln\sigma_i=1$ replaces
+$\sigma_2^2$ by the volume factor $\Sigma$ relative to
+Theorem~\ref{thm:field}; this is a motivated analogue, not a derivation
+from the framework's axioms.
+(iii)~$\sigma_2$ depends on the global parameters $r_\pm$
 (horizon radii) rather than being a purely local expression;
 the Schwarzschild case $\sigma_2=r$ is purely local.
 \end{remark}

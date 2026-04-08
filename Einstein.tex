@@ -353,12 +353,12 @@ For the Kerr-Boyer--Lindquist family~\cite[Ch.~6]{Chandrasekhar} with
 $\Sigma:=r^2+a^2\cos^2\theta$,
 $\Delta:=r^2-2Mr+a^2$ (same parameter $a$ in both $\Sigma$ and $\Delta$),
 $g_{rr}=\Sigma/\Delta$, $g_{\theta\theta}=\Sigma$, and the remaining
-components $g_{tt}$, $g_{t\phi}$, $g_{\phi\phi}$ in standard Kerr-BL
-form; with $M>0$ and $0\le a<M$ (sub-extremal), let $\Box$ denote the
-full $(r,\theta)$ d'Alembertian
+components $g_{tt}$, $g_{t\phi}$, $g_{\phi\phi}$ in standard
+Kerr-Boyer--Lindquist form; with $M>0$ and $0\le a<M$ (sub-extremal), let $\Box$ denote the
+d'Alembertian acting on $(t,\phi)$-independent scalar fields,
 \begin{equation}
   \Box\phi := \frac{1}{\Sigma}\!\left[\partial_r(\Delta\,\partial_r\phi)
-  +\frac{1}{\sin\theta}\partial_\theta(\sin\theta\,\partial_\theta\phi)\right].
+  +\frac{1}{\sin\theta}\partial_\theta(\sin\theta\,\partial_\theta\phi)\right],
 \end{equation}
 Define the Boyer--Lindquist eigenvalue conditions
 \begin{equation}\label{eq:BLcond}
@@ -393,7 +393,8 @@ so $\Delta\psi'=-M$ (constant).
 Since $\Delta$, $r_\pm$, and $\kappa$ are all $\theta$-independent,
 $\psi$ depends only on $r$; thus the angular term in $\Box\psi$ vanishes.
 Then $\partial_r(\Delta\psi')=0$, giving $\Box\psi=0$.
-Hence $\Sigma\,\Box\ln\sigma_2=\Sigma\,\Box\ln\sigma_1+\Sigma\,\Box\psi=1+0=1$,
+By Step~1, $\Sigma\,\Box\ln\sigma_1=\Delta''/2=1$ for the Kerr family.
+Hence $\Sigma\,\Box\ln\sigma_2=\underbrace{\Sigma\,\Box\ln\sigma_1}_{=1\text{ (Step~1)}}+\underbrace{\Sigma\,\Box\psi}_{=0}=1$,
 so $K_2^{\mathrm{BL}}=1$ whenever $K_1^{\mathrm{BL}}=1$.
 
 \textbf{Step~3 ($\Delta''=2\Leftrightarrow R_{\mu\nu}=0$, Kerr family).}
@@ -418,13 +419,13 @@ with $\Delta\psi'=-M$ constant).\qed
 (i)~Corollary~\ref{cor:BL} applies to the Kerr-Boyer--Lindquist family
 (fixed $a$ shared by $\Sigma$ and $\Delta$, sub-extremal $0\le a<M$);
 it does not extend to general axisymmetric metrics without further analysis.
-(ii)~The condition $K_i^{\mathrm{BL}}:=\Sigma\,\Box\ln\sigma_i=1$ replaces
+(ii)~$\sigma_2$ depends on the global parameters $r_\pm$
+(horizon radii) rather than being a purely local expression;
+the Schwarzschild case $\sigma_2=r$ is purely local.
+(iii)~The condition $K_i^{\mathrm{BL}}:=\Sigma\,\Box\ln\sigma_i=1$ replaces
 $\sigma_2^2$ by the volume factor $\Sigma$ relative to
 Theorem~\ref{thm:field}; this is a motivated analogue, not a derivation
 from the framework's axioms.
-(iii)~$\sigma_2$ depends on the global parameters $r_\pm$
-(horizon radii) rather than being a purely local expression;
-the Schwarzschild case $\sigma_2=r$ is purely local.
 \end{remark}
 
 \begin{remark}[Non-vacuum and $\Lambda$]

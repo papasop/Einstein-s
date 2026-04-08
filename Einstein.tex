@@ -41,11 +41,11 @@
 \textit{Two routes to Einstein.}
 \begin{itemize}
 \item[\textbf{A.}] \emph{Thermodynamic bridge} (\S\S2--7): $K{=}1\xrightarrow{\mathrm{lin.}}\mathrm{OU}\to\mathrm{Clausius}$; combined with $S\propto A$ and the Jacobson argument~\cite{Jacobson}, this yields $G_{\mu\nu}=8\pi T_{\mu\nu}$ for general metrics.
-\item[\textbf{B.}] \emph{Direct algebraic route} (\S\ref{sec:field}): the eigenvalue self-consistency condition $\sigma_2^2\Box\ln\sigma_i=1$ is algebraically equivalent to $R_{\mu\nu}=0$ for spherically symmetric metrics, with \emph{no thermodynamic input}; the modified condition $\Sigma\Box\ln\sigma_i=1$ extends this to the full Boyer--Lindquist (Kerr) family (Corollary~\ref{cor:BL}).
+\item[\textbf{B.}] \emph{Direct algebraic route} (\S\ref{sec:field}): the eigenvalue self-consistency condition $\sigma_2^2\Box\ln\sigma_i=1$ is algebraically equivalent to $R_{\mu\nu}=0$ for spherically symmetric metrics, with \emph{no thermodynamic input}; the modified condition $K_i^{\mathrm{BL}}:=\Sigma\Box\ln\sigma_i=1$ extends this to the full Boyer--Lindquist (Kerr) family (Corollary~\ref{cor:BL}).
 \end{itemize}
 Route~A is general but requires $S\propto A$; Route~B is thermodynamically independent and now covers Schwarzschild and the full Kerr family, with general metrics remaining open (Gauss--Codazzi). The singularity structure (\S\ref{sec:singularity}) and scope (\S\ref{sec:discussion}) are discussed at the end.
 
-\textit{Main results:} (i)~$d_{c}>0\Leftrightarrow\mathrm{Sig}(G)=(1,1)$ (Theorem~4); (ii)~uniqueness of the evolution law (Theorem~5); (iii)~$\kappa_{K}=4d_{c}$ at critical damping (Theorem~6); (iv)~Clausius relation via stochastic dynamics within Class~A (Proposition~7); (v)~$\sigma_2^2\Box\ln\sigma_i=1\Leftrightarrow R_{\mu\nu}=0$ for spherical symmetry (Theorem~\ref{thm:field}), extended to Boyer--Lindquist family via $\Sigma\Box\ln\sigma_i=1$ (Corollary~\ref{cor:BL}); (vi)~$\sigma_1>0$ from Axiom~T (Proposition~\ref{prop:sigma1}); (vii)~intrinsic resolution scale $\sigma_1\gtrsim\ell_P$ (Proposition~\ref{prop:domain}).
+\textit{Main results:} (i)~$d_{c}>0\Leftrightarrow\mathrm{Sig}(G)=(1,1)$ (Theorem~4); (ii)~uniqueness of the evolution law (Theorem~5); (iii)~$\kappa_{K}=4d_{c}$ at critical damping (Theorem~6); (iv)~Clausius relation via stochastic dynamics within Class~A (Proposition~7); (v)~$\sigma_2^2\Box\ln\sigma_i=1\Leftrightarrow R_{\mu\nu}=0$ for spherical symmetry (Theorem~\ref{thm:field}), extended to Boyer--Lindquist family via $K_i^{\mathrm{BL}}:=\Sigma\Box\ln\sigma_i=1$ (Corollary~\ref{cor:BL}); (vi)~$\sigma_1>0$ from Axiom~T (Proposition~\ref{prop:sigma1}); (vii)~intrinsic resolution scale $\sigma_1\gtrsim\ell_P$ (Proposition~\ref{prop:domain}).
 
 \medskip\noindent\textbf{Notation.} $\mathrm{spec}(A)$: spectrum of $A$. $\mathrm{Sig}(G)=(p,q)$: inertia ($p$ positive, $q$ negative eigenvalues). $J=\bigl(\begin{smallmatrix}0&1\\-1&0\end{smallmatrix}\bigr)$: canonical symplectic matrix. $\|\cdot\|$: Euclidean norm on~$\mathbb{R}^{2}$. $\nabla$: Euclidean gradient on~$\mathbb{R}^{2}$.
 
@@ -367,7 +367,7 @@ Define the Boyer--Lindquist eigenvalue conditions
 Theorem~\ref{thm:field}), with $\sigma_1:=\sqrt{\Delta}$ and
 $\sigma_2:=\sqrt{\Delta}\,\bigl((r-r_-)/(r-r_+)\bigr)^{M/(2\kappa)}$,
 where $\kappa:=\sqrt{M^2-a^2}$ and $r_\pm:=M\pm\kappa$.
-Then:
+For these specific eigenvalues:
 \begin{equation}\label{eq:BLequiv}
   K_1^{\mathrm{BL}}=K_2^{\mathrm{BL}}=1\quad\Longleftrightarrow\quad R_{\mu\nu}=0.
 \end{equation}
@@ -389,8 +389,9 @@ hence $K_1^{\mathrm{BL}}=1\Leftrightarrow\Delta''=2$.
 Set $\psi:=\ln(\sigma_2/\sigma_1)=\int(-M/\Delta)\,dr$
 (integration constant fixed by $\psi\to 0$ as $r\to\infty$),
 so $\Delta\psi'=-M$ (constant).
-Then $\partial_r(\Delta\psi')=0$ and $\psi$ is $\theta$-independent,
-giving $\Box\psi=0$.
+Since $\Delta$, $r_\pm$, and $\kappa$ are all $\theta$-independent,
+$\psi$ depends only on $r$; thus the angular term in $\Box\psi$ vanishes.
+Then $\partial_r(\Delta\psi')=0$, giving $\Box\psi=0$.
 Hence $\Sigma\,\Box\ln\sigma_2=\Sigma\,\Box\ln\sigma_1+\Sigma\,\Box\psi=1+0=1$,
 so $K_2^{\mathrm{BL}}=1$ whenever $K_1^{\mathrm{BL}}=1$.
 
@@ -399,7 +400,14 @@ For the full Boyer--Lindquist metric~\cite[Ch.~6]{Chandrasekhar}
 with general $\Delta(r)$,
 direct computation gives $R_{\theta\theta}=-1+\Delta''/2$;
 all other independent Ricci components are proportional to $(\Delta''-2)$.
-Hence $R_{\mu\nu}=0\Leftrightarrow\Delta''=2$.\qed
+Hence $R_{\mu\nu}=0\Leftrightarrow\Delta''=2$.
+
+Combining Steps~1--3: $K_1^{\mathrm{BL}}=1\Leftrightarrow\Delta''=2\Leftrightarrow R_{\mu\nu}=0$.
+The $(\Rightarrow)$ direction also gives $K_2^{\mathrm{BL}}=1$ by Step~2.
+For $(\Leftarrow)$: $R_{\mu\nu}=0$ forces $\Delta''=2$ (Step~3), hence
+$K_1^{\mathrm{BL}}=1$ (Step~1), hence $K_2^{\mathrm{BL}}=1$ (Step~2),
+since $\sigma_2$ is constructed to satisfy $\Box\psi=0$ whenever
+$\Delta''=2$.\qed
 \end{proof}
 
 \begin{remark}[Scope and three limitations]
@@ -473,7 +481,10 @@ Conditions & 1 (2D wedge) & 2 (4D: one per eigenvalue) \\
 \end{tabular}
 \caption{Point-level $K{=}1$ and field-level eigenvalue self-consistency.
 At each level, the number of conditions equals the number of
-independent eigenvalues.}
+independent eigenvalues.
+The field-level principle shown is for the spherically symmetric sector
+(Theorem~\ref{thm:field}); the Boyer--Lindquist extension replaces
+$\sigma_2^2$ by $\Sigma$ and uses $K_i^{\mathrm{BL}}$ (Corollary~\ref{cor:BL}).}
 \label{tab:corr}
 \end{table}
 

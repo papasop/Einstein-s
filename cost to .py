@@ -224,8 +224,11 @@ K1_Vaidya = simplify(r**2 * Box4D_V(log(r*sqrt(fv))).subs(theta, pi/2).doit())
 check("Stage 5: Vaidya  K_1=1 iff dm/dt=0",
       K1_Vaidya.subs(mt_dot, 0) - 1, "static limit")
 # Confirm K_1 != 1 for dm/dt != 0
+# Use numerical substitution (mt_dot=1, m=M) — avoids fragile Python != on SymPy expressions
 K1_V_nonstatic = simplify(K1_Vaidya - 1)
-non_vac = K1_V_nonstatic.subs(mt_dot, 0) == 0 and K1_V_nonstatic != 0
+static_zero  = simplify(K1_V_nonstatic.subs(mt_dot, 0)) == 0
+nonstatic_nz = simplify(K1_V_nonstatic.subs([(mt_dot, 1), (mt, Ms)])) != 0
+non_vac = static_zero and nonstatic_nz
 results.append(("Stage 5: Vaidya  K_1≠1 for dm/dt≠0 (non-vacuum)", non_vac, "confirms Route B"))
 print(f"  {PASS if non_vac else FAIL} Stage 5: Vaidya  K_1≠1 for dm/dt≠0  [confirms Route B]")
 

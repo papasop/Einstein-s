@@ -176,13 +176,16 @@ def sub_nd(Av, Bv, Ev):
         s[diff(Er,r,k)] = diff(Ev,r,k)
     return s
 
-# Painleve-Gullstrand (E = sqrt(2M/r), B=1)
+# Painleve-Gullstrand: ds²=-(1-2M/r)dt²+2sqrt(2M/r)dtdr+dr²+r²dΩ²
+# g_tt=-A, A=1-2M/r;  g_tr=E, E=sqrt(2M/r);  g_rr=B, B=1
 E_PG = sqrt(2*Ms/r)
-s_PG = sub_nd(Integer(1), Integer(1), E_PG)
+s_PG = sub_nd(fs, Integer(1), E_PG)   # A=1-2M/r, B=1, E=sqrt(2M/r)
 K2_PG = simplify(K2_nd.subs(s_PG).doit())
 Rth_PG = simplify(Rth_nd.subs(s_PG).doit())
 check("Stage 4: Painleve-Gullstrand  K_2+R_theta=1",
       K2_PG + Rth_PG - 1)
+check("Stage 4: Painleve-Gullstrand  K_2=1, R_theta=0 (vacuum)",
+      K2_PG - 1)
 
 # ══════════════════════════════════════════════════════════════════
 print()

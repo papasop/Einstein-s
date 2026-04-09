@@ -160,9 +160,12 @@ gmet_nd = Matrix([[-Ar, Er,    0,    0],
                   [  0,  0,    0, r**2*sin(theta)**2]])
 _, _, Ric_nd = christoffel_ricci(gmet_nd, coords_sph)
 
-# K_2 for non-diagonal: det(g_2D) = -(AB+E^2)
+# K_2 for non-diagonal:
+# Full formula from r²·Box_4D(ln r): K_2 = (1/D)[∂_t(r·E/D) + ∂_r(r·A/D)]
+# For static E(r): ∂_t(rE/D)=0, reduces to (1/D)*∂_r(rA/D)
+# For time-dependent E(t,r): must include ∂_t term (see time-dep test below)
 D_nd = sqrt(Ar*Br + Er**2)
-K2_nd = simplify((1/D_nd) * diff(r * Ar / D_nd, r))
+K2_nd = simplify((1/D_nd) * diff(r * Ar / D_nd, r))   # static formula
 Rth_nd = simplify(Ric_nd[(2,2)].subs(theta, pi/2))
 
 check("Stage 4 [SYMBOLIC]: K_2+R_theta=1 for any A,B,E(r)",
@@ -251,6 +254,27 @@ K2_PGst = diff(r*fPG_st, r)   # = 1
 Rth_PGst = simplify(Ric_PGst[(2,2)].subs(theta, pi/2).doit())
 check("Stage 6: PG M=const (Schwarzschild)  K_2+R_theta=1",
       simplify(K2_PGst + Rth_PGst - 1))
+
+# ══════════════════════════════════════════════════════════════════
+print()
+print("="*65)
+print("STAGE 6b: Time-dependent non-diagonal  (general A,B,E)(t,r)")
+print("="*65)
+print("  Correct K_2 = (1/D)[∂_t(rE/D) + ∂_r(rA/D)]  (full 4D Box)")
+print("  Static formula (1/D)∂_r(rA/D) is the E(r) special case.")
+
+A_td=Function('A_td',positive=True); B_td=Function('B_td',positive=True); E_td=Function('E_td')
+A_tr_sym=A_td(t,r); B_tr_sym=B_td(t,r); E_tr_sym=E_td(t,r)
+
+gmet_tdg=Matrix([[-A_tr_sym,E_tr_sym,0,0],[E_tr_sym,B_tr_sym,0,0],
+                 [0,0,r**2,0],[0,0,0,r**2*sin(theta)**2]])
+_, _, Ric_tdg = christoffel_ricci(gmet_tdg, coords_sph)
+
+D_tdg = sqrt(A_tr_sym*B_tr_sym + E_tr_sym**2)
+K2_tdg = simplify((1/D_tdg)*(diff(r*E_tr_sym/D_tdg, t) + diff(r*A_tr_sym/D_tdg, r)))
+Rth_tdg = simplify(Ric_tdg[(2,2)].subs(theta, pi/2).doit())
+check("Stage 6b [SYMBOLIC]: K_2+R_theta=1 for any A,B,E(t,r)",
+      K2_tdg + Rth_tdg - 1, "full time-dependent non-diagonal")
 
 # ══════════════════════════════════════════════════════════════════
 print()
@@ -381,13 +405,15 @@ print("  WHAT IS PROVED:")
 print("  K_2 + R_theta = 1  for ALL spherically symmetric 4D metrics")
 print("    - Static diagonal (any A(r),B(r))               [SYMBOLIC]")
 print("    - Static non-diagonal (any A,B,E(r))            [SYMBOLIC]")
+print("    - Time-dependent non-diagonal (any A,B,E(t,r))  [SYMBOLIC]")
 print("    - Time-dependent: Vaidya ingoing null           [SYMBOLIC]")
 print("    - PG M=const (non-diagonal Schwarzschild form)  [SYMBOLIC]")
 print("    - f=g=h(r) deformed sphere (any h, any A,B)     [SYMBOLIC]")
 print()
 print("  Route B:  K_1 = K_2 = 1  iff  R_mu_nu = 0  (full vacuum)")
-print("    - K_2 = 1 <-> R_theta = 0  (angular vacuum only)")
-print("    - K_1 = 1 <-> R_scalar = 0 in static case")
+print("    - K_2 = 1 <-> R_theta = 0  (from identity, angular vacuum)")
+print("    - K_1 = 1 <-> R_scalar = 0  (when AB=const; true for all vacuum metrics)")
+print("    - K_1=K_2=1: R=0 AND R_theta=0 => R_tt=0 => all R_mu_nu=0  [proved]")
 print("    - Both needed: Vaidya has K_2=1 always, K_1=1 iff dm/dt=0")
 print()
 print("  OPEN: Route B for non-spherical metrics (f != g)")

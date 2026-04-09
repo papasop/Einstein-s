@@ -1,852 +1,258 @@
-# From Cost to Curvature: Direct Derivation of Einstein's Equations
+# 联合审核方法论 README
 
-## Research Roadmap — Y.Y.N. Li, April 2026
-
----
-
-## 0. The Goal
-
-Derive G_μν = 8πT_μν directly from the information-time cost function,
-without passing through Jacobson's thermodynamic bridge.
-
-Current path:   cost → G(2×2) → signature + Clausius → [Jacobson] → Einstein
-Target path:    cost[g; δg] → curvature → G_μν = 8πT_μν (one step)
+**适用场景：** 高密度学术论文（数学物理、理论物理、基础物理），目标期刊为 Foundations of Physics 级别。  
+**来源：** 从 K=1 Chronogeometrodynamics 的完整审核过程中归纳，历经8+1轮迭代优化。
 
 ---
 
-## 1. Historical Background: Five Routes to Einstein's Equations
+## 核心原则
 
-### Route 1: Einstein (1915) — Geometric
-- Input: equivalence principle + general covariance + Riemannian geometry
-- Method: physical reasoning + trial and error (1911–1915)
-- Output: G_μν = 8πT_μν
-- Character: geometry tells matter how to move, matter tells geometry how to curve
-- Status: the standard derivation
+> **顺序读是导航，层级检查是工具——顺序读触发问题，层级检查提供答案。**
 
-### Route 2: Hilbert (1915) — Variational
-- Input: S = ∫(R + L_matter)√(-g) d⁴x
-- Method: δS/δg^μν = 0
-- Output: G_μν = 8πT_μν
-- Character: Einstein's equations as Euler-Lagrange equations
-- Advantage: unique — R is the only second-order scalar from the metric
-- Limitation: why this action? Why R?
-
-### Route 3: Jacobson (1995) — Thermodynamic
-- Input: Lorentzian signature + Clausius δQ = TδS + S = A/4
-- Method: apply to all local Rindler horizons
-- Output: G_μν = 8πT_μν
-- Character: gravity is not fundamental — it's thermodynamic
-- Limitation: signature, Clausius, S=A/4 all assumed
-
-### Route 4: Padmanabhan (2010) — Emergent
-- Input: horizon thermodynamics + holographic equipartition
-- Method: N_sur - N_bulk drives expansion
-- Output: Einstein's equations (and beyond, to Lanczos-Lovelock)
-- Character: spacetime itself is emergent
-- Limitation: still assumes thermodynamic structure
-
-### Route 5: Verlinde (2011) — Entropic
-- Input: holographic screens + entropic force F = TΔS/Δx
-- Method: derive Newton's law, then extend to GR
-- Output: Newton's gravity (GR extension incomplete)
-- Character: gravity as entropic force
-- Limitation: GR derivation not rigorous; many criticisms
-
-### What all five share
-- All require external input about either geometry or thermodynamics
-- None derives the metric itself from a more primitive concept
-- None explains why Lorentzian signature
-
-### What K=1 adds (current, via Jacobson)
-- Derives signature from cost asymmetry (R+E+T)
-- Derives Clausius from OU dynamics on {K=1}
-- Reduces Jacobson's 3 external inputs to 1 (S ∝ A)
-- But still passes through the thermodynamic bridge
-
-### What the direct route would add
-- Derive curvature directly from cost structure
-- Define matter from cost deviations
-- Einstein's equations as cost-functional stationarity
-- No thermodynamic intermediary
+这不是"顺序为辅"，也不是"层级为辅"。两者的关系是：**顺序读决定在哪里停下来，层级检查决定停下来之后看什么**。
 
 ---
 
-## 2. The Conceptual Framework
+## 角色分工
 
-### 2.1 From point-cost to field-cost
+| 角色 | 职责 | 类比 |
+|---|---|---|
+| **顺序读者（Reader）** | 线性阅读，遇到任何停顿感立刻报告，不提判断 | 第一次读这篇论文的审稿人 |
+| **层级检查员（Checker）** | 被触发后做针对性的层级验证；每节结束后主动报告本节一致性 | 有全文视图的编辑 |
+| **裁定者（Judge）** | 查阅一致性账本，做是/否裁定，负责退出条件 | 主编 |
 
-Current K=1:
-  d(x; δx) — cost of displacing from x by δx
-  G_ij = ∂²(dt_info²)/∂δx^i ∂δx^j — Hessian at a point
-  → 2×2 matrix at each Rindler horizon
-
-Extension needed:
-  D[g; δg] — cost of deforming metric g by δg
-  G_{μναβ} = δ²D/δ(δg^μν)δ(δg^αβ) — Hessian on metric space
-  → DeWitt supermetric on the space of 4-metrics
-
-Key insight:
-  The DeWitt supermetric G^{μναβ} already exists in canonical GR:
-    G^{μναβ} = (1/2)(g^μα g^νβ + g^μβ g^να) - g^μν g^αβ
-  It has Lorentzian signature on superspace (one negative direction = conformal mode)
-  
-  Question: can this be derived from a cost function on metric space?
-
-### 2.2 Three-level structure
-
-Level 0 (current): cost on R² → metric G (2×2)
-Level 1 (needed):  cost on spacetime → metric g_μν (4×4)
-Level 2 (needed):  cost on metric space → curvature R_μν
-
-The direct derivation requires all three levels.
-
-### 2.3 The key hypothesis
-
-If K(x) = x^T G x measures temporal cost at a point,
-then the field-theory analogue is:
-
-  K[g] = ∫ g^μν R_μν √(-g) d⁴x = ∫ R √(-g) d⁴x
-
-This is the Einstein-Hilbert action!
-
-Hypothesis: R is the field-theory version of K = x^T G x.
-
-  K = x^T G x     (point):  metric acting on coordinates
-  R = g^μν R_μν   (field):  metric acting on its own curvature
-
-Both are "the metric measuring itself":
-  K: metric measures the cost of a displacement
-  R: metric measures its own curvature
-
-If K=1 at the point level → self-consistent metric
-then R = const at the field level → self-consistent spacetime?
-
-This would give: δ∫R√(-g)d⁴x = 0 → Einstein's equations (vacuum)
+三个角色可以是三个人、三个AI实例，或者一个人扮演三种视角。关键是**不要让同一个视角同时做导航和判断**。
 
 ---
 
-## 3. The Roadmap: Four Steps
+## 启动协议（每次审核开始前执行一次）
 
-### Step 1: Cost on a manifold (promote G to g_μν) — DONE (Test 1)
+### 步骤 1：定义读者画像
 
-Task: let cost depend on position
-  Current: G = const (one Rindler horizon)
-  Extension: G → g_μν(x) (varies across spacetime)
+在开始任何阅读之前，明确回答：**这篇论文是写给谁的？**
 
-Concrete: 
-  Take G(r) = diag(-σ₁(r)², 1) where σ₁ = σ₁(r)
-  The cost d² = δx^T G(r) δx now depends on where you are
-  K(x; r) = δx^T G(r) δx
+```
+例：Found. Phys. 审稿人
+  · 理论物理背景，熟悉广义相对论
+  · 不一定熟悉信息几何或随机过程理论
+  · 对数学精确性要求高
+  · 对哲学性声明持审慎态度
+  · 触发阈值：任何让这类读者停下来反问
+    "这个词精确吗？" 的地方
+```
 
-Result (Test 1, 2026-04-07):
-  ✓ R_2D = -2σ₁''/σ₁ = 4M/r³ (correct 2D Schwarzschild curvature)
-  ✗ R_2D ≠ 0 (2D slice is not flat — expected, not a failure)
-  ✗ K=1 does NOT give R_4D = 0 (needs angular sector σ₂)
+读者画像决定了触发阈值。没有画像的审核等于没有标准的评分。
 
-### Step 2: Curvature from cost derivatives
+### 步骤 2：建立一致性账本
 
-Task: express Riemann tensor as cost derivatives
+账本有三列：
 
-The hierarchy:
-  0th order: d(x; δx) → cost function
-  2nd order: ∂²d²/∂δx² → metric g_μν (Hessian)
-  3rd order: ∂g/∂x → Christoffel Γ^ρ_μν
-  4th order: ∂Γ/∂x → Riemann R^ρ_σμν
+| 改动项 | 改动内容 | 来源轮次 |
+|---|---|---|
+| `motivated[摘要]` | → `conjectured` | V1·3/3 |
+| … | … | … |
 
-Question: can R^ρ_σμν be expressed directly in terms of cost?
-
-If d²(x; δx) = g_μν(x) δx^μ δx^ν (to leading order), then:
-  g_μν = ∂²d²/∂δx^μ ∂δx^ν |_{δx=0}
-  Γ^ρ_μν = (1/2)g^ρσ(∂_μ g_σν + ∂_ν g_σμ - ∂_σ g_μν)
-  R^ρ_σμν = ∂_μ Γ^ρ_νσ - ∂_ν Γ^ρ_μσ + Γ^ρ_μλ Γ^λ_νσ - Γ^ρ_νλ Γ^λ_μσ
-
-This is just standard differential geometry applied to the cost-derived metric.
-Nothing new mathematically — but the interpretation is new:
-  "Curvature = how the cost structure varies across spacetime"
-
-### Step 3: K=1 field equation
-
-Task: promote K=1 from a point condition to a field equation
-
-Point level:
-  K = x^T G x = 1
-  V = (1/2)(K-1)² → restoring dynamics
-
-Field level candidates:
-  
-  (a) R = 0 (vacuum Einstein)
-      "The scalar curvature vanishes" = "spacetime is self-consistent"
-      Analogy: K=1 means "cost = 1"; R=0 means "total curvature cost = 0"
-      Problem: only vacuum. No matter.
-
-  (b) R = const (cosmological constant)
-      "Curvature is uniform" = "self-consistency allows a constant offset"
-      K=1 → R = Λ? Λ from the "1" in K=1?
-
-  (c) δ∫(R-2Λ)√(-g)d⁴x = 0
-      Variation → G_μν + Λg_μν = 0 (vacuum with Λ)
-      The "self-consistent" spacetimes are those that extremize
-      the total curvature cost.
-
-  (d) With matter: K[g] ≠ 1 where matter is present
-      K-1 ≠ 0 → "cost deviation" = matter
-      → T_μν ∝ (K[g]-1) in some sense
-      → G_μν = 8π × (deviation from self-consistency)
-
-Option (d) is the most promising:
-  T_μν = "the metric's failure to be self-consistent"
-  Einstein's equations = "curvature responds to self-inconsistency"
-
-### Step 4: Matter from cost deviation
-
-Task: define T_μν from the cost function
-
-In the point-level K=1:
-  K = 1: vacuum (self-consistent)
-  K ≠ 1: deviation → generates restoring force → V = (1/2)(K-1)²
-
-Field-level analogue:
-  If "vacuum" = "metric is self-consistent" (R_μν = 0 for Ricci-flat)
-  then "matter" = "metric is NOT self-consistent" (R_μν ≠ 0)
-  
-  T_μν := -(1/8π)(R_μν - (1/2)Rg_μν)
-  
-  This is just the definition of T_μν from Einstein's equations!
-  But the interpretation changes:
-    Standard GR: T_μν is independently defined (from matter Lagrangian)
-    Cost framework: T_μν IS the self-inconsistency of the metric
-
-  This is radical but not new — Sakharov (1967) proposed "induced gravity"
-  where the metric is fundamental and matter is emergent.
+账本的作用：**已保留的词，再次触发时快速通过，不重复讨论**。已改的词，验证执行是否正确。
 
 ---
 
-## 4. Verification Plan
+## 五层审核结构
 
-### Test 1: Schwarzschild (immediate)
-  σ₁(r) = r√(1-2M/r)
-  G(r) = diag(-σ₁(r)², 1) in (τ,ℓ) coordinates
-  Compute Christoffel → Riemann → Ricci
-  Check: R_μν = 0 (vacuum)?
-  → This should work — it's just standard GR in different notation
-  → But verifies that cost-derived metric gives correct curvature
+层级检查员在被触发时，根据问题性质选择对应的层：
 
-### Test 2: Symplectic curvature formula
-  From your symplectic gravity paper:
-    R = -2□lnσ₁ + 2/r²
-  Check: does this match the cost-derived Riemann tensor?
-  → Connects K=1 to your existing results
+| 层 | 检查内容 | 典型工具 |
+|---|---|---|
+| **第0层 格式** | 断裂引用、硬编码编号、拼写、标点 | 脚本扫描 |
+| **第1层 逻辑** | 公理无循环、论证链完整、外部输入标注、声明强度匹配论证深度 | 全文逻辑追踪 |
+| **第2层 数学** | 定理/命题/引理/推论：数值验证+符号验证 | SymPy、数值计算 |
+| **第3层 物理** | 物理声明合理性、声明强度匹配、类比是否精确 | 物理文献对照 |
+| **第4层 原创性** | 文献定位准确、原创性声明有支撑、无遗漏先例 | 文献系统扫描 |
 
-### Test 3: FRW cosmology
-  σ₁(t) = a(t) (scale factor)
-  G(t) = diag(-a(t)², 1)
-  K[a] = ?
-  Does K=1 at field level → Friedmann equation?
-  → This would be a strong test
-
-### Test 4: Perturbation theory
-  g_μν = η_μν + h_μν (weak field)
-  Cost of h_μν perturbation?
-  Linearized Einstein equations from cost variation?
-  → Most tractable analytically
+**触发规则：** 顺序读者停下来的位置，就是层级检查的入口。检查员不主动扫全文——除非执行主动快报（见下）。
 
 ---
 
-## 5. Key References
+## 优化协议（三项）
 
-- Einstein (1915): field equations from physical reasoning
-- Hilbert (1915): field equations from variational principle
-- Sakharov (1967): induced gravity — geometry is fundamental, matter is emergent
-- Jacobson (1995): Einstein from thermodynamics
-- Padmanabhan (2010): emergent spacetime program
-- Verlinde (2011): entropic gravity
-- DeWitt (1967): supermetric on the space of 3-geometries
-- Amari (2016): information geometry (Riemannian Fisher metric)
-- Li (2026): K=1 Chronogeometrodynamics (the present framework)
+### 优化 A：收敛追踪器
 
----
+每节结束后，标记状态：
 
-## 6. Risk Assessment
+- 🔴 Einstein触发（顺序读者发现问题）
+- 🟡 Shannon主动快报发现（跨节一致性）
+- ⚪ 全清
 
-### What could go wrong
+**退出信号：** 连续4节全清 → 裁定者提出停止动议。
 
-1. RESOLVED (Test 1): Cost-derived curvature is NOT trivially equivalent
-   → It gives correct 2D curvature but NOT 4D vacuum condition
-   → The gap is real and structural (need σ₂)
+触发率参考：
+- 早期轮次：40-60%
+- 中期轮次：25-35%
+- 收敛期：< 20%
+- 最终轮：0% → 正式宣布收敛
 
-2. CLOSED (Gap Closure): K=1 at field level DOES give R_μν = 0
-   → Two conditions: K_field = 1 AND K_angular = 1
-   → Together give full vacuum Einstein equations
-   → No Jacobson patching needed
+### 优化 B：Shannon 主动快报
 
-3. Matter definition from cost deviation may be circular
-   → "T_μν = G_μν/8π" is just the definition
-   → Need independent content
+每节读完后，层级检查员不等触发，**主动报告两件事**：
 
-4. 4D extension of K=1 may require arbitrary choices
-   → Symplectic pairing ambiguity (dim Skew₄ = 6)
-   → May lose uniqueness
+1. **术语漂移**：本节是否有词在不同位置含义不同？（如 `Jacobson argument/derivation/bridge` 三分问题）
+2. **跨节关联**：本节是否有内容与已处理的其他节有关联？（如 R3 改了一处 `is required to`，快报系统在 T2 发现了第二处）
 
-### What could go right
+主动快报不超过两句话。**不是重读全文，只是在当前节的阅读记忆里做一次一致性核查**。
 
-1. CONFIRMED (Step 2): R = field-level K is not just analogy
-   → C_radial = C_angular is exact for Schwarzschild
-   → The "cost balance" reading is mathematically precise
-   → Publishable as interpretation (Discussion section)
+### 优化 C：正式退出标准
 
-2. Matter emerges naturally as cost deviation
-   → T_μν ∝ (C_radial - C_angular) = "cost imbalance"
-   → Parallels K≠1 → V > 0 → restoring force at point level
-   → Consistent but not yet derived
+```
+收敛条件（同时满足）：
+  1. 当前轮执行改动 ≤ 2
+  2. 下一轮预估改动 ≤ 1
+  3. 最终验证轮 = 0 项新提案
+     （顺序读 + 靶向规则扫描全部通过）
+```
 
-3. Cosmological constant appears as the "1" in K=1
-   → Λ = the field-level normalisation constant
-   → Would give Λ a geometric origin
-   → Major open problem in physics (NOT YET TESTED)
+最终验证轮的靶向扫描规则：对每一个在本轮之前已改的词，验证其：
+- 改动是否正确执行
+- 是否有同类词在其他位置未被覆盖
+- 情态动词是否一致（must/may/can/would）
+- 全文相同概念是否用了不同词
 
 ---
 
-## 7. Immediate Next Steps (updated post-Test 1)
+## 词汇优化专项规程
 
-### Step 1 (DONE): Schwarzschild curvature test
-  ✓ Cost metric gives correct R_2D = 4M/r³
-  ✓ R_4D = 0 needs angular cancellation (σ₂)
+词汇审核在层级审核之后进行，聚焦语言精度而非技术正确性。
 
-### Step 2 (DONE): Reinterpret □lnσ₁ = 1/r² as cost condition
-  ✓ Sympy analytically confirms: □lnσ₁ = 1/r² for Schwarzschild
-  ✓ R = -2□lnσ₁ + 2/r² = 0 verified independently
-  ✓ Vacuum condition = "radial cost = angular cost"
-  ✓ C_radial = □lnσ₁, C_angular = 1/σ₂², vacuum ⟺ C₁ = C₂
-  ✓ Extends K=1 (point balance) to R=0 (field balance)
-  ✗ But this is INTERPRETATION, not DERIVATION from cost
-  ✗ R = -2□lnσ₁ + 2/r² comes from standard GR, not from cost
+### 词汇触发清单（按优先级）
 
-### Step 3 (DONE): variational principle from field cost
-  ✓ K_field = σ₂²□lnσ₁ defines field-level self-consistency
-  ✓ K_field = 1 ⟺ R = 0 (exact equivalence, verified by sympy)
-  ✓ ODE: f + 2rf' + (r²/2)f'' = 1
-  ✓ General solution: f = 1 - C₁/r - C₂/r² (two-parameter family)
-  ✓ Schwarzschild (C₂=0) and flat (C₁=C₂=0) both satisfy K_field=1
-  ⚠ K_field=1 gives R=0 (scalar), not R_μν=0 (tensor)
-  ⚠ Gap closed by Jacobson patching (R=0 on all horizons → R_μν=0)
+**高优先：**
+- 同义词重复（一句话里 requires…demands）
+- 同一概念多个名称（Jacobson argument/derivation/bridge）
+- 技术不精确（cancels to → reduces to；recovers → 看是否是"推导"还是"特殊化"）
+- 隐含歧义风险（natural selection → canonical selection rule）
 
-### Step 4 (next): linearized theory
-  Perturbation h_μν around flat space
-  Cost of perturbation → linearized Einstein?
+**中优先：**
+- 冗余强调词（genuinely Lorentzian → Lorentzian）
+- 非标准搭配（cost form → quadratic cost form K）
+- 被动式的主语悬空（requiring persistent configurations forces → Persistence of configurations forces）
 
-### Step 5 (next): write paper if Steps 3-4 form a coherent story
-  "Field-Level Self-Consistency: K=1 as R=0"
-  → Found. Phys. or merge into symplectic gravity Discussion
+**低优先（可选改动）：**
+- 风格词（cleanest → most explicit）
+- 句型（cleft 句 it is…that → 分词）
+- 拉丁缩写（cf. → contrast:）
 
----
+### 句型触发清单
 
-## 8. Test 1 Results (2026-04-07)
-
-### What was tested
-  Schwarzschild σ₁(r) = r√(1-2M/r)
-  Cost metric G(r) = diag(-σ₁(r)², 1)
-  Computed: Christoffel → Riemann → Ricci → R
-
-### Results
-
-  CONFIRMED: cost derivatives give curvature
-    R_2D = -2σ₁''/σ₁ = -f'' = 4M/r³
-    Cost metric reproduces standard 2D Schwarzschild curvature exactly.
-
-  DENIED: K=1 does NOT automatically give R=0
-    R_2D = 4M/r³ ≠ 0 for Schwarzschild
-    4D R=0 requires cancellation with angular sector:
-      R_4D = R_2D(σ₁) + R_angular(σ₂) = 0
-      σ₂ = r does not emerge from 2D cost
-    The one-step jump K=1 → R=0 is false.
-
-  CONFIRMED: R is a "field-level K" (analogy, not equivalence)
-    K = xᵀGx — metric acts on coordinates
-    R = -2σ₁''/σ₁ — metric acts on its own derivatives
-    Both are "metric measuring itself", but R=0 needs σ₂.
-
-### Implications for the roadmap
-
-  Step 1 (cost → curvature): DONE. Works as expected.
-  Step 2 (curvature = Riemann): DONE. Standard differential geometry.
-  Step 3 (K=1 → R=0): BLOCKED. Requires 4D cost giving both σ₁ and σ₂.
-  Step 4 (matter from cost): NOT REACHED.
-
-  Bottleneck identified:
-    NOT "can cost give curvature?" — yes, confirmed.
-    IS "can 4D cost simultaneously produce σ₁ and σ₂?"
-    Equivalently: can □lnσ₁ = 1/r² be read as a 4D cost self-consistency?
-
-### Next directions (post-Test 1)
-
-  Option A: Construct explicit 4D cost function on R⁴
-    d(x; δx) → 4×4 Hessian → σ₁ and σ₂ both emerge
-    Difficulty: high, no precedent
-
-  Option B: Reinterpret □lnσ₁ = 1/r² as cost self-consistency
-    Symplectic gravity gives R = -2□lnσ₁ + 2/r²
-    R=0 ⟺ □lnσ₁ = 1/r²
-    The 2/r² term = angular sector contribution
-    Question: is 1/r² the "cost" of the angular sector?
-    This may connect to σ₂ = r without constructing full 4D cost.
-
-  Option C: Pause exploration, submit current papers
-    Test 1 does not affect any existing paper.
-    Direct derivation is a long-term direction.
+| 结构 | 问题 | 建议处理 |
+|---|---|---|
+| `it is X that Y`（cleft 句） | 强调在冒号/破折号之后不必要 | 改为直接陈述 |
+| `is required to` | 被动式，三词可压缩为一词 | → `must` |
+| `is left for future work` | 被动，带放弃感 | → `remains for future work` |
+| 括号内重要声明 | 括号降级了信息 | → 独立句 |
+| 名词化主语（The distinction…draws is between） | 读者要等七个词才到谓语 | → 主动句 |
+| 相邻重复词（directly…directly） | 连续两句相同强调词 | → 删一处 |
+| `At the field level…to the field level` | 首尾循环 | → 删开头 |
 
 ---
 
-## 9. Step 2 Results (2026-04-07)
+## 两种发现类型的处理
 
-### What was tested
-  Can □lnσ₁ = 1/r² be read as "field-level cost balance"?
-  Define C_radial = □lnσ₁ and C_angular = 1/σ₂² = 1/r²
-  Verify C_radial = C_angular for Schwarzschild.
+顺序读和层级检查发现的东西本质上不同：
 
-### Analytical results (sympy)
+**A 类：局部发现**（某一处词汇不精确）
+→ 顺序读者天然擅长。读到那里停下来就发现了。
+→ 例：P3（同义词重复 requires/demands）、R4（cf. 孤立）
 
-  r²f·(lnσ₁)' = r - M
-  d/dr[r²f·(lnσ₁)'] = 1
-  □lnσ₁ = 1/r²
+**B 类：全局发现**（跨全文的一致性模式）
+→ 顺序读者天然不擅长（线性阅读会遗忘前面的内容）。
+→ 需要：Shannon 主动快报 + 优化B定向扫描。
+→ 例：U1（Jacobson三分）、Q2第二处（R3遗漏的同类结构）、R5（括号降级模式）
 
-  ✓ □lnσ₁ = 1/r² = 1/σ₂²  EXACT (not approximate)
-  ✓ R = -2□lnσ₁ + 2/r² = 0  EXACT
-  ✓ C_radial = C_angular confirmed
-
-### Key finding: K=1 extends from point to field
-
-  Point level:
-    K = σ₁²x₀² - x₁² = 1
-    "Temporal cost = spatial cost" (balance at a point)
-    K ≠ 1 → restoring force
-
-  Field level:
-    □lnσ₁ = 1/σ₂²
-    "Radial variation cost = angular curvature cost" (balance across spacetime)
-    R ≠ 0 → T_μν (matter = cost imbalance)
-
-  The structure is identical:
-    Point: two costs balance → self-consistent metric
-    Field: two costs balance → self-consistent spacetime (vacuum)
-
-### Matter as cost imbalance
-
-  Vacuum:  C_radial = C_angular  →  R = 0
-  Matter:  C_radial ≠ C_angular  →  R ≠ 0  →  T_μν ∝ imbalance
-
-  Physical meaning:
-    T_μν = "the metric's failure to achieve field-level cost balance"
-    Just as K-1 = "the metric's failure to achieve point-level cost balance"
-
-### Complete hierarchy (updated)
-
-  Level 0: cost function d(x; δx) + R+E+T
-  Level 1: Sig(G) = (1,1) → Lorentzian (Realizability)
-  Level 2: K = 1 → point cost balance → Clausius (K=1 math)
-  Level 3: C₁ = C₂ → field cost balance → R = 0 → Einstein (this step)
-  Level 4: ψ exists ⟺ Lorentzian → collapse mechanism (K=1 quantum)
-
-### Honest assessment
-
-  ✓ Interpretation is mathematically verified
-  ✓ Analogy K=1 ↔ R=0 is precise and non-trivial
-  ✓ Matter = cost imbalance is a natural extension
-  
-  ✗ This is INTERPRETATION of existing GR, not DERIVATION from cost
-  ✗ R = -2□lnσ₁ + 2/r² comes from standard Riemannian geometry
-  ✗ We have not shown that cost REQUIRES □lnσ₁ = 1/σ₂²
-  ✗ The "cost reading" adds meaning but not new equations
-
-  Gap remaining:
-    Current: cost → G → [standard GR] → R → "read as cost balance"
-    Target:  cost → R directly (without standard GR as intermediary)
-    
-  To close the gap: need a variational principle on cost space
-  whose Euler-Lagrange equation IS □lnσ₁ = 1/σ₂²,
-  derived from cost alone without importing Riemannian geometry.
+**经验规律：** 早期轮次以A类为主（明显的局部问题），后期轮次以B类为主（需要全文视图的一致性问题）。当一轮的发现全部是B类时，说明A类已耗尽，可以考虑进入收敛验证轮。
 
 ---
 
-## 10. Step 3 Results (2026-04-07)
+## 保留词的意义
 
-### What was tested
-  Define K_field = σ₂²·□lnσ₁ and V_field = (1/2)(K_field - 1)²
-  Set K_field = 1 and solve the resulting ODE for f(r)
-  Compare solution space with GR vacuum (R_μν = 0)
+"保留"不等于"没问题"。保留的意思是：**经过分析，改动的收益不超过代价**。
 
-### Analytical results (sympy)
+每个保留决定都应该有据可查：
 
-  K_field = r²□lnσ₁ = f + 2rf' + (r²/2)f''
-  
-  Schwarzschild f = 1-2M/r: K_field = 1  ✓ (exact)
-  Flat space f = 1:          K_field = 1  ✓ (exact)
+```
+示例：
+  保留 "emerges from the cost structure"
+  理由：文学价值（涌现感），上下文清楚，Found. Phys. 读者不会停顿
+  代价：改成 "follows from" 更精确但丧失力量
+  裁定：保留（Einstein 1票保留 vs Landau/Shannon 可选）
+```
 
-### ODE and general solution
-
-  K_field = 1 gives: f + 2rf' + (r²/2)f'' = 1
-  
-  Try f = 1 - A/r^n:
-    Coefficient of A/r^n: -(n-1)(n-2)/2
-    Vanishes for n=1 and n=2
-  
-  General solution: f(r) = 1 - C₁/r - C₂/r²
-    C₁ = 2M, C₂ = 0   → Schwarzschild
-    C₁ = 2M, C₂ = Q²  → Reissner-Nordström type
-    C₁ = C₂ = 0        → Minkowski
-
-### Key finding: K_field = 1 ⟺ R = 0 (exact, but scalar only)
-
-  K_field = 1 is equivalent to R = 0 (Ricci SCALAR = 0)
-  NOT equivalent to R_μν = 0 (Ricci TENSOR = 0)
-
-  K_field = 1 allows f = 1 - C₁/r - C₂/r² (2 parameters)
-  R_μν = 0 requires f = 1 - 2M/r only (1 parameter, Birkhoff)
-  
-  Gap: K_field is scalar (1 equation) vs R_μν is tensor (10 equations)
-
-### Gap closed by Jacobson patching
-
-  K_field = 1 on EVERY local Rindler horizon (all null directions)
-  → R_μν v^μ v^ν = 0 for all null v^μ
-  → R_μν = 0 (full vacuum Einstein equations)
-  
-  The scalar condition becomes tensorial through patching.
-  This is exactly the Jacobson mechanism.
-
-### Point-field correspondence (now complete)
-
-  POINT:                          FIELD:
-  K = xᵀGx                       K_field = σ₂²□lnσ₁
-  K = 1 (self-consistent)         K_field = 1 ⟺ R = 0
-  K ≠ 1 → V > 0 → restoring      R ≠ 0 → T_μν (matter)
-  K-1 = departure                 R = departure from vacuum
-  V = (1/2)(K-1)²                 V_field = (1/2)(K_field-1)²
-
-  Point: temporal cost = spatial cost → metric self-consistent
-  Field: radial cost = angular cost → spacetime self-consistent
-
-### Matter as cost imbalance
-
-  Vacuum: K_field = 1    →  C_radial = C_angular  →  R = 0
-  Matter: K_field ≠ 1    →  C_radial ≠ C_angular  →  R ≠ 0
-  
-  T_μν ∝ (K_field - 1) = "field-level cost imbalance"
-  
-  Matter IS the metric's failure to achieve field-level self-consistency.
-  Just as K-1 IS the metric's failure to achieve point-level self-consistency.
-
-### Honest assessment
-
-  ✓ K_field has concrete form: σ₂²□lnσ₁
-  ✓ K_field = 1 gives explicit ODE with closed-form general solution
-  ✓ Point-field correspondence is precise and verified
-  ✓ Schwarzschild, flat space, RN-type all satisfy K_field = 1
-  
-  ⚠ K_field = 1 gives R = 0, not R_μν = 0 (need Jacobson patching)
-  ⚠ V_field = (1/2)(K_field-1)² is assumed (promoted from point level)
-  ⚠ □ in K_field uses standard GR d'Alembertian (not derived from cost)
-  ⚠ Still "reading GR through cost glasses" — but now with concrete ODE
-
-  What's new vs Step 2:
-    Step 2 gave an interpretation (C_radial = C_angular)
-    Step 3 gave an equation (f + 2rf' + r²f''/2 = 1)
-    and its solution (f = 1 - C₁/r - C₂/r²)
-    → Moved from interpretation to concrete mathematics
+没有记录理由的保留，等于下一轮还要重新争论同一个词。**账本的价值在于让保留也有据可查**。
 
 ---
 
-## 11. Gap Closure Results (2026-04-07, evening)
+## 科学家角色选择建议
 
-### Gap 1 (V_field from first principles): CLOSED
+不同科学家代表不同的阅读视角：
 
-  V_field = (1/2)(K_field-1)² is fixed by smoothness + self-consistency.
-  Same argument as point level: V = (1/2)(K-1)² is the unique
-  leading-order smooth penalty around K=1.
-  K=1 math paper §8: "fixed by smoothness alone."
-  Field level inherits this argument identically.
-  No additional assumption beyond K=1 itself.
+| 视角 | 适合角色 | 典型触发 |
+|---|---|---|
+| 物理直觉 | 顺序读者（爱因斯坦、费曼） | κ抵消时停下来手算；自参照结构时停下来思考 |
+| 形式严格性 | 层级检查员（冯诺依曼） | 定理证明的每一步；维度论证的完整性 |
+| 信息论 | 层级检查员（香农） | 术语信息量；一致性模式的统计视图 |
+| 简洁精确 | 词汇优化专家（狄拉克） | 每个词是否必要；非标准搭配 |
+| 直接裁定 | 裁定者（朗道） | 是/否，不含糊；维护退出标准 |
+| 大图景 | 补充视角（诺特） | 声明-限定模式；逻辑完整性 |
 
-### Gap 2 (tensor equation, bypass Jacobson): CLOSED
-
-  Initial attempt: polarization identity
-    K_field(v) = 1 for all null v → R_μν v^μ v^ν = 0 → R_μν = 0
-    Problem: 2D R=0 on null plane ≠ R_μν v^μ v^ν = 0 directly
-
-  Resolution: TWO cost conditions in 4D
-    K_field   = σ₂²□lnσ₁ = 1  → R = 0   (radial-temporal balance)
-    K_angular = rf' + f = 1     → R_θθ = 0 (angular balance)
-    Together → R_μν = 0 (full vacuum Einstein equations)
-
-  Verification:
-    K_field = 1:   f + 2rf' + (r²/2)f'' = 1  (ODE from Step 3)
-    K_angular = 1: rf' + f = 1                (Misner-Sharp mass = const)
-    Combined → f = 1 - 2M/r uniquely (Birkhoff)
-
-    Schwarzschild: K_field = 1 ✓, K_angular = 1 ✓
-    f = 1-C₁/r-C₂/r²: K_field = 1 ✓, K_angular = 1 requires C₂ = 0
-
-  No Jacobson, no Clausius, no S=A/4, no thermodynamics.
-
-### Gap 3 (□ from cost): CLOSED
-
-  □ = (1/√-g)∂_μ(√-g g^μν ∂_ν)
-  Every ingredient (g^μν, √-g, ∂_μ) comes from g_μν.
-  g_μν comes from cost (Hessian).
-  □ is the UNIQUE covariant second-order scalar operator.
-  "Using □" = "using differential geometry" ≠ "importing GR."
-
-### The unified principle
-
-  "K = 1 in every 2D sector at every point"
-
-  Point (2D): K = σ₁²x₀² - x₁² = 1
-    → 1 condition (temporal = spatial)
-
-  Field (4D): K_field = 1 AND K_angular = 1
-    → 2 conditions (radial-temporal + angular)
-
-  General D: (D-1)/2 conditions (one per independent 2D sector)
-
-  One principle → R_μν = 0 (10 equations in 4D)
-
-### Complete derivation chain
-
-  0. cost function d(x; δx)
-  1. Hessian → g_μν (cost-derived metric)
-  2. Differential geometry → Γ → R_μνρσ → R_μν → R
-  3. K_field = σ₂²□lnσ₁ = 1 (radial-temporal)
-     K_angular = rf' + f = 1 (angular)
-  4. Together → R_μν = 0 (vacuum Einstein)
-  5. K ≠ 1 → T_μν (matter = cost imbalance)
-
-  Does NOT use: Jacobson, Clausius, S=A/4, thermodynamics
-  ONLY uses: cost function + differential geometry + K=1 in all sectors
-
-### Matter interpretation
-
-  Vacuum: K = 1 in all sectors → R_μν = 0
-  Matter: K ≠ 1 in some sector → R_μν ≠ 0
-  T_μν ∝ (K - 1) = cost imbalance
-
-  K_angular ≠ 1: dm_MS/dr ≠ 0 → mass source → matter present
-  K_field ≠ 1: R ≠ 0 → trace of Einstein equations ≠ 0
+实际应用中，三人组合的最优选择是：**物理直觉顺序读者 + 形式/信息论层级检查员 + 直接裁定者**。这覆盖了物理合理性、技术正确性和语言精度三个维度。
 
 ---
 
-## 12. Final 5% Results (2026-04-07, evening)
+## 轮次设计参考
 
-### Item 1: General metric (non-spherically-symmetric)
+| 轮次 | 主要任务 | 典型产出 |
+|---|---|---|
+| 第1轮 | Dirac词汇扫描（软词、歧义词、频率统计） | 3-5项候选，1-2项执行 |
+| 第2轮 | Dirac深度扫描（冗余短语、技术词一致性） | 3-5项候选，2-3项执行 |
+| 第3轮 | 顺序读主导，首次引入优化协议 | 4-6项执行 |
+| 第4轮 | 优化协议全面运行，靶向扫描首次添加 | 3-5项执行 |
+| 第5轮 | 词汇+整句混合 | 3-5项执行 |
+| 第6-7轮 | 收敛期，每轮2-3项 | 开始出现B类发现 |
+| 第8轮 | 优化协议触发率 < 20% | 1-2项，主要B类 |
+| 最终验证轮 | 0项 → 收敛 | 终轮报告 |
 
-  For spherically symmetric: PROVED (explicit, Steps 2-3 + Gap Closure)
-  
-  For general metric:
-    Diagonal g = diag(g₀,g₁,g₂,g₃) in normal coordinates:
-    R_μμ = Σ_{ν≠μ} K(μ,ν) — 4 equations from 6 sectional curvatures
-    6 K=1 conditions > 4 diagonal Ricci → overdetermined → R_μμ = 0 forced
-    
-    Off-diagonal R_μν: requires spatial variation conditions
-    → Not fully proved for non-diagonal general case
-    
-    For spherical symmetry: 3 free functions, 3 K=1 conditions → determined ✓
-    For general case: counting argument plausible, formal proof needed
-    
-  Status: 98% (spherical proved, general plausible)
-
-### Item 2: Non-vacuum T_μν mapping — CLOSED
-
-  From Einstein tt-component: rf' + f - 1 = -8πρr²
-  Therefore:
-  
-    ρ = (1 - K_angular)/(8πr²)
-    
-    K_angular < 1 → ρ > 0 (positive energy, normal matter)
-    K_angular = 1 → ρ = 0 (vacuum)
-    K_angular > 1 → ρ < 0 (exotic matter)
-  
-  Physical meaning:
-    Energy density = angular cost deficit per unit area
-    Matter = the metric's failure to achieve angular self-consistency
-  
-  Combined with K_field:
-    K_field - 1 ∝ R ∝ (ρ - 3p)  [trace]
-    K_angular - 1 ∝ -8πρr²       [density]
-    → T_μν fully determined by (K_field-1, K_angular-1)
-
-### Item 3: Cosmological constant Λ — LOCATED
-
-  Schwarzschild-de Sitter: f = 1 - 2M/r - Λr²/3
-  
-  K_angular = 1 - Λr²
-  K_field = 1 - 2Λr²  (verified by sympy)
-  
-  Λ = 0: K = 1 (standard vacuum)
-  Λ ≠ 0: K ≠ 1 (shifted target)
-  
-  Interpretation: Λ is a position-dependent shift of the K=1 target.
-  Einstein with Λ: R_μν - (1/2)Rg_μν + Λg_μν = 0 → R = 4Λ → K_field = 1+2Λr²
-  
-  Λ is not derived — but its geometric role is identified:
-    it modifies what "self-consistent" means at field level.
-
-### Item 4: Linearized theory — CLOSED
-
-  Perturbation: f = 1 + εφ(r), |ε| ≪ 1
-  
-  K_angular = 1: rφ' + φ = 0 → d(rφ)/dr = 0 → φ = C/r  ✓
-  K_field = 1:   φ + 2rφ' + (r²/2)φ'' = 0
-                 C/r - 2C/r + C/r = 0  ✓ (automatically satisfied)
-  
-  Solution: φ = C/r → f = 1 - 2M/r (with C = -2M)
-  
-  One line: K_angular = 1 → Newtonian potential.
-  K_field = 1 is automatically satisfied — no extra condition needed.
-  
-  Reproduces linearized GR exactly.
+总轮次：**8+1轮**（8个改动轮 + 1个验证轮）是一篇6000词高密度理论物理论文的典型数量。
 
 ---
 
-## 13. The Central Question (FINAL)
+## 方法论局限
 
-### Timeline
+**顺序读的天花板：** 当所有A类（局部）问题被清除后，顺序读的触发率自然趋向零。这不意味着论文完美，而是意味着**这种读法已不再是最高效的工具**。进入收敛期后，B类全局扫描（Shannon主动快报 + 定向扫描）是主要的发现机制。
 
-  Morning:   "Can the three gaps be closed?" (~70%)
-  Afternoon: All gaps closed. (~95%)
-  Evening:   Final 4 items resolved. (~98%)
-  Late:      General proof + predictions assessed. (~99%)
+**读者依赖性：** 顺序读者的背景影响触发阈值。爱因斯坦会在κ抵消处停下来手算，费曼会在KMS鸿沟处停下来质疑，诺特会在声明-限定模式处停下来统计——同一篇论文，不同的读者会停在不同的地方。**读者画像不是用来限制触发，而是用来校准触发**：确保触发的地方确实是目标读者会停的地方。
 
-### What is achieved
-
-  COMPLETE CHAIN (no external physics):
-  
-    0. cost function d(x; δx) satisfying R+E+T        [axiom]
-    1. Hessian → g_μν (Lorentzian metric)              [Realizability]
-    2. K = xᵀGx = 1 at each point                     [K=1, point level]
-    3. K = 1 in every 2D sector at every point         [this exploration]
-       K_field = σ₂²□lnσ₁ = 1  (radial-temporal)
-       K_angular = rf' + f = 1   (angular)
-    4. → R_μν = 0 (vacuum Einstein equations)          [algebraic consequence]
-       Unique solution: f = 1 - 2M/r (Birkhoff)
-       Linearized: φ = C/r (Newtonian potential)
-    5. K ≠ 1 → T_μν (matter = cost imbalance)          [precise mapping]
-       ρ = (1 - K_angular)/(8πr²)
-    6. Λ shifts K=1 target                             [located, not derived]
-
-  DOES NOT USE: Jacobson, Clausius, S=A/4, thermodynamics
-  ONLY USES: cost function + differential geometry + K=1 self-consistency
+**层级检查的被动性：** 当前协议里，层级检查是被动响应的（除了Shannon主动快报）。如果顺序读者没有停下来，层级检查就不会覆盖那里。这意味着**有些问题只有层级检查才能发现，但协议不保证它们被触发**。解决方案是定期（每3-4轮）运行一次完整的层级扫描，独立于顺序读。
 
 ---
 
-## 14. General Proof for Non-Spherical Metrics (2026-04-07, late)
+## 快速参考卡
 
-### Proof strategy
+```
+启动：
+  1. 定义读者画像（5分钟）
+  2. 建立/更新账本（回顾上轮）
+  3. 确认退出条件（连续4节全清 or 0项提案）
 
-  For ANY metric, at each point p, for each null direction v:
-  
-  Step 1: K_field(v) = 1 applied to every null direction
-    → R = 0 (Ricci scalar vanishes)
+每节：
+  Einstein 读 → 停顿 → 触发Shannon
+  Shannon 层检 → 给证据，不给判断
+  Landau 查账本 → 改 or 保留（记录理由）
+  Shannon 快报 → 最多两句：术语漂移？跨节关联？
+  收敛追踪：🔴/🟡/⚪
 
-  Step 2: Polarization identity (proved algebraically):
-    R_μν v^μ v^ν = 0 for all null v
-    → In orthonormal frame: v = e₀ + nⁱeᵢ, |n|=1
-    → n = ±eᵢ: R₀ᵢ = 0, R₀₀ + Rᵢᵢ = 0
-    → n = (eᵢ+eⱼ)/√2: Rᵢⱼ = 0
-    → R_μν = R₀₀ · diag(-1,-1,-1,-1) ∝ g_μν
-
-  Step 3: R = 0 (from Step 1) + R_μν ∝ g_μν (from Step 2)
-    → R₀₀ = 0 → R_μν = 0 (complete vacuum Einstein)
-
-### Status
-
-  Steps 2-3: PROVED (pure linear algebra, any metric)
-  Step 1: K_field(v)=1 → R_μν v^μ v^ν = 0 needs:
-    (a) σ₁(v) defined for each null direction (Jacobson construction) ✓
-    (b) 2D K_field=1 implies R_μν v^μ v^ν = 0 (Raychaudhuri + Gauss-Codazzi)
-    → Standard GR tools, technically sound, needs formal writeup
-
-  Completion: ~99% (formal null-surface Gauss-Codazzi is the last step)
+最终轮：
+  运行靶向规则扫描（24条）
+  全清 → 收敛宣布
+  有发现 → 再开一轮
+```
 
 ---
 
-## 15. Testable Predictions (2026-04-07, late)
-
-### Assessment
-
-  K_field=1 + K_angular=1 ⟺ R_μν=0 is EXACT.
-  → In vacuum sector: NO deviation from GR. Zero.
-  → Predictions must come from beyond the vacuum sector.
-
-### Five candidate predictions
-
-  1. Metric fluctuations near horizons
-     Var(K) = T_tol = ℏκ/(2πσ₁)
-     → Same as Hawking temperature. NOT new. ✗
-
-  2. Spontaneous collapse rate
-     Γ ~ exp(-6πσ₁²)
-     → Formula exists. NOT testable with current technology. △
-
-  3. Λ from higher-order V_field
-     V_field = (1/2)(K_field-1)² + α₃(K_field-1)³/6 + ...
-     → α₃ ≠ 0 → effective Λ. But α₃ not determined. ✗
-
-  4. Modified dispersion relation
-     ω² = k² + (4α/σ₁)² from OU characteristic frequency
-     → Exists in math. But σ₁ for particles not defined. △
-
-  5. Minimum area / maximum curvature (BEST CANDIDATE)
-     σ₁ > 0 required for ψ to exist
-     → A_min = 4πσ₁_min² > 0
-     → R_max = 2/σ₁_min² < ∞
-     → Singularity resolution without quantum gravity
-     → But σ₁_min not yet derived (K=1 Open Question). △
-
-### Honest conclusion
-
-  K=1 currently makes NO testable prediction differing from GR.
-  This is NOT unique to K=1 — Jacobson/Verlinde/Padmanabhan also don't.
-  All routes to Einstein reproduce GR exactly.
-  The value is UNDERSTANDING, not prediction.
-  
-  Best future direction: derive σ₁_min → singularity resolution.
-
----
-
-## 16. Impact on Existing Papers
-
-  No existing paper needs modification.
-  
-  Possible uses:
-    (a) NEW PAPER: "Einstein's Equations from Cost Self-Consistency"
-        Contains: K_field, K_angular, ODE, linearization, T_μν mapping,
-        general proof via polarization identity
-        Target: Found. Phys. or PRL (if general proof formalized)
-        
-    (b) DISCUSSION PARAGRAPH in K=1 math paper
-        Add to §8: "The field-level extension K_field = σ₂²□lnσ₁ = 1
-        gives R = 0; combined with K_angular = rf'+f = 1, the full
-        vacuum Einstein equations follow without thermodynamic input."
-        
-    (c) DISCUSSION PARAGRAPH in symplectic gravity paper
-        Connect R = -2□lnσ₁ + 2/r² to K_field = 1
-
-  Recommendation: option (a) — this deserves its own paper.
-
----
-
-## 17. File Index
-
-| File | Content | Status |
-|------|---------|--------|
-| `direct_einstein_roadmap.md` | This file (detailed roadmap) | Final |
-| `README_cost_to_einstein.md` | Concise summary | Final |
-| `cost_to_einstein_complete.py` | Merged formula verification (36/36) | ✓ |
-| `cost_to_einstein_reasoning.py` | Reasoning logic checks (113/113) | ✓ |
-| `cost_general_and_predictions.py` | General proof + predictions (21/21) | ✓ |
-| `cost_to_curvature_test1.py` | Test 1: cost → 2D curvature | ✓ (superseded) |
-| `cost_step2_box_as_cost.py` | Step 2: R=0 as cost balance | ✓ (superseded) |
-| `cost_step3_variation.py` | Step 3: K_field ODE and solution | ✓ (superseded) |
-| `cost_remaining_gaps.py` | Gap closure | ✓ (superseded) |
-| `cost_final_5percent.py` | Final items | ✓ (superseded) |
-| `cpn_signature.py` | CP^(N-1) signature (negative result) | ✓ |
-
-Total verification: 170/170 (36 formula + 113 reasoning + 21 general/predictions)
+*本文档来源：K=1 Chronogeometrodynamics 审核项目，V11→V25，23项改动，676词精简，8+1轮迭代。*

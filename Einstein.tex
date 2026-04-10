@@ -122,7 +122,7 @@ the tangential pressure.
 
 \begin{proof}
 Write $\Delta=r^2-2m(r)r$; then $K_1=\Delta''/2=f+2rf'+\tfrac{1}{2}r^2f''$ and
-$K_2=d(rf)/dr=f+rf'=1-2m'(r)$, the identities follow by
+$K_2=d(rf)/dr=f+rf'=1-2m'(r)$; the identities then follow by
 comparing with the standard spherically symmetric Ricci
 scalar $R=-f''-4f'/r+2(1-f)/r^2$ and Einstein components.
 Equation~\eqref{eq:K12} is $G_{\theta\theta}=K_1-K_2$,
@@ -279,21 +279,77 @@ $K_1=K_2=1$ in the spherically symmetric case.}
 \end{table}
 
 %───────────────────────────────────────────────────────
-\section{Discussion}
+\section{Discussion}\label{sec:discussion}
 
 \subsection*{Connection to $R_{\mu\nu}=0$ for Kerr}
 
 Theorem~\ref{thm:kerr} establishes $K{=}1$ for Kerr as an
-algebraic identity, independent of the vacuum condition.
-The deeper question — whether $K{=}1$ for a general null
-congruence is \emph{equivalent} to $R_{\mu\nu}k^\mu k^\nu=0$
-— requires one additional step: applying Gauss--Codazzi
-relations to project the 4D Ricci tensor onto the 2D
-null-surface cross-section.
-The polarisation identity then gives $R_{\mu\nu}=0$ from
-$R_{\mu\nu}k^\mu k^\nu=0$ for all null $k^\mu$ plus $R=0$.
-This programme is described in~\cite{K1} and remains open
-for general metrics.
+algebraic identity.
+We now show that, for the principal outgoing null congruence,
+$K{=}1$ is in fact \emph{equivalent} to
+$R_{\mu\nu}\ell^\mu\ell^\nu=0$.
+
+\begin{proposition}[$K{=}1\Leftrightarrow R_{\mu\nu}\ell^\mu\ell^\nu=0$]
+\label{prop:equiv}
+For the Kerr metric with the Kinnersley null congruence
+$(\ell^r=1,\,\sigma_{\scriptscriptstyle\mathrm{NP}}=0)$ and
+$\sigma=\sqrt{\Sigma}$,
+\[
+  K=\Sigma\,\Box_{\mathrm{null}}\ln\sigma=1
+  \;\Longleftrightarrow\;
+  R_{\mu\nu}\ell^\mu\ell^\nu = 0.
+\]
+\end{proposition}
+
+\begin{proof}
+Since $D\ln\sigma=\theta_{\mathrm{exp}}/2$ (Section~\ref{sec:discussion},
+\textit{Why~$\sqrt{\Sigma}$}), one has $D^2\ln\sigma=D\theta/2$, so
+\begin{equation}\label{eq:Kraychaudhuri}
+  K = \sigma^2\bigl(D^2\ln\sigma+\theta\,D\ln\sigma\bigr)
+    = \tfrac{1}{2}\sigma^2(D\theta+\theta^2).
+\end{equation}
+The Kinnersley congruence is geodesic ($\kappa=0$) and, by
+the Goldberg--Sachs theorem (Kerr is Petrov type~D), shear-free
+($\hat\sigma_{ab}=0$).
+The Raychaudhuri equation therefore reduces to
+\begin{equation}\label{eq:raychaudhuri}
+  D\theta = -\tfrac{1}{2}\theta^2
+    + \omega_{ab}\omega^{ab}
+    - R_{\mu\nu}\ell^\mu\ell^\nu,
+\end{equation}
+where the twist is
+$\omega_{ab}\omega^{ab}=2\omega_{\scriptscriptstyle\mathrm{NP}}^2
+=2\bigl(a\cos\theta/\Sigma\bigr)^2$,
+with $\omega_{\scriptscriptstyle\mathrm{NP}}=\lvert\mathrm{Im}\,
+\rho_{\scriptscriptstyle\mathrm{NP}}\rvert
+=a\cos\theta/\Sigma$~\cite[Sec.~56]{Chandrasekhar1983}.
+Substituting~\eqref{eq:raychaudhuri} into~\eqref{eq:Kraychaudhuri}:
+\[
+  K = \tfrac{1}{2}\sigma^2\!\left[
+    \tfrac{1}{2}\theta^2+\omega_{ab}\omega^{ab}
+    -R_{\mu\nu}\ell^\mu\ell^\nu\right].
+\]
+The \emph{kinematic identity} (verified algebraically,
+using $\theta=2r/\Sigma$ and $\omega_{ab}\omega^{ab}=2a^2\cos^2\!\theta/\Sigma^2$):
+\begin{equation}\label{eq:kinematic}
+  \tfrac{1}{2}\theta^2+\omega_{ab}\omega^{ab}
+  = \frac{2r^2}{\Sigma^2}+\frac{2a^2\cos^2\!\theta}{\Sigma^2}
+  = \frac{2(r^2+a^2\cos^2\!\theta)}{\Sigma^2}
+  = \frac{2}{\Sigma}=\frac{2}{\sigma^2},
+\end{equation}
+gives $K=1-\tfrac{1}{2}\sigma^2 R_{\mu\nu}\ell^\mu\ell^\nu$,
+hence $K=1\Leftrightarrow R_{\mu\nu}\ell^\mu\ell^\nu=0$.\qed
+\end{proof}
+
+\noindent
+Since Kerr is vacuum ($R_{\mu\nu}=0$), Proposition~\ref{prop:equiv}
+is consistent with Theorem~\ref{thm:kerr}.
+The full equivalence $K{=}1\Leftrightarrow R_{\mu\nu}=0$
+requires one additional step: applying the result to both
+principal null directions and invoking the polarisation
+identity ($R_{\mu\nu}k^\mu k^\nu=0$ for all null $k^\mu$
+plus $R=0$ implies $R_{\mu\nu}=0$).
+This programme remains open for general metrics.
 
 \subsection*{Why $\sqrt{\Sigma}$?}
 

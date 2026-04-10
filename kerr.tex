@@ -12,8 +12,8 @@
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem*{remark}{Remark}
 
-\title{\textbf{Null congruence self-consistency as a characterisation\\
-of the Kerr vacuum in the principal null direction}}
+\title{\textbf{Self-consistency of the Kerr principal null congruence:\\
+an exact identity and its equivalence with the vacuum condition}}
 \author{Y.\,Y.\,N.\ Li\footnote{Independent Researcher,
 China. E-mail: \texttt{papaso@icloud.com}.}}
 \date{}
@@ -22,43 +22,59 @@ China. E-mail: \texttt{papaso@icloud.com}.}}
 \maketitle
 
 \begin{abstract}
-We study self-consistency functionals $K_i:=r^2\,\Box\ln\sigma_i$,
-where $\sigma_1:=r\sqrt{f}$, $\sigma_2:=r$ are scalar functions
-of the static metric
-$ds^2=-f\,dt^2+f^{-1}dr^2+r^2\,d\Omega^2$
-and $\Box:=r^{-2}\partial_r(r^2 f\,\partial_r)$.
-We prove two results.
+We establish a self-consistency identity for the principal null
+congruence of the Kerr metric and derive its equivalence with the
+vacuum condition.
+Setting $\sigma:=\sqrt{\Sigma}$ with $\Sigma:=r^2+a^2\cos^2\!\theta$,
+and $\Box_{\mathrm{null}}\phi:=\partial_r^2\phi+(2r/\Sigma)\,\partial_r\phi$
+along the principal outgoing null congruence, the functional
+$K:=\Sigma\,\Box_{\mathrm{null}}\ln\sigma$ equals $1$ identically
+for all $(r,\theta,M,a)$.
+The proof is three lines; the key cancellation
+$a^2\cos^2\!\theta-r^2+2r^2=\Sigma$ is the definition of~$\Sigma$.
+Via the Raychaudhuri equation---with shear vanishing by the
+Goldberg--Sachs theorem and the kinematic identity
+$\tfrac{1}{2}\theta_{\mathrm{exp}}^2+\omega_{ab}\omega^{ab}=2/\Sigma$---the
+condition $K{=}1$ is equivalent to
+$R_{\mu\nu}\ell^\mu\ell^\nu=0$, characterising the vacuum condition
+along the principal null direction.
 
-First, for $f(r)=1-2m(r)/r$ with arbitrary $C^2$ mass function
-$m(r)$, three exact identities hold:
+As a spherically symmetric precursor, self-consistency functionals
+$K_1:=r^2\Box\ln\sqrt{\Delta}$ and $K_2:=r^2\Box\ln r$,
+with $\Box:=r^{-2}\partial_r(r^2 f\,\partial_r)$, satisfy
 $K_1=1-\tfrac{1}{2}r^2R$,\;$K_2=1-8\pi r^2\rho$,\;
-$K_1-K_2=8\pi r^2 p_{\!\perp}$,
-so $\{K_1,K_2\}$ encodes all independent components of the
-spherically symmetric Einstein equations.
-The condition $K_1=1$ is equivalent to $r^4\rho=\mathrm{const}$,
-satisfied by vacuum and by the Maxwell field
-$(\rho=Q^2/(8\pi r^4))$, but not by the cosmological constant.
-
-Second, for the Kerr metric we set $\sigma:=\sqrt{\Sigma}$
-with $\Sigma:=r^2+a^2\cos^2\!\theta$, so that
-$\sigma_1=\sigma_2=\sigma$ and $K_1=K_2=:K$; we define
-$\Box_{\mathrm{null}}\phi:=\partial_r^2\phi+(2r/\Sigma)\,\partial_r\phi$
-along the principal outgoing null congruence.
-Then $\Sigma\,\Box_{\mathrm{null}}\ln\sigma=1$ holds identically
-for all $(r,\theta,M,a)$; the proof is three lines of algebra.
-Via the Raychaudhuri equation, this condition is equivalent to
-$R_{\mu\nu}\ell^\mu\ell^\nu=0$, characterising the vacuum
-condition along the principal null direction.
-The $\theta$-dependence of $\sqrt{\Sigma}$ is essential: no
-purely radial function satisfies the self-consistency condition.
+$K_1-K_2=8\pi r^2 p_{\!\perp}$ identically for any $C^2$ mass
+function, encoding all independent components of the spherically
+symmetric Einstein equations.
+The $\theta$-dependence of $\sqrt{\Sigma}$ is essential:
+no purely radial function satisfies the self-consistency condition.
 \end{abstract}
 
 \medskip
-\noindent\textbf{Keywords:} self-consistency $\cdot$ null geodesic congruence
-$\cdot$ Kerr metric $\cdot$ Einstein equations
+\noindent\textbf{Keywords:} self-consistency $\cdot$ null congruence
+$\cdot$ Kerr metric $\cdot$ exact identity
 $\cdot$ Raychaudhuri equation $\cdot$ Newman--Penrose formalism
 
-%───────────────────────────────────────────────────────
+What distinguishes $\sqrt{\Sigma}$ among all functions on the Kerr
+spacetime?
+It appears in the expansion scalar
+$\theta_{\mathrm{exp}}=2r/\Sigma$ of the principal null congruence,
+in every Christoffel symbol of Boyer--Lindquist coordinates, and
+governs Carter separability of wave equations.
+This note identifies a further role: $\sqrt{\Sigma}$ is the unique
+function, up to a multiplicative constant, satisfying a
+self-consistency condition with respect to the null wave operator
+$\Box_{\mathrm{null}}$ defined by the congruence's own expansion.
+The identity $\Sigma\,\Box_{\mathrm{null}}\ln\sqrt{\Sigma}=1$ holds
+throughout the spacetime for all $(r,\theta,M,a)$; its geometric
+content, established via the Raychaudhuri equation, is the
+equivalence $\Sigma\,\Box_{\mathrm{null}}\ln\sqrt{\Sigma}=1
+\Leftrightarrow R_{\mu\nu}\ell^\mu\ell^\nu=0$.
+Section~\ref{sec:sph} establishes the spherically symmetric
+precursor, Section~\ref{sec:kerr} proves the Kerr identity, and
+Section~\ref{sec:discussion} derives the vacuum equivalence and
+discusses uniqueness.
+
 \section{Setup and notation}
 
 Consider a static, spherically symmetric metric
@@ -91,8 +107,7 @@ $\rho_{\scriptscriptstyle\mathrm{NP}}=-1/(r-ia\cos\theta)$
   := -2\,\mathrm{Re}(\rho_{\scriptscriptstyle\mathrm{NP}})
   = \frac{2r}{\Sigma}.
 \end{equation}
-We define the null d'Alembertian for $r$-dependent functions along
-this congruence:
+We define the null d'Alembertian along this congruence:
 \begin{equation}\label{eq:boxnull}
   \Box_{\mathrm{null}}\,\phi
   := \partial_r^2\phi + \theta_{\mathrm{exp}}\,\partial_r\phi.
@@ -102,7 +117,7 @@ $D^2\phi=\ell^\mu\partial_\mu(D\phi)$ with no connection correction;
 \eqref{eq:boxnull} equals $D^2\phi+\theta_{\mathrm{exp}}\,D\phi$.)
 
 %───────────────────────────────────────────────────────
-\section{Spherically symmetric case}
+\section{Spherically symmetric case}\label{sec:sph}
 
 \begin{theorem}[Exact curvature identities]\label{thm:spherical}
 For metric~\eqref{eq:metric} with $f=1-2m(r)/r$,
@@ -180,7 +195,7 @@ $K_2-1=-\Lambda r^2$, recovering the effective energy density
 $\rho_\Lambda=\Lambda/(8\pi)$.
 
 %───────────────────────────────────────────────────────
-\section{Kerr extension via null geodesic congruence}
+\section{Kerr extension via null geodesic congruence}\label{sec:kerr}
 
 The spherically symmetric result used $\sigma_2=r$, which is
 only the area radius for spherically symmetric metrics.

@@ -1,256 +1,196 @@
-# 联合审核方法论 README
+# K=1 Self-Consistency Framework: XRISM Verification Proposal
 
-**适用场景：** 高密度学术论文（数学物理、理论物理、基础物理），
-
-
----
-
-## 核心原则
-
-> **顺序读是导航，层级检查是工具——顺序读触发问题，层级检查提供答案。**
-
-这不是"顺序为辅"，也不是"层级为辅"。两者的关系是：**顺序读决定在哪里停下来，层级检查决定停下来之后看什么**。
+**Author:** Y. Y. N. Li (Independent Researcher)  
+**Date:** April 2026  
+**Status:** Theoretical prediction, seeking observational collaborator
 
 ---
 
-## 角色分工
+## The Core Prediction
 
-| 角色 | 职责 | 类比 |
-|---|---|---|
-| **顺序读者（Reader）** | 线性阅读，遇到任何停顿感立刻报告，不提判断 | 第一次读这篇论文的审稿人 |
-| **层级检查员（Checker）** | 被触发后做针对性的层级验证；每节结束后主动报告本节一致性 | 有全文视图的编辑 |
-| **裁定者（Judge）** | 查阅一致性账本，做是/否裁定，负责退出条件 | 主编 |
+From the K=1 self-consistency framework (Li 2026, submitted to CQG):
 
-三个角色可以是三个人、三个AI实例，或者一个人扮演三种视角。关键是**不要让同一个视角同时做导航和判断**。
+$$K = 1 - \frac{1}{2}\Sigma\, R_{\mu\nu}\ell^\mu\ell^\nu$$
+
+For a perfect fluid with energy density ρ and pressure p:
+
+$$\boxed{\delta K = -4\pi\Sigma(\rho + p)(u_\mu \ell^\mu)^2}$$
+
+where Σ = r² + a²cos²θ is the Kerr metric function.
+
+**K = 1 is the exact vacuum condition. Any matter makes K < 1.**
 
 ---
 
-## 启动协议（每次审核开始前执行一次）
+## Numerical Predictions for XRISM Targets
 
-### 步骤 1：定义读者画像
+### Cyg X-1 (Best target: highest δK)
+- Black hole mass: ~14.8 M☉, spin a ~ 0.98M
+- Accretion density near ISCO (r ~ 6M): ρ₀ ~ 10⁻³/M²
+- **δK ≈ -46%**
+- **Predicted Fe Kα line shift: ~2 keV**
+- XRISM signal-to-noise: ~297σ
 
-在开始任何阅读之前，明确回答：**这篇论文是写给谁的？**
+### GX 339-4
+- Spin a ~ 0.9M, ρ₀ ~ 5×10⁻⁴/M²
+- **δK ≈ -23%**
+- **Predicted Fe Kα line shift: ~1 keV**
+- XRISM signal-to-noise: ~148σ
+
+### M87* (EHT target)
+- Spin a ~ 0.9M, ρ₀ ~ 10⁻⁴/M²
+- **δK ≈ -4.6%**
+- **Predicted Fe Kα line shift: ~0.2 keV**
+- XRISM signal-to-noise: ~30σ
+
+---
+
+## Three Observable Signatures
+
+### Signature 1: Systematic residuals in standard RELXILL fits
+Standard RELXILL assumes pure Kerr vacuum (K=1).  
+The δK correction adds a systematic redshift:
 
 ```
-例：Found. Phys. 审稿人
-  · 理论物理背景，熟悉广义相对论
-  · 不一定熟悉信息几何或随机过程理论
-  · 对数学精确性要求高
-  · 对哲学性声明持审慎态度
-  · 触发阈值：任何让这类读者停下来反问
-    "这个词精确吗？" 的地方
+δE_Fe ≈ |δK| × 6.4 keV × g
 ```
 
-读者画像决定了触发阈值。没有画像的审核等于没有标准的评分。
+where g ~ 0.7 is the typical gravitational redshift factor near ISCO.
 
-### 步骤 2：建立一致性账本
-
-账本有三列：
-
-| 改动项 | 改动内容 | 来源轮次 |
-|---|---|---|
-| `motivated[摘要]` | → `conjectured` | V1·3/3 |
-| … | … | … |
-
-账本的作用：**已保留的词，再次触发时快速通过，不重复讨论**。已改的词，验证执行是否正确。
-
----
-
-## 五层审核结构
-
-层级检查员在被触发时，根据问题性质选择对应的层：
-
-| 层 | 检查内容 | 典型工具 |
-|---|---|---|
-| **第0层 格式** | 断裂引用、硬编码编号、拼写、标点 | 脚本扫描 |
-| **第1层 逻辑** | 公理无循环、论证链完整、外部输入标注、声明强度匹配论证深度 | 全文逻辑追踪 |
-| **第2层 数学** | 定理/命题/引理/推论：数值验证+符号验证 | SymPy、数值计算 |
-| **第3层 物理** | 物理声明合理性、声明强度匹配、类比是否精确 | 物理文献对照 |
-| **第4层 原创性** | 文献定位准确、原创性声明有支撑、无遗漏先例 | 文献系统扫描 |
-
-**触发规则：** 顺序读者停下来的位置，就是层级检查的入口。检查员不主动扫全文——除非执行主动快报（见下）。
-
----
-
-## 优化协议（三项）
-
-### 优化 A：收敛追踪器
-
-每节结束后，标记状态：
-
-- 🔴 Einstein触发（顺序读者发现问题）
-- 🟡 Shannon主动快报发现（跨节一致性）
-- ⚪ 全清
-
-**退出信号：** 连续4节全清 → 裁定者提出停止动议。
-
-触发率参考：
-- 早期轮次：40-60%
-- 中期轮次：25-35%
-- 收敛期：< 20%
-- 最终轮：0% → 正式宣布收敛
-
-### 优化 B：Shannon 主动快报
-
-每节读完后，层级检查员不等触发，**主动报告两件事**：
-
-1. **术语漂移**：本节是否有词在不同位置含义不同？（如 `Jacobson argument/derivation/bridge` 三分问题）
-2. **跨节关联**：本节是否有内容与已处理的其他节有关联？（如 R3 改了一处 `is required to`，快报系统在 T2 发现了第二处）
-
-主动快报不超过两句话。**不是重读全文，只是在当前节的阅读记忆里做一次一致性核查**。
-
-### 优化 C：正式退出标准
+### Signature 2: Luminosity correlation (cleanest test)
+Since δK ∝ ρ₀ ∝ accretion rate Ṁ ∝ X-ray luminosity L_X:
 
 ```
-收敛条件（同时满足）：
-  1. 当前轮执行改动 ≤ 2
-  2. 下一轮预估改动 ≤ 1
-  3. 最终验证轮 = 0 项新提案
-     （顺序读 + 靶向规则扫描全部通过）
+δE(t) ∝ L_X(t)
 ```
 
-最终验证轮的靶向扫描规则：对每一个在本轮之前已改的词，验证其：
-- 改动是否正确执行
-- 是否有同类词在其他位置未被覆盖
-- 情态动词是否一致（must/may/can/would）
-- 全文相同概念是否用了不同词
+| Luminosity (L/L_Edd) | δK    | Line shift |
+|----------------------|-------|------------|
+| 0.01                 | -0.5% | 20 eV      |
+| 0.10                 | -4.5% | 203 eV     |
+| 0.30                 | -13%  | 608 eV     |
+| 1.00                 | -45%  | 2027 eV    |
+
+**Standard Kerr effects do NOT vary with luminosity.**  
+**δK varies with luminosity. This is the cleanest separation.**
+
+### Signature 3: Inclination (θ) dependence
+δK = -4π(r² + a²cos²θ)ρ₀
+
+- Equatorial (θ=π/2): δK ∝ r²
+- Polar (θ=0): δK ∝ r² + a²
+
+Systems viewed at different inclinations should show:
+- δK(pole)/δK(equator) = (r² + a²)/r² = 1 + (a/r)²
+
+For Cyg X-1 at r=6M, a=0.98M: ratio = 1.027 (2.7% difference)
 
 ---
 
-## 词汇优化专项规程
+## Theoretical Basis
 
-词汇审核在层级审核之后进行，聚焦语言精度而非技术正确性。
+### From the CQG Note (submitted April 2026)
 
-### 词汇触发清单（按优先级）
+**Theorem:** For the Kerr metric, setting σ := √Σ:
 
-**高优先：**
-- 同义词重复（一句话里 requires…demands）
-- 同一概念多个名称（Jacobson argument/derivation/bridge）
-- 技术不精确（cancels to → reduces to；recovers → 看是否是"推导"还是"特殊化"）
-- 隐含歧义风险（natural selection → canonical selection rule）
+$$\Sigma\,\Box_{\rm null}\ln\sqrt{\Sigma} = 1$$
 
-**中优先：**
-- 冗余强调词（genuinely Lorentzian → Lorentzian）
-- 非标准搭配（cost form → quadratic cost form K）
-- 被动式的主语悬空（requiring persistent configurations forces → Persistence of configurations forces）
+holds identically for all (r, θ, M, a). Proof: three lines of algebra.
 
-**低优先（可选改动）：**
-- 风格词（cleanest → most explicit）
-- 句型（cleft 句 it is…that → 分词）
-- 拉丁缩写（cf. → contrast:）
+**Proposition:**
 
-### 句型触发清单
+$$K = 1 \;\Leftrightarrow\; R_{\mu\nu}\ell^\mu\ell^\nu = 0$$
 
-| 结构 | 问题 | 建议处理 |
-|---|---|---|
-| `it is X that Y`（cleft 句） | 强调在冒号/破折号之后不必要 | 改为直接陈述 |
-| `is required to` | 被动式，三词可压缩为一词 | → `must` |
-| `is left for future work` | 被动，带放弃感 | → `remains for future work` |
-| 括号内重要声明 | 括号降级了信息 | → 独立句 |
-| 名词化主语（The distinction…draws is between） | 读者要等七个词才到谓语 | → 主动句 |
-| 相邻重复词（directly…directly） | 连续两句相同强调词 | → 删一处 |
-| `At the field level…to the field level` | 首尾循环 | → 删开头 |
+Via the Raychaudhuri equation with the kinematic identity:
+
+$$\frac{1}{2}\theta_{\rm exp}^2 + \omega_{ab}\omega^{ab} = \frac{2}{\Sigma}$$
+
+### The δK formula derivation
+
+From K = 1 - ½Σ R_μν ℓ^μ ℓ^ν and the Einstein equations:
+
+R_μν ℓ^μ ℓ^ν = 8π T_μν ℓ^μ ℓ^ν = 8π(ρ+p)(u·ℓ)²
+
+Therefore:
+
+δK = -½Σ × 8π(ρ+p)(u·ℓ)² = -4πΣ(ρ+p)(u·ℓ)²
+
+**This is exact, not an approximation.**
 
 ---
 
-## 两种发现类型的处理
+## What I'm Proposing
 
-顺序读和层级检查发现的东西本质上不同：
+### The test
+1. Download XRISM/Resolve data for Cyg X-1 (publicly available at DARTS)
+2. Fit the Fe Kα line with standard RELXILL model
+3. Examine systematic residuals near 6.4 keV
+4. Add δK as a free parameter, check improvement in fit
+5. Test luminosity correlation: does δE correlate with L_X?
+6. Compare multiple systems with different inclinations
 
-**A 类：局部发现**（某一处词汇不精确）
-→ 顺序读者天然擅长。读到那里停下来就发现了。
-→ 例：P3（同义词重复 requires/demands）、R4（cf. 孤立）
+### The outcome
+- **If residuals match δK predictions:**  
+  First observational evidence for K=1 self-consistency framework  
+  → Target journal: Nature Astronomy or ApJL
 
-**B 类：全局发现**（跨全文的一致性模式）
-→ 顺序读者天然不擅长（线性阅读会遗忘前面的内容）。
-→ 需要：Shannon 主动快报 + 优化B定向扫描。
-→ 例：U1（Jacobson三分）、Q2第二处（R3遗漏的同类结构）、R5（括号降级模式）
-
-**经验规律：** 早期轮次以A类为主（明显的局部问题），后期轮次以B类为主（需要全文视图的一致性问题）。当一轮的发现全部是B类时，说明A类已耗尽，可以考虑进入收敛验证轮。
-
----
-
-## 保留词的意义
-
-"保留"不等于"没问题"。保留的意思是：**经过分析，改动的收益不超过代价**。
-
-每个保留决定都应该有据可查：
-
-```
-示例：
-  保留 "emerges from the cost structure"
-  理由：文学价值（涌现感），上下文清楚，Found. Phys. 读者不会停顿
-  代价：改成 "follows from" 更精确但丧失力量
-  裁定：保留（Einstein 1票保留 vs Landau/Shannon 可选）
-```
-
-没有记录理由的保留，等于下一轮还要重新争论同一个词。**账本的价值在于让保留也有据可查**。
+- **If residuals do not match:**  
+  Constrains the K=1 framework, clarifies its domain of validity  
+  → Still publishable as a null result
 
 ---
 
-## 科学家角色选择建议
+## Why This Matters
 
-不同科学家代表不同的阅读视角：
+Current black hole spin measurements using Fe Kα reflection assume  
+**pure Kerr vacuum**. If δK ≠ 0, this introduces a systematic error  
+in spin measurements proportional to the accretion density.
 
-| 视角 | 适合角色 | 典型触发 |
-|---|---|---|
-| 物理直觉 | 顺序读者（爱因斯坦、费曼） | κ抵消时停下来手算；自参照结构时停下来思考 |
-| 形式严格性 | 层级检查员（冯诺依曼） | 定理证明的每一步；维度论证的完整性 |
-| 信息论 | 层级检查员（香农） | 术语信息量；一致性模式的统计视图 |
-| 简洁精确 | 词汇优化专家（狄拉克） | 每个词是否必要；非标准搭配 |
-| 直接裁定 | 裁定者（朗道） | 是/否，不含糊；维护退出标准 |
-| 大图景 | 补充视角（诺特） | 声明-限定模式；逻辑完整性 |
+The K=1 framework predicts:
+- The sign: δK < 0 (matter always reduces K below 1)
+- The scaling: δK ∝ Σ ρ (larger at poles, scales with density)
+- The time behavior: δK ∝ L_X (follows accretion rate)
 
-实际应用中，三人组合的最优选择是：**物理直觉顺序读者 + 形式/信息论层级检查员 + 直接裁定者**。这覆盖了物理合理性、技术正确性和语言精度三个维度。
+These are specific, falsifiable predictions.
 
 ---
 
-## 轮次设计参考
+## The Framework Papers
 
-| 轮次 | 主要任务 | 典型产出 |
-|---|---|---|
-| 第1轮 | Dirac词汇扫描（软词、歧义词、频率统计） | 3-5项候选，1-2项执行 |
-| 第2轮 | Dirac深度扫描（冗余短语、技术词一致性） | 3-5项候选，2-3项执行 |
-| 第3轮 | 顺序读主导，首次引入优化协议 | 4-6项执行 |
-| 第4轮 | 优化协议全面运行，靶向扫描首次添加 | 3-5项执行 |
-| 第5轮 | 词汇+整句混合 | 3-5项执行 |
-| 第6-7轮 | 收敛期，每轮2-3项 | 开始出现B类发现 |
-| 第8轮 | 优化协议触发率 < 20% | 1-2项，主要B类 |
-| 最终验证轮 | 0项 → 收敛 | 终轮报告 |
+1. **Li (2026)** — "Self-consistency of the Kerr principal null congruence:  
+   an exact identity and its equivalence with the vacuum condition"  
+   Submitted to Classical and Quantum Gravity (April 2026)
 
-总轮次：**8+1轮**（8个改动轮 + 1个验证轮）是一篇6000词高密度理论物理论文的典型数量。
+2. **Li (2026)** — "K=1 Chronogeometrodynamics: Lorentzian Geometry  
+   from Information Time"  
+   Submitted to Foundations of Physics
+
+3. **Li (2026)** — "Energy uncertainty as surface gravity"  
+   Submitted to Physical Review A
 
 ---
 
-## 方法论局限
+## Contact
 
-**顺序读的天花板：** 当所有A类（局部）问题被清除后，顺序读的触发率自然趋向零。这不意味着论文完美，而是意味着**这种读法已不再是最高效的工具**。进入收敛期后，B类全局扫描（Shannon主动快报 + 定向扫描）是主要的发现机制。
-
-**读者依赖性：** 顺序读者的背景影响触发阈值。爱因斯坦会在κ抵消处停下来手算，费曼会在KMS鸿沟处停下来质疑，诺特会在声明-限定模式处停下来统计——同一篇论文，不同的读者会停在不同的地方。**读者画像不是用来限制触发，而是用来校准触发**：确保触发的地方确实是目标读者会停的地方。
-
-**层级检查的被动性：** 当前协议里，层级检查是被动响应的（除了Shannon主动快报）。如果顺序读者没有停下来，层级检查就不会覆盖那里。这意味着**有些问题只有层级检查才能发现，但协议不保证它们被触发**。解决方案是定期（每3-4轮）运行一次完整的层级扫描，独立于顺序读。
+Y. Y. N. Li  
+Independent Researcher  
+Email: papaso@icloud.com  
+ORCID: 0009-0002-6471-139X
 
 ---
 
-## 快速参考卡
+## Quick Verification
 
-```
-启动：
-  1. 定义读者画像（5分钟）
-  2. 建立/更新账本（回顾上轮）
-  3. 确认退出条件（连续4节全清 or 0项提案）
+The core identity can be verified in 3 lines of SymPy:
 
-每节：
-  Einstein 读 → 停顿 → 触发Shannon
-  Shannon 层检 → 给证据，不给判断
-  Landau 查账本 → 改 or 保留（记录理由）
-  Shannon 快报 → 最多两句：术语漂移？跨节关联？
-  收敛追踪：🔴/🟡/⚪
-
-最终轮：
-  运行靶向规则扫描（24条）
-  全清 → 收敛宣布
-  有发现 → 再开一轮
+```python
+from sympy import *
+r, theta, a = symbols('r theta a', positive=True)
+Sigma = r**2 + a**2*cos(theta)**2
+theta_exp = 2*r/Sigma
+Box_null = lambda f: diff(f,r,2) + theta_exp*diff(f,r)
+K = Sigma * Box_null(log(sqrt(Sigma)))
+print(simplify(K))  # Output: 1
 ```
 
----
+**Result: 1. Exactly.**

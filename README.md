@@ -163,7 +163,7 @@ These are specific, falsifiable predictions.
 
 2. **Li (2026)** — "K=1 Chronogeometrodynamics: Lorentzian Geometry  
    from Information Time"  
-   Submitted to Foundations of Physics
+  
 
 3. **Li (2026)** — "Energy uncertainty as surface gravity"  
    Submitted to Physical Review A

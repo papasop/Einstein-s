@@ -45,9 +45,9 @@ $\Sigma=r^2+a^2\cos^2\!\theta$ is the standard Kerr function,
 and the null d'Alembertian
 $\Box_{\mathrm{null}}\phi:=\partial_r^2\phi
   +(2r/\Sigma)\,\partial_r\phi$
-along the principal outgoing null congruence
-(expansion $\theta_{\mathrm{exp}}=2r/\Sigma$), one has
-$\Sigma\,\Box_{\mathrm{null}}\ln\sigma=1$ for all $(r,\theta,M,a)$.
+along the principal outgoing null congruence,
+one has $\Sigma\,\Box_{\mathrm{null}}\ln\sigma=1$
+for all $(r,\theta,M,a)$.
 The proof is three lines of algebra; the cancellation is
 structural and requires $\partial_r\ln\sigma=r/\Sigma$,
 which uniquely fixes $\sigma^2\propto\Sigma$.
@@ -318,9 +318,13 @@ proportional to the mismatch with $\Sigma$.
 \subsection*{Perturbative analysis for radial $\sigma_2$}
 
 For completeness: if one insists on a
-\emph{purely radial} $\sigma_2(r)$ for Kerr using the radial
-operator $\Box_A$ (with area weight $A=r^2+a^2$), the
-$a^2$-order correction $g(r)$ defined by
+\emph{purely radial} $\sigma_2(r)$ for Kerr using the area-weighted
+operator
+\begin{equation}\label{eq:boxA}
+  \Box_A\phi := \frac{1}{A}\,\partial_r\!\bigl(\Delta\,\partial_r\phi\bigr),
+  \qquad A=r^2+a^2,\quad \Delta=r^2-2Mr+a^2,
+\end{equation}
+the $a^2$-order correction $g(r)$ defined by
 $\sigma_2=r(1+a^2 g+O(a^4))$ satisfies
 \begin{equation}
   \frac{d}{dr}\!\bigl[\Delta_0\,g'\bigr]+2g=\frac{2}{r^2},
@@ -329,14 +333,18 @@ $\sigma_2=r(1+a^2 g+O(a^4))$ satisfies
 Substituting $t=(r-M)/M$ shows this is an ODE with a
 regular singular point at $r=2M$ whose indicial equation
 has a double root $\rho=0$; by the Frobenius method, the
-homogeneous solutions form a basis where one is a convergent
-power series in $(r-2M)$ and the other acquires a factor
-$\ln(r-2M)$. Neither is a polynomial, and the particular
-solution contains $\int\!\ln(r/(r{-}2M))/r^2\,dr$, with no
-closed form.
-This confirms that $K_2{=}1$ for Kerr cannot be achieved by
-any algebraic $\sigma_2(r)$ --- the $\theta$-dependence of
-$\sqrt{\Sigma}$ is essential.
+homogeneous solutions near $r=2M$ form a basis where one is
+a power series in $(r-2M)$ (convergent for $|r-2M|<2M$) and
+the other acquires a factor $\ln(r-2M)$.
+Neither is a polynomial, and the particular solution contains
+$\int\!\ln(r/(r{-}2M))/r^2\,dr$, with no closed form.
+This confirms that the $a^2$-order perturbative correction
+has no closed-form expression.
+More fundamentally, the condition $K_2{=}1$ requires
+$\partial_r\ln\sigma = r/\Sigma$ (Remark~\textit{Why~$\sqrt{\Sigma}$}),
+which forces $\sigma^2\propto\Sigma=r^2+a^2\cos^2\!\theta$:
+no function of $r$ alone, however chosen, can reproduce the
+$\theta$-dependence of $\Sigma$.
 
 \bigskip
 \noindent\textbf{Statements and Declarations}

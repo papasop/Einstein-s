@@ -1,26 +1,20 @@
-\documentclass[11pt,a4paper]{article}
-\usepackage{fontspec}
-\setmainfont{Latin Modern Roman}
-\usepackage{amsmath,amssymb,amsthm}
-\usepackage[margin=1in]{geometry}
-\usepackage{hyperref}
+\documentclass{iopart}
+\usepackage{amsmath,amssymb}
 \usepackage{booktabs}
-\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\usepackage[colorlinks=false]{hyperref}
 
-\newtheorem{theorem}{Theorem}
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{corollary}[theorem]{Corollary}
-\newtheorem*{remark}{Remark}
+% ─── Title, author, address ──────────────────────────────
+\begin{document}
 
 \title{\textbf{Self-consistency of the Kerr principal null congruence:\\
 an exact identity and its equivalence with the vacuum condition}}
-\author{Y.\,Y.\,N.\ Li\footnote{Independent Researcher,
-China. E-mail: \texttt{papaso@icloud.com}.}}
-\date{}
 
-\begin{document}
+\author{Y.\,Y.\,N.\ Li}
+\address{Independent Researcher}
+
 \maketitle
 
+% ─── Abstract ────────────────────────────────────────────
 \begin{abstract}
 We establish a self-consistency identity for the principal null
 congruence of the Kerr metric and derive its equivalence with the
@@ -50,10 +44,11 @@ The $\theta$-dependence of $\sqrt{\Sigma}$ is essential:
 no purely radial function satisfies the self-consistency condition.
 \end{abstract}
 
-\medskip
 \noindent\textbf{Keywords:} self-consistency $\cdot$ null congruence
 $\cdot$ Kerr metric $\cdot$ exact identity
 $\cdot$ Raychaudhuri equation $\cdot$ Newman--Penrose formalism
+
+\medskip
 
 What distinguishes $\sqrt{\Sigma}$ among all functions on the Kerr
 spacetime?
@@ -73,7 +68,9 @@ equivalence $\Sigma\,\Box_{\mathrm{null}}\ln\sqrt{\Sigma}=1
 Section~\ref{sec:sph} establishes the spherically symmetric
 precursor, Section~\ref{sec:kerr} proves the Kerr identity, and
 Section~\ref{sec:discussion} derives the vacuum equivalence and
-discusses uniqueness.
+discusses uniqueness---offering a perspective internal to the
+geometry rather than externally imposed.
+
 
 \section{Setup and notation}
 
@@ -476,5 +473,6 @@ Oxford University Press, Oxford (1983).
 (Sec.~56: Newman--Penrose spin coefficients for the Kerr metric.)
 
 \end{thebibliography}
+
 
 \end{document}

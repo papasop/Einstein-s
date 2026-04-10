@@ -12,8 +12,8 @@
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem*{remark}{Remark}
 
-\title{\textbf{From $K{=}1$ to the Einstein equations:\\
-the spherically symmetric case and Kerr}}
+\title{\textbf{Null congruence self-consistency as a characterisation\\
+of the Kerr vacuum}}
 \author{Y.\,Y.\,N.\ Li\footnote{Independent Researcher,
 China. E-mail: \texttt{papaso@icloud.com}.}}
 \date{}
@@ -22,44 +22,40 @@ China. E-mail: \texttt{papaso@icloud.com}.}}
 \maketitle
 
 \begin{abstract}
-The companion paper~\cite{K1} showed that the eigenvalue
-self-consistency conditions $\sigma_2^2\,\Box\ln\sigma_i=1$
-($i=1,2$) are algebraically equivalent to $R_{\mu\nu}=0$ for
-static spherically symmetric metrics.
-We extend this in two directions.
+We study self-consistency functionals $K_i:=r^2\,\Box\ln\sigma_i$,
+where $\sigma_1:=r\sqrt{f}$, $\sigma_2:=r$ are the radial
+eigenvalues of the static metric
+$ds^2=-f\,dt^2+f^{-1}dr^2+r^2\,d\Omega^2$
+and $\Box:=r^{-2}\partial_r(r^2 f\,\partial_r)$.
+We prove two results.
 
-First, for any metric $f(r)=1-2m(r)/r$ we prove three exact
-identities: $K_1=1-\tfrac{1}{2}r^2R$,\;
-$K_2=1-8\pi r^2\rho$,\; $K_1-K_2=8\pi r^2 p_{\!\perp}$, so
-$\{K_1,K_2\}$ encodes all independent components of the
+First, for $f(r)=1-2m(r)/r$ with arbitrary $C^2$ mass function
+$m(r)$, three exact identities hold:
+$K_1=1-\tfrac{1}{2}r^2R$,\;$K_2=1-8\pi r^2\rho$,\;
+$K_1-K_2=8\pi r^2 p_{\!\perp}$,
+so $\{K_1,K_2\}$ encodes all independent components of the
 spherically symmetric Einstein equations.
 The condition $K_1=1$ is equivalent to $r^4\rho=\mathrm{const}$,
-which holds for vacuum, for the Maxwell field
-$(\rho=Q^2/(8\pi r^4))$, and for any $1/r^4$ energy density,
-but fails for the cosmological constant.
+satisfied by vacuum and by the Maxwell field
+$(\rho=Q^2/(8\pi r^4))$, but not by the cosmological constant.
 
-Second, and more significantly, we show that the condition
-$K{=}1$ extends \emph{exactly} to the Kerr metric.
-Defining $\sigma:=\sqrt{\Sigma}$, where
-$\Sigma=r^2+a^2\cos^2\!\theta$ is the standard Kerr function,
-and the null d'Alembertian
-$\Box_{\mathrm{null}}\phi:=\partial_r^2\phi
-  +(2r/\Sigma)\,\partial_r\phi$
-along the principal outgoing null congruence,
-one has $\Sigma\,\Box_{\mathrm{null}}\ln\sigma=1$
-for all $(r,\theta,M,a)$.
-The proof is three lines of algebra; the cancellation is
-structural and requires $\partial_r\ln\sigma=r/\Sigma$,
-which uniquely fixes $\sigma^2\propto\Sigma$.
-The Schwarzschild limit $a\to 0$ recovers $\sigma=r$ and the
-original radial result; the $\theta$-dependence of $\sqrt{\Sigma}$
-is essential and cannot be replaced by any purely radial function.
+Second, for the Kerr metric we set $\sigma:=\sqrt{\Sigma}$
+($\Sigma:=r^2+a^2\cos^2\!\theta$) and define
+$\Box_{\mathrm{null}}\phi:=\partial_r^2\phi+(2r/\Sigma)\,\partial_r\phi$
+along the principal outgoing null congruence.
+Then $\Sigma\,\Box_{\mathrm{null}}\ln\sigma=1$ holds identically
+for all $(r,\theta,M,a)$; the proof is three lines of algebra.
+Via the Raychaudhuri equation, this condition is equivalent to
+$R_{\mu\nu}\ell^\mu\ell^\nu=0$, characterising the vacuum
+condition along the principal null direction.
+The $\theta$-dependence of $\sqrt{\Sigma}$ is essential: no
+purely radial function satisfies the self-consistency condition.
 \end{abstract}
 
 \medskip
-\noindent\textbf{Keywords:} $K{=}1$ framework $\cdot$ Einstein equations
-$\cdot$ eigenvalue self-consistency $\cdot$ spherical symmetry
-$\cdot$ Kerr metric $\cdot$ null geodesic congruence
+\noindent\textbf{Keywords:} self-consistency $\cdot$ null geodesic congruence
+$\cdot$ Kerr metric $\cdot$ Einstein equations
+$\cdot$ Raychaudhuri equation $\cdot$ Newman--Penrose formalism
 
 %───────────────────────────────────────────────────────
 \section{Setup and notation}
@@ -157,7 +153,8 @@ The two independent components are $G^t{}_t$ (encoded by $K_2$) and
 $G_{\theta\theta}$ (encoded by $K_1-K_2$).
 
 Vacuum ($\rho=p_{\!\perp}=0$) gives $K_1=K_2=1$, recovering
-the result of~\cite{K1}.
+the vacuum equivalence $K_1=K_2=1\Leftrightarrow R_{\mu\nu}=0$
+of~\cite{K1}.
 \end{corollary}
 
 \noindent\textbf{Physical interpretation of $K_1$.}\;
@@ -222,8 +219,7 @@ Setting $a=0$ gives $\Sigma=r^2$, $\theta_{\mathrm{exp}}=2/r$,
 and $\sigma=r$.  Equation~\eqref{eq:kerr} reduces to
 $r^2\cdot\Box_{\mathrm{null}}\ln r=1$, which holds for any
 $m(r)$ since $\partial_r^2\ln r+(2/r)\partial_r\ln r=1/r^2$,
-and recovers $K_2=1$ in the spherically symmetric notation
-— the original result of~\cite{K1}.
+and recovers $K_2=1$ in the spherically symmetric notation~\cite{K1}.
 The replacement $r\to\sqrt{\Sigma}$ is the unique extension
 consistent with Kerr's geometry: $\sqrt{\Sigma}$ is the
 transverse length scale that appears in the Newman--Penrose
@@ -432,8 +428,7 @@ No datasets were generated or analysed during the current study.
 Y.\,Y.\,N.~Li,
 $K{=}1$ Chronogeometrodynamics: Lorentzian Geometry from
 Information Time.
-Submitted to Found.\ Phys.\ (2026).
-Preprint: Zenodo, \url{https://doi.org/10.5281/zenodo.XXXXXXX}
+Preprint, Zenodo (2026), \url{https://doi.org/10.5281/zenodo.19469558}
 
 \bibitem{Chandrasekhar1983}
 S.~Chandrasekhar,
